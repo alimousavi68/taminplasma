@@ -1,0 +1,209 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: 'PeydaWebVF';
+  src: url('fonts/peyda/PeydaWebVF.woff2') format('woff2-variations'),
+    url('fonts/peyda/PeydaWebVF.woff') format('woff-variations');
+  font-weight: 100 950;
+  font-style: normal;
+  font-display: swap;
+}
+
+@theme {
+  --font-peyda: 'PeydaWebVF', ui-sans-serif, system-ui, sans-serif;
+
+  --color-primary: #FFD970;
+  --color-secondary: #1E293B;
+  --color-bg-base: #F8F7F4;
+  --color-bg-surface: #FFFFFF;
+  --color-bg-warm: #FEFAEF;
+  --color-text-dark: #1E293B;
+  --color-text-main: #1E293B;
+  --color-text-muted: rgba(30, 41, 59, 0.65);
+  --color-border-subtle: #E5E1D8;
+  --color-surface-warm: #EDE5D0;
+}
+
+
+:root {
+
+  /* Primary Colors */
+
+  --color-bg-warm: #FEFAEF;
+
+  --color-surface-warm: #EDE5D0;
+
+  --color-primary: #FFD970;
+  /* Main Accent (Gold) */
+
+  --color-primary-light: #FFE8A3;
+  /* Lighter shade of primary */
+
+  --color-primary-dark: #EAA824;
+  /* Darker shade of primary */
+
+  --color-primary-hover: #f0b52b;
+  /* Hover state for primary */
+
+  --color-primary-shadow: rgba(255, 196, 54, 0.5);
+
+  /* Consolidated:
+  --color-top-bar-yellow: #FFD970;
+  */
+
+
+
+  /* Secondary Colors & Luxury Darks (No burgundy or harsh black in large areas) */
+
+  --color-secondary: #1E293B;
+  /* Deep slate blue for calming & professional premium look (Replaced burgundy #8B1E1E) */
+
+  --color-secondary-light: #334155;
+  /* Lighter secondary */
+
+  --color-black: #252B36;
+  /* Premium muted steel slate instead of #000000 or #0F172A */
+
+  --color-white: #FFFFFF;
+  /* Explicit white */
+
+
+
+  /* Background Colors (Warm, comforting and premium) */
+
+  --color-bg-base: #F8F7F4;
+  /* Luxury soft off-white background */
+
+  --color-bg-lightest: #FFFDF9;
+  /* Very light warm cream */
+
+  --color-bg-section: #FEFAF2;
+  /* Light yellow-beige for sections */
+
+  --color-bg-lighter: #F3F0E6;
+  /* Soft warm gray-beige */
+
+  --color-footer-bg: #252B36;
+  /* Muted steel slate for premium footer */
+
+  /* Consolidated Backgrounds:
+  --color-bg-journey-test: #FCFAF5;
+  --color-bg-amber-50: #fffbeb;
+  --color-bg-amber-100: #fef3c7;
+  --color-surface-light: #EAE6DA;
+  */
+
+
+
+  /* Text Colors */
+
+  --color-text-dark: #1E293B;
+  /* Primary readable typography - dark slate instead of harsh black */
+
+  --color-text-main: #1E293B;
+  /* Same as text-dark */
+
+  --color-text-muted: rgba(30, 41, 59, 0.65);
+  /* Secondary/description typography */
+
+  --color-text-gray-dark: #576574;
+  /* Muted text */
+
+  /* Consolidated Text Colors:
+  --color-text-neutral-900: #171717;
+  --color-text-neutral-800: #262626;
+  --color-text-neutral-700: #404040;
+  --color-text-neutral-600: #525252;
+  --color-text-neutral-500: #737373;
+  --color-text-neutral-400: #a3a3a3;
+  --color-text-neutral-300: #d4d4d4;
+  --color-text-neutral-200: #e5e5e5;
+  --color-text-neutral-950: #0a0a0a;
+  --color-gray-text: #5D6770;
+  */
+
+
+
+  /* Accent Colors */
+
+  --color-accent-brown: #A79071;
+  /* Brownish accent */
+
+  --color-red: #E11D48;
+  /* Premium rose-red for small notices/alerts instead of #D32F2F */
+
+  --color-red-hex: E11D48;
+
+  --color-green-500: #10B981;
+  /* Tailwind green-500 */
+
+  --color-green-50: #ECFDF5;
+  /* Tailwind green-50 */
+
+  --color-blue-500: #3B82F6;
+  /* Tailwind blue-500 */
+
+  --color-orange-500: #F97316;
+  /* Tailwind orange-500 */
+
+
+
+  /* Border Colors */
+
+  --color-border-subtle: #E5E1D8;
+  /* Premium subtle border color */
+
+  --color-border-dashed: #D4CFC1;
+  /* Light gray border */
+
+  --color-border-neutral-100: #F1F5F9;
+  /* Tailwind slate-100 */
+
+  --color-border-neutral-200: #E2E8F0;
+  /* Tailwind slate-200 */
+
+  --color-border-neutral-300: #CBD5E1;
+  /* Tailwind slate-300 */
+
+  --color-border-neutral-400: #94A3B8;
+  /* Tailwind slate-400 */
+
+  --color-border-neutral-700-20: rgba(30, 41, 59, 0.2);
+
+  --color-border-amber-200-40: rgba(253, 230, 138, 0.4);
+
+  --color-border-black-5: rgba(0, 0, 0, 0.05);
+
+  --color-border-white-10: rgba(255, 255, 255, 0.1);
+
+  --color-border-white-20: rgba(255, 255, 255, 0.2);
+
+  --color-border-gray-200: #E2E8F0;
+
+  --color-neutral-50: #FAFAFA;
+
+  --color-text-amber-600: #D97706;
+
+  --color-text-amber-500: #F59E0B;
+
+}
+
+
+body {
+  font-family: var(--font-peyda);
+  background-color: var(--color-bg-base);
+  color: var(--color-text-main);
+  margin: 0;
+  padding: 0;
+}
+
+@layer utilities {
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
+  }
+
+  .scrollbar-none {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
