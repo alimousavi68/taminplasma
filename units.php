@@ -129,7 +129,7 @@ body {
                 <div>
                     <!-- Top Image Box -->
                     <div class="w-full aspect-[4/3] rounded-[1.75rem] overflow-hidden relative bg-neutral-100 mb-4">
-                        <img src="https://images.unsplash.com/photo-1579684389782-64d84b5e901a?auto=format&fit=crop&w=800&q=80" alt="شعبه تهرانپارس" class="transition-transform duration-500 group-hover:scale-105 object-cover w-full h-full" />
+                        <img src="https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=800&q=80" alt="شعبه تهرانپارس" class="transition-transform duration-500 group-hover:scale-105 object-cover w-full h-full" />
                         <span class="absolute top-3 right-3 bg-white/90 backdrop-blur-sm text-xs font-black px-3 py-1.5 rounded-full text-[var(--color-text-main)] border border-neutral-200/40">
                             تهران
                         </span>

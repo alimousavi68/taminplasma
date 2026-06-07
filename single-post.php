@@ -140,7 +140,7 @@ require_once 'template-parts/header.php';
                     <p class="text-xs text-neutral-300 leading-relaxed">
                         تنها با صرف ۴۵ دقیقه، امید به زندگی را به چندین خانواده بازگردانید و سلامت خود را تضمین کنید.
                     </p>
-                    <a href="#" class="w-full bg-primary text-neutral-950 font-black text-center py-4 rounded-full inline-block mt-4 text-sm hover:scale-[1.02] transition-transform shadow-md cursor-pointer">
+                    <a href="request.php" class="w-full bg-primary text-neutral-950 font-black text-center py-4 rounded-full inline-block mt-4 text-sm hover:scale-[1.02] transition-transform shadow-md cursor-pointer">
                         رزرو سریع نوبت اهدا
                     </a>
                 </div>

@@ -17,64 +17,61 @@
           </div>
 
           <!-- Cards Grid (Forced to wider size to fit 4 cards of ~217px and 15px gap without overlap) -->
-          <div class="flex flex-row flex-wrap lg:flex-nowrap gap-3 lg:gap-[15px] w-full lg:w-[950px] max-w-none relative z-20">
+          <div id="conditions-grid" class="flex flex-row flex-wrap lg:flex-nowrap gap-3 lg:gap-[15px] w-full lg:w-[950px] max-w-none relative z-20">
             <!-- Card 1 (Active) -->
             <div
-              class="bg-primary text-neutral-900 rounded-[1.25rem] px-3 py-4 lg:px-4 flex flex-row items-start justify-between shadow-md gap-3 min-h-[94px] w-[calc(50%-6px)] lg:w-[217px] shrink-0">
-              <img src="public/sharayet/user-viewfinder.svg" class="w-[39px] h-[39px] shrink-0" alt="age" />
-              <span class="font-semibold text-[18px] leading-[1.3] w-full text-right mt-1">دارای شرایط سنی ۱۸
-                تا ۶۰ سال</span>
+              data-index="0"
+              class="condition-card bg-primary text-neutral-900 rounded-[1.25rem] px-3 py-4 lg:px-4 flex flex-row items-start justify-between shadow-md gap-3 min-h-[94px] w-[calc(50%-6px)] lg:w-[217px] shrink-0 cursor-pointer transition-all duration-300">
+              <img src="public/sharayet/user-viewfinder.svg" class="w-[39px] h-[39px] shrink-0 transition-transform duration-300" alt="age" />
+              <span class="font-semibold text-[18px] leading-[1.3] w-full text-right mt-1">دارای شرایط سنی ۱۸ تا ۶۰ سال</span>
             </div>
 
             <!-- Card 2 (Inactive) -->
             <div
-              class="bg-surface-warm text-neutral-900 rounded-[1.25rem] px-3 py-4 lg:px-4 flex flex-row items-start justify-between cursor-pointer transition-all duration-300 group hover:bg-primary hover:-translate-y-1 hover:shadow-lg gap-3 min-h-[94px] w-[calc(50%-6px)] lg:w-[217px] shrink-0">
+              data-index="1"
+              class="condition-card bg-surface-warm text-neutral-900 rounded-[1.25rem] px-3 py-4 lg:px-4 flex flex-row items-start justify-between shadow-none gap-3 min-h-[94px] w-[calc(50%-6px)] lg:w-[217px] shrink-0 cursor-pointer transition-all duration-300 group hover:bg-primary/40 hover:-translate-y-1 hover:shadow-sm">
               <img src="public/sharayet/weight-scale.svg"
-                class="w-[39px] h-[39px] shrink-0 group-hover:scale-110 group-hover:rotate-6 transition-transform duration-300"
+                class="w-[39px] h-[39px] shrink-0 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6"
                 alt="weight" />
               <span
-                class="font-semibold text-[18px] leading-[1.3] w-full text-right mt-1 transition-colors">دارای
-                وزن حداقل ۵۰ کیلوگرم</span>
+                class="font-semibold text-[18px] leading-[1.3] w-full text-right mt-1 transition-colors">دارای وزن حداقل ۵۰ کیلوگرم</span>
             </div>
 
             <!-- Card 3 (Inactive) -->
             <div
-              class="bg-surface-warm text-neutral-900 rounded-[1.25rem] px-3 py-4 lg:px-4 flex flex-row items-start justify-between cursor-pointer transition-all duration-300 group hover:bg-primary hover:-translate-y-1 hover:shadow-lg gap-3 min-h-[94px] w-[calc(50%-6px)] lg:w-[217px] shrink-0">
+              data-index="2"
+              class="condition-card bg-surface-warm text-neutral-900 rounded-[1.25rem] px-3 py-4 lg:px-4 flex flex-row items-start justify-between shadow-none gap-3 min-h-[94px] w-[calc(50%-6px)] lg:w-[217px] shrink-0 cursor-pointer transition-all duration-300 group hover:bg-primary/40 hover:-translate-y-1 hover:shadow-sm">
               <img src="public/sharayet/monitor-waveform (1).svg"
-                class="w-[39px] h-[39px] shrink-0 group-hover:scale-110 group-hover:rotate-6 transition-transform duration-300"
+                class="w-[39px] h-[39px] shrink-0 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6"
                 alt="health" />
               <span
-                class="font-semibold text-[18px] leading-[1.3] w-full text-right mt-1 transition-colors">سلامت
-                عمومی مناسب</span>
+                class="font-semibold text-[18px] leading-[1.3] w-full text-right mt-1 transition-colors">سلامت عمومی مناسب</span>
             </div>
 
             <!-- Card 4 (Inactive) -->
             <div
-              class="bg-surface-warm text-neutral-900 rounded-[1.25rem] px-3 py-4 lg:px-4 flex flex-row items-start justify-between cursor-pointer transition-all duration-300 group hover:bg-primary hover:-translate-y-1 hover:shadow-lg gap-3 min-h-[94px] w-[calc(50%-6px)] lg:w-[217px] shrink-0">
+              data-index="3"
+              class="condition-card bg-surface-warm text-neutral-900 rounded-[1.25rem] px-3 py-4 lg:px-4 flex flex-row items-start justify-between shadow-none gap-3 min-h-[94px] w-[calc(50%-6px)] lg:w-[217px] shrink-0 cursor-pointer transition-all duration-300 group hover:bg-primary/40 hover:-translate-y-1 hover:shadow-sm">
               <img src="public/sharayet/pills.svg"
-                class="w-[39px] h-[39px] shrink-0 group-hover:scale-110 group-hover:rotate-6 transition-transform duration-300"
+                class="w-[39px] h-[39px] shrink-0 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6"
                 alt="pills" />
               <span
-                class="font-bold text-[18px] leading-[1.3] w-full text-right mt-1 transition-colors">عدم
-                مصرف داروی خاص</span>
+                class="font-bold text-[18px] leading-[1.3] w-full text-right mt-1 transition-colors">عدم مصرف داروی خاص</span>
             </div>
           </div>
         </div>
 
-        <!-- Lower Heading & Paragraph -->
+        <!-- Lower Dynamic Heading & Explanation Paragraph -->
         <div class="flex flex-col items-start space-y-4 pt-10 lg:pt-14 w-full">
-          <h2
-            class="text-neutral-900 font-black text-[22px] lg:text-[28px] flex items-center justify-start gap-2 flex-wrap">
-            چرا
-            <span
-              class="bg-[var(--color-bg-surface)] px-4 py-0.5 lg:py-1 rounded-[1rem] inline-block text-neutral-900 text-[20px] lg:text-[26px]">نوژین</span>
-            را انتخاب کنیم؟
-          </h2>
-          <p
-              class="text-neutral-700 text-[14px] lg:text-[18px] leading-8 lg:leading-[2.2] font-normal text-right lg:max-w-[548px]">
-            در تأمین پلاسما نوژین، تمامی مراحل، از ارزیابی اولیه تا فرآیند اهدا و مراقبت پس از آن، تحت نظارت تیم پزشکی
-            مجرب و با استفاده از تجهیزات مدرن و کاملاً استریل انجام می‌شود. رعایت دقیق استانداردهای ملی و بین‌المللی،
-            نوژین را به همراهی مطمئن در زنجیره سلامت تبدیل کرده است.
+          <div class="flex items-center gap-2">
+            <span class="w-2.5 h-2.5 rounded-full bg-primary animate-pulse" id="condition-progress-dot"></span>
+            <h4 id="condition-detail-title" class="text-neutral-900 font-black text-[22px] lg:text-[26px] transition-all duration-300 ease-out">
+              دارای شرایط سنی ۱۸ تا ۶۰ سال
+            </h4>
+          </div>
+          <p id="condition-detail-desc"
+              class="text-neutral-700 text-[15px] lg:text-[18px] leading-8 lg:leading-[2.2] font-normal text-right lg:max-w-[548px] min-h-[190px] sm:min-h-[150px] lg:min-h-[175px] xl:min-h-[145px] transition-all duration-300 ease-out">
+            بازه سنی قانونی برای اهدای پلاسما به منظور حفظ سلامت اهداکننده و کیفیت بیولوژیک پلاسما تعیین شده است. اولین مراجعه‌کنندگان می‌توانند تا سن ۶۰ سال اقدام کنند و اهداکنندگان مستمر با تایید پزشک امکان اهدای پلاسما تا سنین بالاتر را نیز دارند.
           </p>
         </div>
 
@@ -100,4 +97,107 @@
 
     </div>
   </section>
+
+  <!-- Interactive Carousel Logic -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const conditionsDb = [
+        {
+          title: "دارای شرایط سنی ۱۸ تا ۶۰ سال",
+          desc: "بازه سنی قانونی برای اهدای پلاسما به منظور حفظ سلامت اهداکننده و کیفیت بیولوژیک پلاسما تعیین شده است. اولین مراجعه‌کنندگان می‌توانند تا سن ۶۰ سال اقدام کنند و اهداکنندگان مستمر با تایید پزشک امکان اهدای پلاسما تا سنین بالاتر را نیز دارند."
+        },
+        {
+          title: "دارای وزن حداقل ۵۰ کیلوگرم",
+          desc: "وزن اهداکننده رابطه مستقیمی با حجم کل خون بدن دارد. به منظور پیشگیری از هرگونه ضعف یا افت فشار، حداقل وزن مجاز ۵۰ کیلوگرم تعیین شده است. حجم پلاسمای اهدایی نیز متناسب با وزن شما به طور کاملاً علمی محاسبه و دریافت می‌شود."
+        },
+        {
+          title: "سلامت عمومی مناسب",
+          desc: "قبل از هر بار اهدا، وضعیت هموگلوبین (جهت بررسی عدم کم‌خونی)، فشار خون، ضربان قلب و دمای بدن شما توسط پزشک بررسی می‌شود. برخورداری از سلامت عمومی و شادابی فیزیکی، ضامن یک اهدای ایمن و بدون عوارض است."
+        },
+        {
+          title: "عدم مصرف داروی خاص",
+          desc: "مصرف برخی داروها (مانند آنتی‌بیوتیک‌ها، داروهای هورمونی خاص یا رقیق‌کننده‌های خون) ممکن است بر کیفیت پلاسما یا فرآیند اهدا اثرگذار باشد. پزشک مرکز پیش از شروع، لیست داروهای مصرفی شما را پایش کرده و راهنمایی‌های لازم را ارائه می‌دهد."
+        }
+      ];
+
+      const cards = document.querySelectorAll('.condition-card');
+      const detailTitle = document.getElementById('condition-detail-title');
+      const detailDesc = document.getElementById('condition-detail-desc');
+      const container = document.getElementById('conditions-grid');
+
+      let currentIndex = 0;
+      let rotationInterval = null;
+      const intervalDuration = 4000; // 4 seconds
+
+      function setActiveIndex(index) {
+        currentIndex = index;
+        const data = conditionsDb[index];
+
+        // Update cards layout
+        cards.forEach((card, i) => {
+          if (i === index) {
+            card.className = "condition-card bg-primary text-neutral-900 rounded-[1.25rem] px-3 py-4 lg:px-4 flex flex-row items-start justify-between shadow-md gap-3 min-h-[94px] w-[calc(50%-6px)] lg:w-[217px] shrink-0 cursor-pointer transition-all duration-300";
+            card.classList.remove('bg-surface-warm', 'shadow-none');
+            // Animate img
+            const img = card.querySelector('img');
+            if (img) img.classList.add('scale-110', 'rotate-6');
+          } else {
+            card.className = "condition-card bg-surface-warm text-neutral-900 rounded-[1.25rem] px-3 py-4 lg:px-4 flex flex-row items-start justify-between shadow-none gap-3 min-h-[94px] w-[calc(50%-6px)] lg:w-[217px] shrink-0 cursor-pointer transition-all duration-300 group hover:bg-primary/40 hover:-translate-y-1 hover:shadow-sm";
+            const img = card.querySelector('img');
+            if (img) img.classList.remove('scale-110', 'rotate-6');
+          }
+        });
+
+        // Animate content fade
+        detailTitle.style.opacity = '0';
+        detailDesc.style.opacity = '0';
+
+        setTimeout(() => {
+          detailTitle.textContent = data.title;
+          detailDesc.textContent = data.desc;
+          detailTitle.style.opacity = '1';
+          detailDesc.style.opacity = '1';
+        }, 150);
+      }
+
+      function startAutoPlay() {
+        if (rotationInterval) clearInterval(rotationInterval);
+        rotationInterval = setInterval(() => {
+          let nextIndex = (currentIndex + 1) % conditionsDb.length;
+          setActiveIndex(nextIndex);
+        }, intervalDuration);
+      }
+
+      function stopAutoPlay() {
+        if (rotationInterval) {
+          clearInterval(rotationInterval);
+          rotationInterval = null;
+        }
+      }
+
+      // Add event listeners
+      cards.forEach((card, i) => {
+        const triggerHandler = () => {
+          stopAutoPlay();
+          setActiveIndex(i);
+        };
+        card.addEventListener('mouseenter', triggerHandler);
+        card.addEventListener('click', triggerHandler);
+      });
+
+      // Restart auto play when mouse leaves grid container
+      if (container) {
+        container.addEventListener('mouseleave', () => {
+          startAutoPlay();
+        });
+        container.addEventListener('mouseenter', () => {
+          stopAutoPlay();
+        });
+      }
+
+      // Start initial autoplay loop
+      startAutoPlay();
+    });
+  </script>
+
 

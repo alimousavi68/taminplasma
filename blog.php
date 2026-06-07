@@ -10,7 +10,7 @@ require_once 'template-parts/header.php';
 
     <!-- 1. FEATURED ARTICLE BANNER -->
     <section class="max-w-screen-xl mx-auto px-6 lg:px-12 my-8">
-        <article class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-[var(--color-bg-surface)] border border-[var(--color-border-subtle)] rounded-[3rem] p-6 shadow-sm group cursor-pointer overflow-hidden">
+        <article class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-[var(--color-surface-warm)] border border-[var(--color-border-subtle)] rounded-[3rem] p-6 shadow-sm group cursor-pointer overflow-hidden">
             <!-- Left Column Media (6 Columns) -->
             <div class="lg:col-span-6 w-full aspect-[16/10] rounded-[2.25rem] overflow-hidden relative bg-[var(--color-border-subtle)]">
                 <img src="src/assets/post-4.webp" alt="Featured Article" class="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500">
@@ -18,21 +18,21 @@ require_once 'template-parts/header.php';
 
             <!-- Right Column Metadata (6 Columns) -->
             <div class="lg:col-span-6 space-y-4 text-right">
-                <div class="flex items-center justify-end gap-2 text-xs text-[var(--color-text-muted)] font-medium">
+                <div class="flex items-center justify-end gap-2 text-xs text-neutral-800 font-semibold">
                     <span>زمان مطالعه: ۵ دقیقه</span>
-                    <span class="w-1 h-1 bg-neutral-300 rounded-full"></span>
+                    <span class="w-1 h-1 bg-neutral-900/30 rounded-full"></span>
                     <span>۱۰ خرداد ۱۴۰۵</span>
                 </div>
                 
-                <h2 class="font-black text-xl md:text-2xl lg:text-3xl text-[var(--color-text-main)] leading-tight">
+                <h2 class="font-black text-xl md:text-2xl lg:text-3xl text-neutral-900 leading-tight">
                     جدیدترین دستاوردهای علمی نوژین در حوزه بیوتکنولوژی پلاسما
                 </h2>
                 
-                <p class="text-sm text-[var(--color-text-muted)] leading-relaxed line-clamp-3">
+                <p class="text-sm text-neutral-700 leading-relaxed line-clamp-3">
                     در سال‌های اخیر، پیشرفت‌های چشمگیری در حوزه فرآوری پلاسما و تولید داروهای مشتق از آن صورت گرفته است. تیم تحقیق و توسعه نوژین با بهره‌گیری از تکنولوژی‌های روز دنیا، موفق به بومی‌سازی فرآیندهایی شده است که نقش حیاتی در درمان بیماری‌های خاص ایفا می‌کنند.
                 </p>
                 
-                <a href="#" class="inline-flex items-center gap-1.5 bg-[var(--color-bg-surface)] text-[var(--color-text-main)] font-bold px-5 py-2.5 rounded-full text-xs hover:bg-primary transition-colors border border-[var(--color-border-subtle)]">
+                <a href="#" class="inline-flex items-center gap-1.5 bg-white text-neutral-900 font-bold px-5 py-2.5 rounded-full text-xs hover:bg-primary transition-colors border border-transparent shadow-sm">
                     مطالعه کامل مقاله
                     <i class="fa-solid fa-arrow-left text-[10px]"></i>
                 </a>
@@ -59,32 +59,32 @@ require_once 'template-parts/header.php';
         $articles = [
             [
                 'title' => 'نقش پلاسما در درمان بیماری‌های نادر',
-                'image' => '/src/assets/post-1.webp',
+                'image' => 'src/assets/post-1.webp',
                 'excerpt' => 'پلاسما حاوی پروتئین‌های حیاتی است که برای تولید داروهای بیماران خاص و نادر استفاده می‌شود.'
             ],
             [
                 'title' => 'تغذیه مناسب قبل و بعد از اهدای پلاسما',
-                'image' => '/src/assets/post-2.webp',
+                'image' => 'src/assets/post-2.webp',
                 'excerpt' => 'با رعایت یک رژیم غذایی سالم و مصرف مایعات کافی، تجربه بهتری از اهدای پلاسما خواهید داشت.'
             ],
             [
                 'title' => 'تفاوت پلاسمای انسانی و فرآورده‌های خونی',
-                'image' => '/src/assets/post-3.webp',
+                'image' => 'src/assets/post-3.webp',
                 'excerpt' => 'بررسی علمی کاربردهای پلاسما در مقایسه با خون کامل و نقش آن در پزشکی مدرن.'
             ],
             [
                 'title' => 'چگونه اهداکننده مستمر پلاسما شویم؟',
-                'image' => '/src/assets/post-4.webp',
+                'image' => 'src/assets/post-4.webp',
                 'excerpt' => 'راهنمای گام به گام برای کسانی که می‌خواهند به طور منظم در نجات جان بیماران سهیم باشند.'
             ],
             [
                 'title' => 'استانداردهای ایمنی در مراکز ما',
-                'image' => '/src/assets/post-5.webp',
+                'image' => 'src/assets/post-5.webp',
                 'excerpt' => 'آشنایی با تجهیزات پیشرفته و پروتکل‌های بهداشتی سخت‌گیرانه در مراکز تامین پلاسما نوژین.'
             ],
             [
                 'title' => 'فواید علمی اهدای پلاسما برای بدن',
-                'image' => '/src/assets/post-6.webp',
+                'image' => 'src/assets/post-6.webp',
                 'excerpt' => 'مطالعات نشان می‌دهد که اهدای منظم پلاسما می‌تواند به بهبود سلامت عمومی کمک کند.'
             ]
         ];
@@ -108,10 +108,6 @@ require_once 'template-parts/header.php';
                     <h3 class="text-[var(--color-text-main)] font-black text-lg leading-tight group-hover:text-[var(--color-secondary)] transition-colors">
                         <?= $article['title'] ?>
                     </h3>
-                    <!-- Circular gold verification badge -->
-                    <div class="w-5 h-5 rounded-full bg-primary flex items-center justify-center shrink-0">
-                        <i class="fa-solid fa-check text-[10px] text-[var(--color-text-main)]"></i>
-                    </div>
                 </div>
                 <p class="text-sm text-[var(--color-text-muted)] leading-relaxed line-clamp-2">
                     <?= $article['excerpt'] ?>

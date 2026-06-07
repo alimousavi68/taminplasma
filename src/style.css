@@ -207,3 +207,7 @@ body {
     scrollbar-width: none;
   }
 }
+
+.hero-tab {
+  cursor: pointer;
+}

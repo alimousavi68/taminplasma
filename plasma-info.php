@@ -1,24 +1,11 @@
-<?php require_once 'template-parts/header.php'; ?>
+<?php 
+$page_title = "راهنمای جامع اهدای پلاسما | تامین پلاسما نوژین";
+$page_description = "هر آنچه درباره اهدای پلاسما، مراحل اهدا، ماشین حساب تاثیر، فواید برای اهدا کننده و سوالات متداول باید بدانید. با اهدای پلاسما نجات‌بخش بیماران خاص باشید.";
+require_once 'template-parts/header.php'; 
+?>
 
 <!-- 🎨 Dynamic Theme Variables Overrides & Component Styling -->
 <style>
-:root {
-  --color-secondary: var(--color-black);
-  --color-bg-base: var(--color-bg-lightest);
-}
-
-/* Base Body Color Overrides */
-body {
-  background-color: var(--color-bg-base) !important;
-  color: var(--color-text-main) !important;
-}
-
-/* Luxury Spacing Grid Pattern */
-.bg-grid-pattern {
-  background-image: radial-gradient(rgba(30, 41, 59, 0.03) 1.5px, transparent 1.5px);
-  background-size: 28px 28px;
-}
-
 /* Range Input Premium Webkit Override */
 input[type="range"]::-webkit-slider-thumb {
   appearance: none;
@@ -54,10 +41,6 @@ input[type="range"]::-moz-range-thumb:hover {
 .faq-row.active .faq-content-wrapper {
   grid-template-rows: 1fr;
 }
-.faq-row.active .faq-icon-container {
-  transform: rotate(180deg);
-  color: var(--color-primary) !important;
-}
 
 /* Timeline Interactive Card Fade */
 .timeline-fade-enter {
@@ -69,20 +52,12 @@ input[type="range"]::-moz-range-thumb:hover {
   opacity: 1;
   transform: translateY(0);
 }
-
-/* CTA Linear Pattern */
-.bg-cta-pattern {
-  background-image: linear-gradient(135deg, rgba(255, 217, 112, 0.03) 25%, transparent 25%), 
-                    linear-gradient(225deg, rgba(255, 217, 112, 0.03) 25%, transparent 25%), 
-                    linear-gradient(45deg, rgba(255, 217, 112, 0.03) 25%, transparent 25%), 
-                    linear-gradient(315deg, rgba(255, 217, 112, 0.03) 25%, transparent 25%);
-  background-position: 20px 0, 20px 0, 0 0, 0 0;
-  background-size: 40px 40px;
-  background-repeat: repeat;
-}
 </style>
 
-<main class="min-h-screen bg-[var(--color-bg-base)] overflow-x-hidden pb-12 relative bg-grid-pattern" dir="rtl">
+<main class="min-h-screen bg-[var(--color-bg-base)] overflow-x-hidden pb-12 relative" dir="rtl">
+    <!-- Dot Pattern Background -->
+    <div class="absolute inset-0 pointer-events-none" style="background-image: radial-gradient(circle, rgba(30,41,59,0.04) 1.5px, transparent 1.5px); background-size: 28px 28px;"></div>
+    
     <!-- Abstract Background Art (Luxury Mesh Glow) -->
     <div class="absolute top-[5%] left-[5%] w-[45vw] h-[45vw] rounded-full bg-primary/4 blur-[130px] pointer-events-none z-0"></div>
     <div class="absolute top-[35%] right-[5%] w-[40vw] h-[40vw] rounded-full bg-[var(--color-secondary)]/3 blur-[110px] pointer-events-none z-0"></div>
@@ -119,10 +94,65 @@ input[type="range"]::-moz-range-thumb:hover {
                     </div>
                 </div>
 
-                <!-- Left Column (Media Canvas - Stats Removed) -->
+                <!-- Left Column (Media Canvas) -->
                 <div class="lg:col-span-6 w-full animate-on-scroll transition-all duration-1000 opacity-0 translate-y-12 delay-200 relative">
                     <div class="w-full aspect-[4/3] lg:aspect-[1.2] rounded-[3rem] overflow-hidden relative border border-[var(--color-border-neutral-300)] bg-[var(--color-bg-surface)] shadow-lg">
-                        <img src="plasma_hero_premium.png" alt="اهدای پلاسما" class="absolute inset-0 w-full h-full object-cover">
+                        <img src="public/plasmaoo.webp" alt="اهدای پلاسما" class="absolute inset-0 w-full h-full object-cover">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW SECTION: WHY DONATE (فواید و دلایل اهدای پلاسما) -->
+    <section class="w-full py-20 lg:py-24 bg-white overflow-hidden">
+        <div class="container mx-auto px-4 lg:max-w-[1170px] relative z-10">
+            <!-- Section Title -->
+            <div class="flex items-center justify-start gap-3 mb-10 animate-on-scroll transition-all duration-1000 opacity-0 translate-y-12">
+                <div class="w-8 h-8 rounded-full bg-black flex items-center justify-center text-primary shrink-0">
+                    <i class="fa-solid fa-heart font-extrabold text-base"></i>
+                </div>
+                <h2 class="text-neutral-900 font-black text-[22px] lg:text-[28px] leading-tight tracking-tight">چرا اهدای پلاسما یک تصمیم هوشمندانه و حیاتی است؟</h2>
+            </div>
+
+            <!-- Benefits Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Benefit 1 -->
+                <div class="bg-surface-warm text-neutral-900 rounded-[1.75rem] p-8 flex flex-col items-start justify-between cursor-pointer transition-all duration-300 group hover:bg-primary hover:-translate-y-1.5 hover:shadow-xl min-h-[220px] text-right animate-on-scroll transition-all duration-1000 opacity-0 translate-y-12">
+                    <div class="w-14 h-14 rounded-2xl bg-white text-neutral-900 flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
+                        <i class="fa-solid fa-user-doctor text-xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-neutral-900 mb-3">بررسی رایگان و مستمر سلامت</h3>
+                        <p class="text-neutral-700 text-sm leading-loose text-justify font-normal">
+                            در هر مراجعه، علائم حیاتی شما مانند فشار خون، ضربان قلب، هموگلوبین و سلامت عمومی توسط پزشک مرکز به صورت کاملاً رایگان بررسی و ثبت می‌شود.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Benefit 2 -->
+                <div class="bg-surface-warm text-neutral-900 rounded-[1.75rem] p-8 flex flex-col items-start justify-between cursor-pointer transition-all duration-300 group hover:bg-primary hover:-translate-y-1.5 hover:shadow-xl min-h-[220px] text-right animate-on-scroll transition-all duration-1000 opacity-0 translate-y-12 delay-100">
+                    <div class="w-14 h-14 rounded-2xl bg-white text-neutral-900 flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
+                        <i class="fa-solid fa-wallet text-xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-neutral-900 mb-3">حق تشکر و ایاب‌و‌ذهاب</h3>
+                        <p class="text-neutral-700 text-sm leading-loose text-justify font-normal">
+                            به پاس فداکاری و زمان ارزشمندی که برای نجات جان دیگران اختصاص می‌دهید، هدیه تشکر و هزینه سفر شما بلافاصله پس از اتمام اهدا تقدیم می‌شود.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Benefit 3 -->
+                <div class="bg-surface-warm text-neutral-900 rounded-[1.75rem] p-8 flex flex-col items-start justify-between cursor-pointer transition-all duration-300 group hover:bg-primary hover:-translate-y-1.5 hover:shadow-xl min-h-[220px] text-right animate-on-scroll transition-all duration-1000 opacity-0 translate-y-12 delay-200">
+                    <div class="w-14 h-14 rounded-2xl bg-white text-neutral-900 flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
+                        <i class="fa-solid fa-hand-holding-heart text-xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-neutral-900 mb-3">تأثیرگذاری مستقیم بر جامعه</h3>
+                        <p class="text-neutral-700 text-sm leading-loose text-justify font-normal">
+                            پلاسمای اهدایی شما ماده اولیه و حیاتی برای تولید داروهای بیماران هموفیلی، تالاسمی، نقص ایمنی و سوختگی‌های شدید است.
+                        </p>
                     </div>
                 </div>
             </div>
@@ -134,7 +164,7 @@ input[type="range"]::-moz-range-thumb:hover {
         <div class="max-w-7xl mx-auto my-4 bg-white/80 backdrop-blur-xl border border-[var(--color-border-neutral-200)] rounded-[3rem] p-8 lg:p-14 shadow-sm animate-on-scroll transition-all duration-1000 opacity-0 translate-y-12">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-stretch">
                 <!-- Col 1 (Inputs Matrix) -->
-                <div class="lg:col-span-5 space-y-8 flex flex-col justify-center">
+                <div class="lg:col-span-5 space-y-8 flex flex-col justify-center order-1 lg:order-none">
                     <div class="space-y-4">
                         <span class="inline-flex items-center gap-2 px-3 py-1.5 text-xs font-bold text-[var(--color-primary-dark)] bg-primary/10 rounded-full border border-[var(--color-primary)]/20">
                             <i class="fa-solid fa-calculator text-[10px]"></i>
@@ -199,7 +229,7 @@ input[type="range"]::-moz-range-thumb:hover {
                 </div>
 
                 <!-- Col 2 (Live Output Display Card - Upgraded & Highly Prominent) -->
-                <div class="lg:col-span-4 bg-white/90 border-2 border-[var(--color-primary)] rounded-[2.5rem] p-8 flex flex-col justify-center gap-6 shadow-md relative overflow-hidden">
+                <div class="lg:col-span-4 bg-white/90 border-2 border-[var(--color-primary)] rounded-[2.5rem] p-8 flex flex-col justify-center gap-6 shadow-md relative overflow-hidden order-2 lg:order-none">
                     <div class="absolute top-0 left-0 w-24 h-24 bg-primary/10 rounded-br-full pointer-events-none"></div>
                     
                     <div class="border-b border-neutral-200 pb-4">
@@ -242,7 +272,7 @@ input[type="range"]::-moz-range-thumb:hover {
                 </div>
 
                 <!-- Col 3 (Dynamic Hero Level & Fact Panel) -->
-                <div class="lg:col-span-3 bg-[var(--color-bg-section)] border border-[var(--color-border-neutral-300)] rounded-[2.5rem] p-8 flex flex-col justify-between relative overflow-hidden shadow-inner">
+                <div class="lg:col-span-3 bg-[var(--color-bg-section)] border border-[var(--color-border-neutral-300)] rounded-[2.5rem] p-8 flex flex-col justify-between relative overflow-hidden shadow-inner order-3 lg:order-none">
                     <!-- Background Decoration -->
                     <div class="absolute -bottom-8 -left-8 w-32 h-32 bg-primary/10 rounded-full blur-xl pointer-events-none"></div>
 
@@ -272,7 +302,7 @@ input[type="range"]::-moz-range-thumb:hover {
 
     <!-- 3. THE JOURNEY TIMELINE (Interactive Side-Panel Layout with Equal Height Columns) -->
     <section class="w-full py-16 bg-[var(--color-bg-base)]/40 relative z-10">
-        <div class="max-w-screen-xl mx-auto px-6 lg:px-12 relative">
+        <div class="max-w-screen-xl mx-auto px-6 lg:px-12 relative animate-on-scroll transition-all duration-1000 opacity-0 translate-y-12">
             <!-- Section Header -->
             <div class="text-center space-y-4 mb-20">
                 <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white text-[var(--color-text-main)] text-xs font-bold tracking-wide border border-[var(--color-border-neutral-200)] shadow-sm">
@@ -282,83 +312,80 @@ input[type="range"]::-moz-range-thumb:hover {
                 <p class="text-sm md:text-base text-[var(--color-text-muted)] max-w-xl mx-auto">برای مشاهده جزئیات بیشتر و بررسی نکات ایمنی، نشانگر خود را روی هر یک از ۶ مرحله قرار دهید.</p>
             </div>
 
-            <!-- Interactive Grid & Side Panel Layout (Stretched Equal Height Columns) -->
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
-                <!-- Right Side: 6 Step Cards -->
-                <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4 h-full" id="timeline-steps-container">
-                    
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-stretch">
+                <!-- Right Side: Step Triggers List (Vertical Stack) -->
+                <div class="lg:col-span-7 space-y-4 flex flex-col justify-between">
                     <!-- Step 1 -->
-                    <div class="timeline-trigger bg-white border-2 border-[var(--color-primary)] bg-primary/5 shadow-md hover:border-[var(--color-primary)] rounded-3xl p-6 shadow-sm cursor-pointer transition-all duration-300 flex items-center gap-5 relative group" data-step="1">
-                        <div class="w-14 h-14 rounded-2xl bg-primary/10 text-[var(--color-primary-dark)] font-black text-xl flex items-center justify-center shrink-0 shadow-inner group-hover:bg-primary group-hover:text-[var(--color-text-main)] transition-colors">
+                    <div class="timeline-trigger bg-primary border-2 border-primary shadow-md rounded-3xl p-6 cursor-pointer transition-all duration-300 flex items-center gap-5 relative group" data-step="1">
+                        <div class="step-badge w-14 h-14 rounded-2xl bg-white/90 text-neutral-900 font-black text-xl flex items-center justify-center shrink-0 shadow-sm transition-colors">
                             ۰۱
                         </div>
                         <div class="text-right">
-                            <h3 class="text-sm md:text-base font-black text-[var(--color-text-main)]">پذیرش و ثبت‌نام اولیه</h3>
-                            <p class="text-xs md:text-sm text-[var(--color-text-muted)] mt-1">مدت زمان حدودی: ۵ الی ۱۰ دقیقه</p>
+                            <h3 class="step-title text-sm md:text-base font-black text-neutral-900 transition-colors">پذیرش و ثبت‌نام اولیه</h3>
+                            <p class="step-desc text-xs md:text-sm text-neutral-800 mt-1 transition-colors">مدت زمان حدودی: ۵ الی ۱۰ دقیقه</p>
                         </div>
-                        <i class="fa-solid fa-chevron-left text-[11px] text-neutral-300 absolute left-5 group-hover:text-primary transition-colors"></i>
+                        <i class="step-arrow fa-solid fa-chevron-left text-[11px] text-neutral-900 absolute left-5 transition-colors"></i>
                     </div>
 
                     <!-- Step 2 -->
                     <div class="timeline-trigger bg-white border-2 border-transparent hover:border-[var(--color-primary)] rounded-3xl p-6 shadow-sm cursor-pointer transition-all duration-300 flex items-center gap-5 relative group" data-step="2">
-                        <div class="w-14 h-14 rounded-2xl bg-primary/10 text-[var(--color-primary-dark)] font-black text-xl flex items-center justify-center shrink-0 shadow-inner group-hover:bg-primary group-hover:text-[var(--color-text-main)] transition-colors">
+                        <div class="step-badge w-14 h-14 rounded-2xl bg-primary/10 text-[var(--color-primary-dark)] font-black text-xl flex items-center justify-center shrink-0 shadow-inner group-hover:bg-primary group-hover:text-[var(--color-text-main)] transition-colors">
                             ۰۲
                         </div>
                         <div class="text-right">
-                            <h3 class="text-sm md:text-base font-black text-[var(--color-text-main)]">معاینه و مشاوره پزشکی</h3>
-                            <p class="text-xs md:text-sm text-[var(--color-text-muted)] mt-1">تست رایگان فشار، هموگلوبین و سلامت</p>
+                            <h3 class="step-title text-sm md:text-base font-black text-[var(--color-text-main)] transition-colors">معاینه و مشاوره پزشکی</h3>
+                            <p class="step-desc text-xs md:text-sm text-[var(--color-text-muted)] mt-1 transition-colors">تست رایگان فشار، هموگلوبین و سلامت</p>
                         </div>
-                        <i class="fa-solid fa-chevron-left text-[11px] text-neutral-300 absolute left-5 group-hover:text-primary transition-colors"></i>
+                        <i class="step-arrow fa-solid fa-chevron-left text-[11px] text-neutral-300 absolute left-5 group-hover:text-primary transition-colors"></i>
                     </div>
 
                     <!-- Step 3 -->
                     <div class="timeline-trigger bg-white border-2 border-transparent hover:border-[var(--color-primary)] rounded-3xl p-6 shadow-sm cursor-pointer transition-all duration-300 flex items-center gap-5 relative group" data-step="3">
-                        <div class="w-14 h-14 rounded-2xl bg-primary/10 text-[var(--color-primary-dark)] font-black text-xl flex items-center justify-center shrink-0 shadow-inner group-hover:bg-primary group-hover:text-[var(--color-text-main)] transition-colors">
+                        <div class="step-badge w-14 h-14 rounded-2xl bg-primary/10 text-[var(--color-primary-dark)] font-black text-xl flex items-center justify-center shrink-0 shadow-inner group-hover:bg-primary group-hover:text-[var(--color-text-main)] transition-colors">
                             ۰۳
                         </div>
                         <div class="text-right">
-                            <h3 class="text-sm md:text-base font-black text-[var(--color-text-main)]">فرآیند اهدای پلاسما</h3>
-                            <p class="text-xs md:text-sm text-[var(--color-text-muted)] mt-1">مدت زمان جداسازی: ۳۰ الی ۴۰ دقیقه</p>
+                            <h3 class="step-title text-sm md:text-base font-black text-[var(--color-text-main)] transition-colors">فرآیند اهدای پلاسما</h3>
+                            <p class="step-desc text-xs md:text-sm text-[var(--color-text-muted)] mt-1 transition-colors">مدت زمان جداسازی: ۳۰ الی ۴۰ دقیقه</p>
                         </div>
-                        <i class="fa-solid fa-chevron-left text-[11px] text-neutral-300 absolute left-5 group-hover:text-primary transition-colors"></i>
+                        <i class="step-arrow fa-solid fa-chevron-left text-[11px] text-neutral-300 absolute left-5 group-hover:text-primary transition-colors"></i>
                     </div>
 
                     <!-- Step 4 -->
                     <div class="timeline-trigger bg-white border-2 border-transparent hover:border-[var(--color-primary)] rounded-3xl p-6 shadow-sm cursor-pointer transition-all duration-300 flex items-center gap-5 relative group" data-step="4">
-                        <div class="w-14 h-14 rounded-2xl bg-primary/10 text-[var(--color-primary-dark)] font-black text-xl flex items-center justify-center shrink-0 shadow-inner group-hover:bg-primary group-hover:text-[var(--color-text-main)] transition-colors">
+                        <div class="step-badge w-14 h-14 rounded-2xl bg-primary/10 text-[var(--color-primary-dark)] font-black text-xl flex items-center justify-center shrink-0 shadow-inner group-hover:bg-primary group-hover:text-[var(--color-text-main)] transition-colors">
                             ۰۴
                         </div>
                         <div class="text-right">
-                            <h3 class="text-sm md:text-base font-black text-[var(--color-text-main)]">استراحت کوتاه و پذیرایی</h3>
-                            <p class="text-xs md:text-sm text-[var(--color-text-muted)] mt-1">تغذیه با آب‌میوه و خوراکی‌های مغذی</p>
+                            <h3 class="step-title text-sm md:text-base font-black text-[var(--color-text-main)] transition-colors">استراحت کوتاه و پذیرایی</h3>
+                            <p class="step-desc text-xs md:text-sm text-[var(--color-text-muted)] mt-1 transition-colors">تغذیه با آب‌میوه و خوراکی‌های مغذی</p>
                         </div>
-                        <i class="fa-solid fa-chevron-left text-[11px] text-neutral-300 absolute left-5 group-hover:text-primary transition-colors"></i>
+                        <i class="step-arrow fa-solid fa-chevron-left text-[11px] text-neutral-300 absolute left-5 group-hover:text-primary transition-colors"></i>
                     </div>
 
                     <!-- Step 5 -->
                     <div class="timeline-trigger bg-white border-2 border-transparent hover:border-[var(--color-primary)] rounded-3xl p-6 shadow-sm cursor-pointer transition-all duration-300 flex items-center gap-5 relative group" data-step="5">
-                        <div class="w-14 h-14 rounded-2xl bg-primary/10 text-[var(--color-primary-dark)] font-black text-xl flex items-center justify-center shrink-0 shadow-inner group-hover:bg-primary group-hover:text-[var(--color-text-main)] transition-colors">
+                        <div class="step-badge w-14 h-14 rounded-2xl bg-primary/10 text-[var(--color-primary-dark)] font-black text-xl flex items-center justify-center shrink-0 shadow-inner group-hover:bg-primary group-hover:text-[var(--color-text-main)] transition-colors">
                             ۰۵
                         </div>
                         <div class="text-right">
-                            <h3 class="text-sm md:text-base font-black text-[var(--color-text-main)]">دریافت هزینه ایاب و ذهاب</h3>
-                            <p class="text-xs md:text-sm text-[var(--color-text-muted)] mt-1">واریز کارت به کارت یا حواله نقدی تشکر</p>
+                            <h3 class="step-title text-sm md:text-base font-black text-[var(--color-text-main)] transition-colors">دریافت هزینه ایاب و ذهاب</h3>
+                            <p class="step-desc text-xs md:text-sm text-[var(--color-text-muted)] mt-1 transition-colors">واریز کارت به کارت یا حواله نقدی تشکر</p>
                         </div>
-                        <i class="fa-solid fa-chevron-left text-[11px] text-neutral-300 absolute left-5 group-hover:text-primary transition-colors"></i>
+                        <i class="step-arrow fa-solid fa-chevron-left text-[11px] text-neutral-300 absolute left-5 group-hover:text-primary transition-colors"></i>
                     </div>
 
                     <!-- Step 6 -->
                     <div class="timeline-trigger bg-white border-2 border-transparent hover:border-[var(--color-primary)] rounded-3xl p-6 shadow-sm cursor-pointer transition-all duration-300 flex items-center gap-5 relative group" data-step="6">
-                        <div class="w-14 h-14 rounded-2xl bg-primary/10 text-[var(--color-primary-dark)] font-black text-xl flex items-center justify-center shrink-0 shadow-inner group-hover:bg-primary group-hover:text-[var(--color-text-main)] transition-colors">
+                        <div class="step-badge w-14 h-14 rounded-2xl bg-primary/10 text-[var(--color-primary-dark)] font-black text-xl flex items-center justify-center shrink-0 shadow-inner group-hover:bg-primary group-hover:text-[var(--color-text-main)] transition-colors">
                             ۰۶
                         </div>
                         <div class="text-right">
-                            <h3 class="text-sm md:text-base font-black text-[var(--color-text-main)]">ثبت و برنامه‌ریزی نوبت بعدی</h3>
-                            <p class="text-xs md:text-sm text-[var(--color-text-muted)] mt-1">رعایت حداقل فاصله قانونی ۱۴ روز</p>
+                            <h3 class="step-title text-sm md:text-base font-black text-[var(--color-text-main)] transition-colors">ثبت و برنامه‌ریزی نوبت بعدی</h3>
+                            <p class="step-desc text-xs md:text-sm text-[var(--color-text-muted)] mt-1 transition-colors">رعایت حداقل فاصله قانونی ۱۴ روز</p>
                         </div>
-                        <i class="fa-solid fa-chevron-left text-[11px] text-neutral-300 absolute left-5 group-hover:text-primary transition-colors"></i>
+                        <i class="step-arrow fa-solid fa-chevron-left text-[11px] text-neutral-300 absolute left-5 group-hover:text-primary transition-colors"></i>
                     </div>
-
                 </div>
 
                 <!-- Left Side: Dynamic Details Panel (Sticky & Matching Height) -->
@@ -367,7 +394,7 @@ input[type="range"]::-moz-range-thumb:hover {
                         <div class="space-y-6">
                             <!-- Image Frame -->
                             <div class="w-full aspect-[16/10] rounded-2xl overflow-hidden relative border border-neutral-100 shadow-inner">
-                                <img id="detail-img" src="https://images.unsplash.com/photo-1579684389782-64d84b5e901a?auto=format&fit=crop&w=600&q=80" alt="جزئیات مرحله" class="w-full h-full object-cover transition-opacity duration-300">
+                                <img id="detail-img" src="public/path/step-1.png" alt="جزئیات مرحله" class="w-full h-full object-cover transition-opacity duration-300">
                                 <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
                                 <span class="absolute bottom-4 right-4 bg-white/95 backdrop-blur-sm text-xs md:text-sm font-black px-4 py-2 rounded-full text-[var(--color-text-main)] border border-neutral-100" id="detail-number">مرحله ۰۱</span>
                             </div>
@@ -426,71 +453,123 @@ input[type="range"]::-moz-range-thumb:hover {
             </div>
 
             <!-- Left Column - Interactive Accordion Stack (Aligning with main page layout) -->
-            <div class="lg:col-span-7 space-y-4" id="faq-accordion">
+            <div class="lg:col-span-7 space-y-3" id="faq-accordion">
                 
-                <!-- Accordion Row 1 (Active) -->
-                <div class="faq-row active group">
-                    <button class="faq-header w-full bg-[var(--color-bg-base)] rounded-t-3xl rounded-b-none px-6 py-4 flex justify-between items-center border border-gray-200 border-b-0 transition-all duration-500 focus:outline-none focus-visible:outline-none active:outline-none cursor-pointer">
-                        <span class="faq-title font-extrabold text-neutral-900 text-sm md:text-base lg:text-lg text-right">آیا اهدای پلاسما درد دارد یا خطرناک است؟</span>
-                        <div class="faq-icon-container w-8 h-8 flex items-center justify-center text-neutral-900 transition-all duration-500">
-                            <i class="fa-solid fa-minus"></i>
+                <!-- FAQ Item 1 (Active) -->
+                <div class="faq-row active" data-index="0">
+                    <button class="faq-header w-full bg-[var(--color-bg-base)] rounded-[1.75rem] px-6 py-5 flex justify-between items-center border border-neutral-200/80 hover:border-primary/40 hover:shadow-[0_12px_40px_rgba(234,168,36,0.12)] transition-all duration-500 focus:outline-none cursor-pointer">
+                        <div class="flex items-center gap-4 text-right">
+                            <span class="text-[11px] font-black text-primary/50 shrink-0 leading-none font-mono">۰۱</span>
+                            <span class="faq-title font-extrabold text-neutral-900 text-sm md:text-base leading-snug">آیا اهدای پلاسما درد دارد یا خطرناک است؟</span>
+                        </div>
+                        <div class="faq-icon-btn w-9 h-9 rounded-full bg-primary text-neutral-900 flex items-center justify-center shrink-0 transition-all duration-300 mr-2">
+                            <i class="fa-solid fa-minus text-xs"></i>
                         </div>
                     </button>
-                    <div class="faq-content-wrapper grid grid-rows-[1fr] transition-all duration-500 ease-in-out bg-[var(--color-bg-base)] rounded-b-3xl border border-gray-200 border-t-0">
+                    <div class="faq-content-wrapper grid grid-rows-[1fr] transition-all duration-500 ease-in-out overflow-hidden">
                         <div class="overflow-hidden">
-                            <div class="faq-content px-6 pb-6 pt-2 text-neutral-900/70 text-sm md:text-base leading-relaxed text-justify">
-                                خیر. اهدای پلاسما یک فرآیند بسیار ایمن است. دستگاه‌های مورد استفاده مجهز به کیت‌های یک‌بار مصرف استریل هستند و خون شما با هیچ وجه با دستگاه در تماس نیست. احساس سوزش اولیه در زمان رگ‌گیری مشابه یک آزمایش خون معمولی است و پزشکان مرکز در تمام مراحل بر فرآیند نظارت دارند.
+                            <div class="faq-content px-6 pt-2 pb-6 text-neutral-500 text-sm leading-[2.2] border-r-2 border-primary/30 mr-10 mt-2">
+                                خیر. اهدای پلاسما یک فرآیند بسیار ایمن است. دستگاه‌های مورد استفاده مجهز به کیت‌های یک‌بار مصرف استریل هستند و خون شما به هیچ وجه با دستگاه در تماس نیست. احساس سوزش اولیه در زمان رگ‌گیری مشابه یک آزمایش خون معمولی است و پزشکان مرکز در تمام مراحل بر فرآیند نظارت دارند.
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Accordion Row 2 (Inactive) -->
-                <div class="faq-row group">
-                    <button class="faq-header w-full bg-white hover:bg-[var(--color-bg-base)]/50 rounded-full px-6 py-4 flex justify-between items-center border border-gray-200 cursor-pointer transition-all duration-500 focus:outline-none focus-visible:outline-none active:outline-none">
-                        <span class="faq-title font-semibold text-neutral-900 text-sm md:text-base lg:text-lg text-right">تفاوت اهدای خون با اهدای پلاسما چیست؟</span>
-                        <div class="faq-icon-container w-8 h-8 flex items-center justify-center text-neutral-400 group-hover:text-neutral-900 transition-all duration-500">
-                            <i class="fa-solid fa-plus"></i>
+                <!-- FAQ Item 2 -->
+                <div class="faq-row" data-index="1">
+                    <button class="faq-header w-full bg-[var(--color-bg-base)] hover:bg-[var(--color-bg-warm)]/40 rounded-[1.75rem] px-6 py-5 flex justify-between items-center border border-neutral-200/80 hover:border-primary/40 hover:shadow-[0_12px_40px_rgba(234,168,36,0.08)] transition-all duration-500 focus:outline-none cursor-pointer">
+                        <div class="flex items-center gap-4 text-right">
+                            <span class="text-[11px] font-black text-primary/30 shrink-0 leading-none font-mono">۰۲</span>
+                            <span class="faq-title font-semibold text-neutral-600 text-sm md:text-base leading-snug">تفاوت اهدای خون با اهدای پلاسما چیست؟</span>
+                        </div>
+                        <div class="faq-icon-btn w-9 h-9 rounded-full bg-neutral-100 text-neutral-400 flex items-center justify-center shrink-0 transition-all duration-300 mr-2">
+                            <i class="fa-solid fa-plus text-xs"></i>
                         </div>
                     </button>
-                    <div class="faq-content-wrapper grid grid-rows-[0fr] transition-all duration-500 ease-in-out bg-[var(--color-bg-base)] rounded-b-3xl border border-transparent border-t-0 overflow-hidden">
+                    <div class="faq-content-wrapper grid grid-rows-[0fr] transition-all duration-500 ease-in-out overflow-hidden">
                         <div class="overflow-hidden">
-                            <div class="faq-content px-6 pb-6 pt-2 text-neutral-900/70 text-sm md:text-base leading-relaxed text-justify">
+                            <div class="faq-content px-6 pt-2 pb-6 text-neutral-500 text-sm leading-[2.2] border-r-2 border-primary/30 mr-10 mt-2">
                                 در اهدای خون، تمام اجزای خون (گلبول‌های قرمز، پلاکت و پلاسما) برداشته می‌شود. اما در اهدای پلاسما (پلاسمای جمع‌آوری شده)، تنها مایع زرد رنگ خون (پلاسما) که حاوی پروتئین‌هاست برداشته شده و سلول‌های خونی دیگر به همراه مقداری سرم نمکی به بدن شما بازگردانده می‌شوند. به همین دلیل روند بازسازی پلاسما بسیار سریع‌تر است.
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Accordion Row 3 (Inactive) -->
-                <div class="faq-row group">
-                    <button class="faq-header w-full bg-white hover:bg-[var(--color-bg-base)]/50 rounded-full px-6 py-4 flex justify-between items-center border border-gray-200 cursor-pointer transition-all duration-500 focus:outline-none focus-visible:outline-none active:outline-none">
-                        <span class="faq-title font-semibold text-neutral-900 text-sm md:text-base lg:text-lg text-right">چند وقت یک‌بار می‌توان پلاسما اهدا کرد؟</span>
-                        <div class="faq-icon-container w-8 h-8 flex items-center justify-center text-neutral-400 group-hover:text-neutral-900 transition-all duration-500">
-                            <i class="fa-solid fa-plus"></i>
+                <!-- FAQ Item 3 -->
+                <div class="faq-row" data-index="2">
+                    <button class="faq-header w-full bg-[var(--color-bg-base)] hover:bg-[var(--color-bg-warm)]/40 rounded-[1.75rem] px-6 py-5 flex justify-between items-center border border-neutral-200/80 hover:border-primary/40 hover:shadow-[0_12px_40px_rgba(234,168,36,0.08)] transition-all duration-500 focus:outline-none cursor-pointer">
+                        <div class="flex items-center gap-4 text-right">
+                            <span class="text-[11px] font-black text-primary/30 shrink-0 leading-none font-mono">۰۳</span>
+                            <span class="faq-title font-semibold text-neutral-600 text-sm md:text-base leading-snug">چند وقت یک‌بار می‌توان پلاسما اهدا کرد؟</span>
+                        </div>
+                        <div class="faq-icon-btn w-9 h-9 rounded-full bg-neutral-100 text-neutral-400 flex items-center justify-center shrink-0 transition-all duration-300 mr-2">
+                            <i class="fa-solid fa-plus text-xs"></i>
                         </div>
                     </button>
-                    <div class="faq-content-wrapper grid grid-rows-[0fr] transition-all duration-500 ease-in-out bg-[var(--color-bg-base)] rounded-b-3xl border border-transparent border-t-0 overflow-hidden">
+                    <div class="faq-content-wrapper grid grid-rows-[0fr] transition-all duration-500 ease-in-out overflow-hidden">
                         <div class="overflow-hidden">
-                            <div class="faq-content px-6 pb-6 pt-2 text-neutral-900/70 text-sm md:text-base leading-relaxed text-justify">
+                            <div class="faq-content px-6 pt-2 pb-6 text-neutral-500 text-sm leading-[2.2] border-r-2 border-primary/30 mr-10 mt-2">
                                 بر اساس استانداردهای وزارت بهداشت و سازمان غذا و دارو، حداقل فاصله مجاز بین دو اهدای پلاسما ۴۸ ساعت است. با این حال، به صورت عمومی توصیه می‌شود حداکثر ۲ بار در هفته و با فاصله‌های منظم این کار انجام شود تا ایمنی کامل اهداکننده تضمین گردد.
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Accordion Row 4 (Inactive) -->
-                <div class="faq-row group">
-                    <button class="faq-header w-full bg-white hover:bg-[var(--color-bg-base)]/50 rounded-full px-6 py-4 flex justify-between items-center border border-gray-200 cursor-pointer transition-all duration-500 focus:outline-none focus-visible:outline-none active:outline-none">
-                        <span class="faq-title font-semibold text-neutral-900 text-sm md:text-base lg:text-lg text-right">تسهیلات ایاب و ذهاب و هدیه تشکر چگونه پرداخت می‌شود؟</span>
-                        <div class="faq-icon-container w-8 h-8 flex items-center justify-center text-neutral-400 group-hover:text-neutral-900 transition-all duration-500">
-                            <i class="fa-solid fa-plus"></i>
+                <!-- FAQ Item 4 -->
+                <div class="faq-row" data-index="3">
+                    <button class="faq-header w-full bg-[var(--color-bg-base)] hover:bg-[var(--color-bg-warm)]/40 rounded-[1.75rem] px-6 py-5 flex justify-between items-center border border-neutral-200/80 hover:border-primary/40 hover:shadow-[0_12px_40px_rgba(234,168,36,0.08)] transition-all duration-500 focus:outline-none cursor-pointer">
+                        <div class="flex items-center gap-4 text-right">
+                            <span class="text-[11px] font-black text-primary/30 shrink-0 leading-none font-mono">۰۴</span>
+                            <span class="faq-title font-semibold text-neutral-600 text-sm md:text-base leading-snug">تسهیلات ایاب و ذهاب و هدیه تشکر چگونه پرداخت می‌شود؟</span>
+                        </div>
+                        <div class="faq-icon-btn w-9 h-9 rounded-full bg-neutral-100 text-neutral-400 flex items-center justify-center shrink-0 transition-all duration-300 mr-2">
+                            <i class="fa-solid fa-plus text-xs"></i>
                         </div>
                     </button>
-                    <div class="faq-content-wrapper grid grid-rows-[0fr] transition-all duration-500 ease-in-out bg-[var(--color-bg-base)] rounded-b-3xl border border-transparent border-t-0 overflow-hidden">
+                    <div class="faq-content-wrapper grid grid-rows-[0fr] transition-all duration-500 ease-in-out overflow-hidden">
                         <div class="overflow-hidden">
-                            <div class="faq-content px-6 pb-6 pt-2 text-neutral-900/70 text-sm md:text-base leading-relaxed text-justify">
+                            <div class="faq-content px-6 pt-2 pb-6 text-neutral-500 text-sm leading-[2.2] border-r-2 border-primary/30 mr-10 mt-2">
                                 بلافاصله پس از اتمام مراحل اهدا و پذیرایی، با مراجعه به صندوق اداری مرکز، هزینه سفر و تشکر به صورت حواله نقدی یا واریز آنی کارت‌به‌کارت بانکی جهت تقدیر از وقتی که اختصاص داده‌اید خدمتتان پرداخت خواهد شد.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 5 -->
+                <div class="faq-row" data-index="4">
+                    <button class="faq-header w-full bg-[var(--color-bg-base)] hover:bg-[var(--color-bg-warm)]/40 rounded-[1.75rem] px-6 py-5 flex justify-between items-center border border-neutral-200/80 hover:border-primary/40 hover:shadow-[0_12px_40px_rgba(234,168,36,0.08)] transition-all duration-500 focus:outline-none cursor-pointer">
+                        <div class="flex items-center gap-4 text-right">
+                            <span class="text-[11px] font-black text-primary/30 shrink-0 leading-none font-mono">۰۵</span>
+                            <span class="faq-title font-semibold text-neutral-600 text-sm md:text-base leading-snug">شرایط جسمانی مورد نیاز برای اهدا چیست؟</span>
+                        </div>
+                        <div class="faq-icon-btn w-9 h-9 rounded-full bg-neutral-100 text-neutral-400 flex items-center justify-center shrink-0 transition-all duration-300 mr-2">
+                            <i class="fa-solid fa-plus text-xs"></i>
+                        </div>
+                    </button>
+                    <div class="faq-content-wrapper grid grid-rows-[0fr] transition-all duration-500 ease-in-out overflow-hidden">
+                        <div class="overflow-hidden">
+                            <div class="faq-content px-6 pt-2 pb-6 text-neutral-500 text-sm leading-[2.2] border-r-2 border-primary/30 mr-10 mt-2">
+                                تمامی افراد سالم بین سنین ۱۸ تا ۶۰ سال که وزن بالای ۵۰ کیلوگرم دارند، می‌توانند پلاسما اهدا کنند. در زمان مراجعه اولیه، پرونده کامل پزشکی برای شما تشکیل شده و پزشک مقیم با انجام معاینات رایگان، صلاحیت جسمانی شما را تایید می‌نماید. داشتن کارت ملی معتبر در اولین مراجعه الزامی است.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 6 -->
+                <div class="faq-row" data-index="5">
+                    <button class="faq-header w-full bg-[var(--color-bg-base)] hover:bg-[var(--color-bg-warm)]/40 rounded-[1.75rem] px-6 py-5 flex justify-between items-center border border-neutral-200/80 hover:border-primary/40 hover:shadow-[0_12px_40px_rgba(234,168,36,0.08)] transition-all duration-500 focus:outline-none cursor-pointer">
+                        <div class="flex items-center gap-4 text-right">
+                            <span class="text-[11px] font-black text-primary/30 shrink-0 leading-none font-mono">۰۶</span>
+                            <span class="faq-title font-semibold text-neutral-600 text-sm md:text-base leading-snug">آیا گروه خونی خاصی برای اهدای پلاسما اولویت دارد؟</span>
+                        </div>
+                        <div class="faq-icon-btn w-9 h-9 rounded-full bg-neutral-100 text-neutral-400 flex items-center justify-center shrink-0 transition-all duration-300 mr-2">
+                            <i class="fa-solid fa-plus text-xs"></i>
+                        </div>
+                    </button>
+                    <div class="faq-content-wrapper grid grid-rows-[0fr] transition-all duration-500 ease-in-out overflow-hidden">
+                        <div class="overflow-hidden">
+                            <div class="faq-content px-6 pt-2 pb-6 text-neutral-500 text-sm leading-[2.2] border-r-2 border-primary/30 mr-10 mt-2">
+                                تمام گروه‌های خونی می‌توانند پلاسما اهدا کنند. با این حال، دارندگان گروه خونی AB به عنوان دهنده عمومی پلاسما شناخته می‌شوند، زیرا پلاسمای آن‌ها فاقد آنتی‌بادی‌های ضد گروه‌های خونی A و B است و می‌تواند به هر بیماری تزریق شود. به همین دلیل اهدای پلاسما توسط دارندگان گروه خونی AB اهمیت و ارزش حیاتی فوق‌العاده‌ای دارد.
                             </div>
                         </div>
                     </div>
@@ -499,32 +578,42 @@ input[type="range"]::-moz-range-thumb:hover {
         </div>
     </section>
 
-    <!-- 5. THE CLOSING FUNNEL CTA (Luxury Dark Slate Background Card with enhanced fonts & patterns) -->
-    <section class="w-full px-6 py-12 relative z-10">
-        <div class="max-w-screen-xl mx-auto my-6 bg-[var(--color-secondary)] bg-cta-pattern rounded-[3.5rem] py-18 px-6 lg:py-24 text-center text-white relative overflow-hidden shadow-2xl">
-            <!-- Overlaid design pattern -->
-            <div class="absolute bottom-0 right-0 translate-y-1/2 translate-x-1/2 w-[35rem] h-[35rem] bg-primary/5 rounded-full blur-3xl pointer-events-none"></div>
-
-            <div class="relative z-10 space-y-8">
-                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 text-primary text-xs font-black bg-white/5 shadow-sm">
-                    <i class="fa-solid fa-hands-holding text-[10px]"></i>
-                    سفیر امید و نجات
+    <!-- 5. THE CLOSING FUNNEL CTA (Same design as home page CTA) -->
+    <section class="w-full px-4 mb-8 relative z-10 animate-on-scroll transition-all duration-1000 opacity-0 translate-y-12" dir="rtl">
+        <div class="lg:max-w-[1170px] mx-auto my-16 bg-[#FFD970] rounded-[3.5rem] relative overflow-hidden min-h-[450px] shadow-2xl grid grid-cols-1 lg:grid-cols-12 gap-8 items-center py-16 lg:py-24 px-8 lg:px-16">
+            
+            <!-- Right Column: Text & Action -->
+            <div class="lg:col-span-6 p-0 text-right space-y-6 z-20 relative">
+                <div class="text-[#7a4a00] text-[11px] md:text-xs font-semibold tracking-[0.2em] uppercase font-mono">
+                    همین امروز اقدام کنید
                 </div>
-                
-                <h2 class="text-white font-extrabold text-3.5xl md:text-4.5xl lg:text-5.5xl leading-tight tracking-tight max-w-4xl mx-auto">
+                <h2 class="font-bold text-2xl lg:text-4xl text-[#1a0e00] leading-tight">
                     آماده‌اید تا امروز نجات‌بخش چندین زندگی باشید؟
                 </h2>
-
-                <p class="text-neutral-300 text-sm md:text-base lg:text-lg font-medium max-w-2xl mx-auto leading-loose">
+                <p class="text-[#4a2e00] text-sm md:text-base leading-loose max-w-xl opacity-90">
                     تنها با صرف ۴۵ دقیقه وقت گران‌بهای خود در محیطی فوق‌العاده آرام، استریل و استاندارد، امید را به چندین بیمار نیازمند اهدا کنید.
                 </p>
-
-                <div class="pt-4 flex flex-wrap items-center justify-center gap-4">
-                    <a href="request.php" class="inline-flex items-center justify-center gap-3 bg-primary text-[var(--color-text-main)] hover:shadow-[0_8px_25px_rgba(255,217,112,0.4)] font-black px-12 py-5.5 rounded-full text-base lg:text-lg transition-transform hover:scale-105 duration-300 cursor-pointer group">
+                <div class="pt-4 flex flex-col items-start justify-start text-right gap-3">
+                    <a href="request.php"
+                        class="inline-flex items-center gap-2 bg-[#1a0e00] text-[#FFD970] font-bold py-[14px] px-[28px] rounded-[8px] text-base hover:bg-[#2d1a00] transition-colors duration-300 shadow-md cursor-pointer group">
                         <span>رزرو آنلاین نوبت اهدای پلاسما</span>
-                        <i class="fa-solid fa-calendar-check text-base transition-transform duration-300 group-hover:rotate-6"></i>
+                        <i class="fa-solid fa-arrow-left text-sm mr-1 transition-transform duration-300 group-hover:-translate-x-1"></i>
                     </a>
+
+                    <!-- Micro-trust signals -->
+                    <div class="flex items-center gap-3 text-[#4a2e00]/70 text-[11px] mt-2">
+                        <i class="fa-solid fa-shield-halved"></i>
+                        <span>اطلاعات شما کاملاً محفوظ است</span>
+                        <span>·</span>
+                        <i class="fa-solid fa-clock"></i>
+                        <span>مراجعه رایگان</span>
+                    </div>
                 </div>
+            </div>
+
+            <!-- Left Column: Image Canvas -->
+            <div class="lg:col-span-6 h-full w-full lg:w-1/2 absolute lg:absolute left-0 top-0 z-10 overflow-hidden">
+                <img src="public/cta_healthy_person_1780520206862.png" alt="آماده‌اید تا امروز نجات‌بخش چندین زندگی باشید؟" class="w-full h-full object-cover absolute inset-0">
             </div>
         </div>
     </section>
@@ -538,7 +627,7 @@ const timelineDb = {
         title: "پذیرش و ثبت‌نام اولیه",
         num: "مرحله ۰۱",
         desc: "به محض ورود به مرکز، تیم پذیرش نوژین با رویی گشاده از شما استقبال می‌کنند. در این مرحله، مدارک شناسایی معتبر شما (کارت ملی) ثبت سامانه شده و پرسش‌نامه اولیه سلامت عمومی را پر خواهید نمود. این ثبت‌نام کوتاه، گام اول در چرخه نجات جان بیماران خاص است.",
-        img: "https://images.unsplash.com/photo-1579684389782-64d84b5e901a?auto=format&fit=crop&w=600&q=80",
+        img: "public/path/step-1.png",
         tip: "مدارک مورد نیاز: کارت ملی معتبر جهت ثبت سیستمی نوبت.",
         icon: "fa-shield-halved"
     },
@@ -546,7 +635,7 @@ const timelineDb = {
         title: "معاینه و مشاوره پزشکی",
         num: "مرحله ۰۲",
         desc: "سپس وارد اتاق معاینه شده و پزشک مقیم مرکز علائم حیاتی شما مانند فشار خون، ضربان قلب، وزن، و سطح هموگلوبین خون را به صورت رایگان می‌سنجد. پزشک با صبر و حوصله به تمام سوالات شما پاسخ داده و ایمن بودن اهدا را برای بدنتان تایید می‌نماید.",
-        img: "https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=600&q=80",
+        img: "public/path/step-2.png",
         tip: "سنجش سلامتی: اطمینان کامل از سطح مطلوب هموگلوبین و فشار خون.",
         icon: "fa-user-doctor"
     },
@@ -554,7 +643,7 @@ const timelineDb = {
         title: "فرآیند اهدای پلاسما",
         num: "مرحله ۰۳",
         desc: "در سالن اهدا، روی تخت‌های ارگونومیک و بسیار راحت استراحت می‌کنید. کیت‌های یک‌بار مصرف استریل باز شده و فرآیند جداسازی پلاسما (پلاسمای فرز) با نظارت کادر مجرب آغاز می‌گردد. در این روش سلول‌های خون بلافاصله به بدنتان بازگردانده می‌شوند.",
-        img: "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=600&q=80",
+        img: "public/path/step-3.png",
         tip: "امنیت ۱۰۰ درصدی: استفاده از تجهیزات یک‌بار مصرف و تمام استریل.",
         icon: "fa-vial"
     },
@@ -562,7 +651,7 @@ const timelineDb = {
         title: "استراحت کوتاه و پذیرایی",
         num: "مرحله ۰۴",
         desc: "پس از پایان اهدا، حدود ۱۰ الی ۱۵ دقیقه در سالن استراحت می‌مانید. برای بازسازی فوری مایعات بدن و بازیابی انرژی، با نوشیدنی‌های شیرین، آب‌میوه و میان‌وعده‌های مغذی مخصوص که توسط کارشناس تغذیه تهیه شده، از شما پذیرایی به عمل می‌آید.",
-        img: "https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=600&q=80",
+        img: "public/path/step-4.png",
         tip: "تغذیه پس از اهدا: نوشیدن مایعات کافی سرعت بازسازی خون را چند برابر می‌کند.",
         icon: "fa-cookie-bite"
     },
@@ -570,7 +659,7 @@ const timelineDb = {
         title: "دریافت هزینه ایاب و ذهاب",
         num: "مرحله ۰۵",
         desc: "به پاس وقت گران‌بهایی که برای نجات جان هم‌نوعان خود در اختیار مرکز قرار داده‌اید، مبلغی به عنوان حق ایاب و ذهاب و هدیه سپاسگزاری بلافاصله توسط بخش حسابداری به صورت آنی به کارت بانکی شما واریز یا به صورت حواله نقدی تقدیم می‌گردد.",
-        img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&q=80",
+        img: "public/path/step-5.png",
         tip: "تسهیلات رفت و آمد: واریز آنی حق تشکر و ایاب و ذهاب به اهداکنندگان.",
         icon: "fa-wallet"
     },
@@ -578,7 +667,7 @@ const timelineDb = {
         title: "ثبت و برنامه‌ریزی نوبت بعدی",
         num: "مرحله ۰۶",
         desc: "قبل از ترک مرکز، کارشناس پذیرش نوبت اهدای بعدی شما را ثبت می‌کند. از آن‌جایی که پلاسما بسیار سریع بازسازی می‌شود، حداقل فاصله قانونی بین دو اهدا تنها ۱۴ روز است. با تداوم اهدا، شما به یکی از قهرمانان حیات نوژین تبدیل می‌شوید.",
-        img: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=600&q=80",
+        img: "public/path/step-6.png",
         tip: "تداوم اهدای زندگی: بازه مجاز مراجعه بعدی پس از گذشت ۱۴ روز است.",
         icon: "fa-calendar-plus"
     }
@@ -595,21 +684,68 @@ document.addEventListener('DOMContentLoaded', () => {
     const detailTipIcon = document.getElementById('detail-tip-icon');
     const detailCard = document.getElementById('timeline-details-card');
 
-    // Default step 1 highlight
-    if (steps.length > 0) {
-        steps[0].classList.add('border-[var(--color-primary)]', 'bg-primary/5', 'shadow-md');
-    }
-
     steps.forEach(step => {
         const handler = () => {
             const stepNum = step.getAttribute('data-step');
             const data = timelineDb[stepNum];
 
-            // Update Active Border styling on steps list
+            // Reset all trigger styles
             steps.forEach(s => {
-                s.classList.remove('border-[var(--color-primary)]', 'bg-primary/5', 'shadow-md');
+                s.classList.remove('bg-primary', 'border-primary', 'shadow-md');
+                s.classList.add('bg-white', 'border-transparent');
+                
+                const badge = s.querySelector('.step-badge');
+                if (badge) {
+                    badge.classList.remove('bg-white/90', 'text-neutral-900');
+                    badge.classList.add('bg-primary/10', 'text-[var(--color-primary-dark)]');
+                }
+                
+                const title = s.querySelector('.step-title');
+                if (title) {
+                    title.classList.remove('text-neutral-900');
+                    title.classList.add('text-[var(--color-text-main)]');
+                }
+                
+                const desc = s.querySelector('.step-desc');
+                if (desc) {
+                    desc.classList.remove('text-neutral-800');
+                    desc.classList.add('text-[var(--color-text-muted)]');
+                }
+                
+                const arrow = s.querySelector('.step-arrow');
+                if (arrow) {
+                    arrow.classList.remove('text-neutral-900');
+                    arrow.classList.add('text-neutral-300');
+                }
             });
-            step.classList.add('border-[var(--color-primary)]', 'bg-primary/5', 'shadow-md');
+
+            // Set active trigger styles
+            step.classList.remove('bg-white', 'border-transparent');
+            step.classList.add('bg-primary', 'border-primary', 'shadow-md');
+            
+            const activeBadge = step.querySelector('.step-badge');
+            if (activeBadge) {
+                activeBadge.classList.remove('bg-primary/10', 'text-[var(--color-primary-dark)]');
+                activeBadge.classList.add('bg-white/90', 'text-neutral-900');
+            }
+            
+            const activeTitle = step.querySelector('.step-title');
+            if (activeTitle) {
+                activeTitle.classList.remove('text-[var(--color-text-main)]');
+                activeTitle.classList.add('text-neutral-900');
+            }
+            
+            const activeDesc = step.querySelector('.step-desc');
+            if (activeDesc) {
+                activeDesc.classList.remove('text-[var(--color-text-muted)]');
+                activeDesc.classList.add('text-neutral-800');
+            }
+            
+            const activeArrow = step.querySelector('.step-arrow');
+            if (activeArrow) {
+                activeArrow.classList.remove('text-neutral-300');
+                activeArrow.classList.add('text-neutral-900');
+            }
 
             // Apply smooth fade transition on card update
             detailCard.classList.remove('timeline-fade-active');
@@ -628,6 +764,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 detailCard.classList.remove('timeline-fade-enter');
                 detailCard.classList.add('timeline-fade-active');
             }, 150);
+
+            // Mobile UX: scroll detail card into view if screen is mobile/tablet size
+            if (window.innerWidth < 1024) {
+                detailCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }
         };
 
         step.addEventListener('mouseenter', handler);
@@ -665,6 +806,26 @@ document.addEventListener('DOMContentLoaded', () => {
         container.style.right = `calc(${percent}% - 2px)`;
     }
 
+    // Smooth Count-Up Animation Function
+    function animateCount(element, start, end, duration, formatFn = (val) => val) {
+        if (!element) return;
+        let startTimestamp = null;
+        const step = (timestamp) => {
+            if (!startTimestamp) startTimestamp = timestamp;
+            const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+            const currentVal = start + progress * (end - start);
+            element.textContent = formatFn(currentVal);
+            if (progress < 1) {
+                window.requestAnimationFrame(step);
+            }
+        };
+        window.requestAnimationFrame(step);
+    }
+
+    let prevLives = 0;
+    let prevVolume = 0;
+    let prevCalories = 0;
+
     function updateCalculations() {
         if (!weightSlider || !freqSlider || !monthsSlider) return;
 
@@ -681,13 +842,29 @@ document.addEventListener('DOMContentLoaded', () => {
         updateBadgePosition(monthsSlider, monthsBadgeContainer);
 
         const totalDonations = freq * months;
-        const calories = totalDonations * 650;
-        const lives = totalDonations * 3;
-        const volume = (totalDonations * 0.65).toFixed(2);
+        // Correct calculations based on clinical facts:
+        // Volume is proportional to weight (approx. 0.007 L of plasma per kg of body weight per donation)
+        const volumePerDonation = weight * 0.007; 
+        const volume = (totalDonations * volumePerDonation).toFixed(2);
+        
+        // 1 patient dose is approx. 0.22 L of plasma, so lives saved matches the ratio of volume to 0.22 (roughly 4.5 patients per liter)
+        const lives = Math.max(1, Math.floor(volume * 4.5));
+        
+        // Calories burned is approx 550 per donation, scaling slightly with weight
+        const calories = totalDonations * (550 + (weight - 50) * 2);
 
-        livesOut.textContent = toPersianDigits(Math.floor(lives));
-        volumeOut.textContent = toPersianDigits(volume);
-        caloriesOut.textContent = toPersianDigits(Math.round(calories));
+        const currentLives = Math.floor(lives);
+        const currentVolume = parseFloat(volume);
+        const currentCalories = Math.round(calories);
+
+        // Animate counting up for premium UI feel
+        animateCount(livesOut, prevLives, currentLives, 400, (v) => toPersianDigits(Math.floor(v)));
+        animateCount(volumeOut, prevVolume, currentVolume, 400, (v) => toPersianDigits(v.toFixed(2)));
+        animateCount(caloriesOut, prevCalories, currentCalories, 400, (v) => toPersianDigits(Math.round(v)));
+
+        prevLives = currentLives;
+        prevVolume = currentVolume;
+        prevCalories = currentCalories;
 
         // Update Hero Status Badge
         if (totalDonations <= 2) {
@@ -724,66 +901,78 @@ document.addEventListener('DOMContentLoaded', () => {
             updateBadgePosition(monthsSlider, monthsBadgeContainer);
         }, 100);
     }
-});
 
-// FAQ Accordion Logic
-const faqRows = document.querySelectorAll('.faq-row');
-faqRows.forEach(row => {
-    const header = row.querySelector('.faq-header');
-    const wrapper = row.querySelector('.faq-content-wrapper');
-    const iconContainer = row.querySelector('.faq-icon-container');
-    const title = row.querySelector('.faq-title');
-    
-    header.addEventListener('click', () => {
-        const isActive = row.classList.contains('active');
-        
-        // Close all other rows
-        faqRows.forEach(otherRow => {
-            if (otherRow !== row) {
-                otherRow.classList.remove('active');
-                const otherWrapper = otherRow.querySelector('.faq-content-wrapper');
-                const otherHeader = otherRow.querySelector('.faq-header');
-                const otherIcon = otherRow.querySelector('.faq-icon-container i');
-                const otherTitle = otherRow.querySelector('.faq-title');
-                const otherIconContainer = otherRow.querySelector('.faq-icon-container');
-
-                otherWrapper.style.gridTemplateRows = '0fr';
-                
-                otherHeader.classList.remove('rounded-t-3xl', 'rounded-b-none', 'bg-[var(--color-bg-base)]', 'border-b-0');
-                otherHeader.classList.add('rounded-full', 'bg-white');
-                
-                otherIcon.classList.replace('fa-minus', 'fa-plus');
-                otherIconContainer.classList.replace('text-neutral-900', 'text-neutral-400');
-                
-                otherTitle.classList.replace('font-black', 'font-semibold');
+    // Scroll Animations using IntersectionObserver
+    const scrollElements = document.querySelectorAll('.animate-on-scroll');
+    const scrollObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.remove('opacity-0', 'translate-y-12');
+                entry.target.classList.add('opacity-100', 'translate-y-0');
+                observer.unobserve(entry.target);
             }
         });
-        
-        // Toggle current row
-        const icon = iconContainer.querySelector('i');
-        if (isActive) {
-            row.classList.remove('active');
-            wrapper.style.gridTemplateRows = '0fr';
-            
-            header.classList.remove('rounded-t-3xl', 'rounded-b-none', 'bg-[var(--color-bg-base)]', 'border-b-0');
-            header.classList.add('rounded-full', 'bg-white');
-            
-            icon.classList.replace('fa-minus', 'fa-plus');
-            iconContainer.classList.replace('text-neutral-900', 'text-neutral-400');
-            
-            title.classList.replace('font-black', 'font-semibold');
-        } else {
-            row.classList.add('active');
-            wrapper.style.gridTemplateRows = '1fr';
-            
-            header.classList.add('rounded-t-3xl', 'rounded-b-none', 'bg-[var(--color-bg-base)]', 'border-b-0');
-            header.classList.remove('rounded-full', 'bg-white');
-            
-            icon.classList.replace('fa-plus', 'fa-minus');
-            iconContainer.classList.replace('text-neutral-400', 'text-neutral-900');
-            
-            title.classList.replace('font-semibold', 'font-black');
-        }
+    }, {
+        threshold: 0.05,
+        rootMargin: '0px 0px -40px 0px'
+    });
+    scrollElements.forEach(el => scrollObserver.observe(el));
+});
+
+// FAQ Accordion Logic matching the homepage exactly
+document.addEventListener('DOMContentLoaded', () => {
+    const faqRows = document.querySelectorAll('.faq-row');
+
+    faqRows.forEach(row => {
+        const header = row.querySelector('.faq-header');
+        const wrapper = row.querySelector('.faq-content-wrapper');
+        const iconBtn = row.querySelector('.faq-icon-btn');
+        const icon = iconBtn.querySelector('i');
+        const title = row.querySelector('.faq-title');
+
+        header.addEventListener('click', () => {
+            const isActive = row.classList.contains('active');
+
+            // Close all other rows
+            faqRows.forEach(other => {
+                if (other !== row) {
+                    other.classList.remove('active');
+                    other.querySelector('.faq-content-wrapper').classList.replace('grid-rows-[1fr]', 'grid-rows-[0fr]');
+                    const otherIconBtn = other.querySelector('.faq-icon-btn');
+                    const otherIcon = otherIconBtn.querySelector('i');
+                    otherIconBtn.classList.remove('bg-primary', 'text-neutral-900');
+                    otherIconBtn.classList.add('bg-neutral-100', 'text-neutral-400');
+                    otherIcon.classList.replace('fa-minus', 'fa-plus');
+                    other.querySelector('.faq-title').classList.replace('font-extrabold', 'font-semibold');
+                    other.querySelector('.faq-title').classList.replace('text-neutral-900', 'text-neutral-600');
+                    other.querySelector('.faq-header').classList.remove('border-primary/40');
+                    other.querySelector('.faq-header').classList.add('border-neutral-200/80');
+                }
+            });
+
+            // Toggle current row
+            if (isActive) {
+                row.classList.remove('active');
+                wrapper.classList.replace('grid-rows-[1fr]', 'grid-rows-[0fr]');
+                iconBtn.classList.remove('bg-primary', 'text-neutral-900');
+                iconBtn.classList.add('bg-neutral-100', 'text-neutral-400');
+                icon.classList.replace('fa-minus', 'fa-plus');
+                title.classList.replace('font-extrabold', 'font-semibold');
+                title.classList.replace('text-neutral-900', 'text-neutral-600');
+                header.classList.remove('border-primary/40');
+                header.classList.add('border-neutral-200/80');
+            } else {
+                row.classList.add('active');
+                wrapper.classList.replace('grid-rows-[0fr]', 'grid-rows-[1fr]');
+                iconBtn.classList.add('bg-primary', 'text-neutral-900');
+                iconBtn.classList.remove('bg-neutral-100', 'text-neutral-400');
+                icon.classList.replace('fa-plus', 'fa-minus');
+                title.classList.replace('font-semibold', 'font-extrabold');
+                title.classList.replace('text-neutral-600', 'text-neutral-900');
+                header.classList.add('border-primary/40');
+                header.classList.remove('border-neutral-200/80');
+            }
+        });
     });
 });
 </script>

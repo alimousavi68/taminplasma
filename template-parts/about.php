@@ -18,12 +18,12 @@
         </div>
 
         <!-- Front Card (Video Container) -->
-        <div
-          class="absolute bottom-0 left-0 w-[72%] lg:w-[377px] lg:h-[261px] lg:bottom-0 lg:-left-6 transform translate-y-[20%] lg:translate-y-4 rounded-[1.5rem] lg:rounded-[2rem] overflow-hidden shadow-2xl border-[6px] lg:border-8 border-bg-warm">
-          <img src="public/about/img-video-cover.png" alt="ویدیو اهدای پلاسما" class="w-full h-full object-cover block" />
+        <a href="javascript:void(0)" onclick="openVideoModal()"
+          class="group/video absolute bottom-0 left-0 w-[72%] lg:w-[377px] lg:h-[261px] lg:bottom-0 lg:-left-6 transform translate-y-[20%] lg:translate-y-4 rounded-[1.5rem] lg:rounded-[2rem] overflow-hidden shadow-2xl border-[6px] lg:border-8 border-bg-warm block cursor-pointer transition-all duration-500 hover:shadow-[0_25px_60px_rgba(0,0,0,0.35)] hover:-translate-y-1">
+          <img src="public/about/img-video-cover.png" alt="ویدیو اهدای پلاسما" class="w-full h-full object-cover block transition-transform duration-700 ease-out group-hover/video:scale-105 group-hover/video:opacity-90" />
 
           <!-- Modern Play Button with Pulse/Sonar Effect -->
-          <div class="absolute inset-0 flex items-center justify-center">
+          <div class="absolute inset-0 flex items-center justify-center bg-black/10 group-hover/video:bg-black/20 transition-colors duration-500">
             <div class="relative flex items-center justify-center">
               <!-- Ripple Layers -->
               <div
@@ -33,14 +33,14 @@
                 class="absolute w-12 h-12 lg:w-14 lg:h-14 rounded-full bg-white/50 animate-ping [animation-duration:3s] [animation-delay:0.5s]">
               </div>
 
-              <!-- Central Button -->
-              <button onclick="openVideoModal()"
-                class="relative z-10 w-12 h-12 lg:w-14 lg:h-14 bg-black/90 hover:bg-black rounded-full flex items-center justify-center shadow-2xl transition-transform duration-300 hover:scale-110 border border-neutral-700/50">
-                <i class="fa-solid fa-play text-white ml-1 text-sm lg:text-lg"></i>
-              </button>
+              <!-- Central Button (Visual styled div) -->
+              <div
+                class="relative z-10 w-12 h-12 lg:w-14 lg:h-14 bg-black/90 group-hover/video:bg-primary group-hover/video:text-neutral-900 rounded-full flex items-center justify-center shadow-2xl transition-all duration-300 group-hover/video:scale-110 border border-neutral-700/50">
+                <i class="fa-solid fa-play text-white group-hover/video:text-neutral-900 ml-1 text-sm lg:text-lg transition-colors"></i>
+              </div>
             </div>
           </div>
-        </div>
+        </a>
       </div>
 
       <!-- Left Column: Semantic Content Block -->
@@ -110,20 +110,20 @@
 
           <!-- Stats Box with Counter (RTL Second -> Left Side) -->
           <div id="stats-box"
-            class="relative w-full lg:w-[170px] lg:h-[170px] shrink-0 bg-gradient-to-br from-[var(--color-primary)] to-[var(--color-primary-dark)] border border-black/5 rounded-[3.5rem_1.5rem_3.5rem_1.5rem] p-6 flex flex-col items-center justify-center text-center shadow-[0_20px_50px_rgba(234,168,36,0.3)] animate-on-scroll opacity-0 translate-y-12 transition-all duration-1000 delay-300 ease-out group hover:shadow-[0_20px_60px_rgba(234,168,36,0.4)] hover:-translate-y-2">
+            class="relative w-full lg:w-[170px] lg:h-[170px] shrink-0 bg-gradient-to-br from-[var(--color-primary)] to-[var(--color-primary-dark)] border border-black/5 rounded-[2.5rem] p-6 flex flex-col items-center justify-center text-center shadow-[0_20px_50px_rgba(234,168,36,0.3)] animate-on-scroll opacity-0 translate-y-12 transition-all duration-1000 delay-300 ease-out group hover:shadow-[0_20px_60px_rgba(234,168,36,0.4)] hover:-translate-y-2">
             
             <!-- Counter Content -->
             <div class="relative z-10">
-              <div class="font-black text-3xl lg:text-[42px] text-neutral-900 leading-none flex items-baseline justify-center gap-1">
-                <span class="counter-value" data-target="10">0</span>
-                <span class="text-xl lg:text-2xl text-neutral-900/60">+</span>
+              <div class="font-black text-3xl lg:text-[42px] text-[#333333] leading-none flex items-baseline justify-center gap-1" dir="rtl">
+                <span class="counter-value" data-target="10">۰</span>
+                <span class="text-xl lg:text-2xl text-[#333333]/60 font-black">+</span>
               </div>
-              <div class="text-neutral-900 font-bold text-xl lg:text-[22px] mt-1">سال</div>
-              <div class="text-[12px] lg:text-[13px] font-normal text-neutral-800/80 mt-4 uppercase tracking-[0.05em] leading-tight">تجربه و سابقه موفق</div>
+              <div class="text-[#333333] font-bold text-xl lg:text-[22px] mt-1">سال</div>
+              <div class="text-[12px] lg:text-[13px] font-normal text-[#444444] mt-4 uppercase tracking-[0.05em] leading-tight">تجربه و سابقه موفق</div>
             </div>
             
             <!-- Inner Decorative Glow -->
-            <div class="absolute inset-2 border border-black/5 rounded-[3rem_1rem_3rem_1rem] pointer-events-none group-hover:border-black/10 transition-colors duration-500"></div>
+            <div class="absolute inset-2 border border-black/5 rounded-[2.1rem] pointer-events-none group-hover:border-black/10 transition-colors duration-500"></div>
           </div>
 
         </div>

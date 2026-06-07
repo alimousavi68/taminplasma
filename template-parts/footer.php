@@ -33,10 +33,10 @@
           <a href="./" class="w-9 h-9 rounded-xl bg-white/5 border border-white/10 hover:bg-primary hover:text-[var(--color-text-main)] flex items-center justify-center text-white transition-all group" aria-label="LinkedIn">
             <i class="fa-brands fa-linkedin-in text-sm group-hover:scale-110 transition-transform"></i>
           </a>
-          <a href="blog.php" class="w-9 h-9 rounded-xl bg-white/5 border border-white/10 hover:bg-primary hover:text-[var(--color-text-main)] flex items-center justify-center text-white transition-all group" aria-label="Twitter">
+          <a href="#" class="w-9 h-9 rounded-xl bg-white/5 border border-white/10 hover:bg-primary hover:text-[var(--color-text-main)] flex items-center justify-center text-white transition-all group" aria-label="Twitter">
             <i class="fa-brands fa-x-twitter text-sm group-hover:scale-110 transition-transform"></i>
           </a>
-          <a href="jobs.php" class="w-9 h-9 rounded-xl bg-white/5 border border-white/10 hover:bg-primary hover:text-[var(--color-text-main)] flex items-center justify-center text-white transition-all group" aria-label="Aparat">
+          <a href="#" class="w-9 h-9 rounded-xl bg-white/5 border border-white/10 hover:bg-primary hover:text-[var(--color-text-main)] flex items-center justify-center text-white transition-all group" aria-label="Aparat">
             <i class="fa-solid fa-video text-sm group-hover:scale-110 transition-transform"></i>
           </a>
           <a href="#" class="w-9 h-9 rounded-xl bg-white/5 border border-white/10 hover:bg-primary hover:text-[var(--color-text-main)] flex items-center justify-center text-white transition-all group" aria-label="Telegram">
@@ -51,10 +51,10 @@
         <div>
           <h3 class="text-primary font-extrabold text-base mb-6">دسترسی سریع</h3>
           <ul class="space-y-4">
-            <li><a href="#" class="text-[var(--color-text-light)] hover:text-primary text-sm transition-colors duration-200 flex items-center gap-2">
+            <li><a href="./" class="text-[var(--color-text-light)] hover:text-primary text-sm transition-colors duration-200 flex items-center gap-2">
               <span class="w-1 h-1 rounded-full bg-primary"></span> صفحه اصلی
             </a></li>
-            <li><a href="#" class="text-[var(--color-text-light)] hover:text-primary text-sm transition-colors duration-200 flex items-center gap-2">
+            <li><a href="blog.php" class="text-[var(--color-text-light)] hover:text-primary text-sm transition-colors duration-200 flex items-center gap-2">
               <span class="w-1 h-1 rounded-full bg-primary"></span> اخبار و مقالات
             </a></li>
             <li><a href="#" class="text-[var(--color-text-light)] hover:text-primary text-sm transition-colors duration-200 flex items-center gap-2">
@@ -164,14 +164,28 @@
 
   <!-- Video Modal -->
   <div id="video-modal"
-    class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/80 backdrop-blur-md transition-opacity">
+    class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/90 backdrop-blur-lg transition-all duration-300 opacity-0 pointer-events-none">
+    
+    <!-- Close Area (clicking outside video closes it) -->
+    <div class="absolute inset-0 cursor-default" onclick="closeVideoModal()"></div>
+    
+    <!-- Modal Content -->
     <div
-      class="relative w-full max-w-4xl mx-4 aspect-video bg-black rounded-2xl overflow-hidden shadow-2xl border border-neutral-800">
+      class="relative w-full max-w-4xl mx-4 aspect-video bg-black rounded-2xl overflow-hidden shadow-2xl border border-neutral-800/80 transform scale-95 opacity-0 transition-all duration-300 z-10" id="video-modal-content">
+      
+      <!-- Premium Close Button -->
       <button onclick="closeVideoModal()"
-        class="absolute top-4 right-4 z-10 w-10 h-10 bg-white/20 hover:bg-white/40 rounded-full flex items-center justify-center text-white transition-colors">
-        <i class="fa-solid fa-xmark text-xl"></i>
+        class="absolute top-4 right-4 z-50 w-12 h-12 bg-black/60 hover:bg-primary hover:text-neutral-900 rounded-full flex items-center justify-center text-white shadow-lg transition-all duration-300 hover:scale-105 border border-neutral-700/50 cursor-pointer"
+        aria-label="بستن ویدیو">
+        <i class="fa-solid fa-xmark text-2xl"></i>
       </button>
-      <iframe id="promo-video" class="w-full h-full" src="/" frameborder="0" allow="autoplay; fullscreen"></iframe>
+      
+      <!-- Video elements (Iframe for YouTube/Aparat, HTML5 Video for local files) -->
+      <iframe id="promo-video-iframe" class="w-full h-full hidden" src="" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+      <video id="promo-video-player" class="w-full h-full hidden font-peyda" controls autoplay playsinline>
+        <source id="promo-video-src" src="" type="video/mp4">
+        مرورگر شما از پخش ویدیو پشتیبانی نمی‌کند.
+      </video>
     </div>
   </div>
 
@@ -180,22 +194,69 @@
   <script type="module" src="dist/assets/main.js"></script>
   <script>
     // Video Modal Handlers
-    function openVideoModal() {
+    function openVideoModal(videoUrl) {
       const modal = document.getElementById('video-modal');
-      const video = document.getElementById('promo-video');
-      modal.classList.remove('hidden');
+      const content = document.getElementById('video-modal-content');
+      const iframe = document.getElementById('promo-video-iframe');
+      const videoPlayer = document.getElementById('promo-video-player');
+      const videoSrc = document.getElementById('promo-video-src');
+      
+      // Default fallback video URL if none provided
+      const url = videoUrl || "https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1";
+      
+      // Show modal container
+      modal.classList.remove('hidden', 'pointer-events-none');
       modal.classList.add('flex');
-      // Adding a sample video URL with autoplay
-      video.src = "https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1";
+      
+      // Trigger smooth opacity & scale transition
+      setTimeout(() => {
+        modal.classList.add('opacity-100');
+        content.classList.add('scale-100', 'opacity-100');
+        content.classList.remove('scale-95', 'opacity-0');
+      }, 10);
+      
+      // Detect file type to toggle between HTML5 video player and Iframe
+      const isDirectVideo = url.match(/\.(mp4|webm|ogg|mov)(\?|$)/i);
+      
+      if (isDirectVideo) {
+        iframe.classList.add('hidden');
+        iframe.src = "";
+        
+        videoSrc.src = url;
+        videoPlayer.load();
+        videoPlayer.classList.remove('hidden');
+        videoPlayer.play().catch(e => console.log("Autoplay prevented:", e));
+      } else {
+        videoPlayer.classList.add('hidden');
+        videoPlayer.pause();
+        videoSrc.src = "";
+        
+        iframe.src = url;
+        iframe.classList.remove('hidden');
+      }
     }
 
     function closeVideoModal() {
       const modal = document.getElementById('video-modal');
-      const video = document.getElementById('promo-video');
-      modal.classList.add('hidden');
-      modal.classList.remove('flex');
-      // Stop the video when closed
-      video.src = "";
+      const content = document.getElementById('video-modal-content');
+      const iframe = document.getElementById('promo-video-iframe');
+      const videoPlayer = document.getElementById('promo-video-player');
+      const videoSrc = document.getElementById('promo-video-src');
+      
+      // Start fade out animation
+      modal.classList.remove('opacity-100');
+      content.classList.remove('scale-100', 'opacity-100');
+      content.classList.add('scale-95', 'opacity-0');
+      
+      setTimeout(() => {
+        modal.classList.add('hidden', 'pointer-events-none');
+        modal.classList.remove('flex');
+        
+        // Reset src to stop playback
+        iframe.src = "";
+        videoPlayer.pause();
+        videoSrc.src = "";
+      }, 300);
     }
 
     // Intersection Observer for Scroll Animations & Counter
@@ -203,7 +264,7 @@
       const observerOptions = {
         root: null,
         rootMargin: '0px',
-        threshold: 0.2
+        threshold: 0.1 // Trigger scroll animation sooner for a smoother feel
       };
 
       let counterStarted = false;
@@ -213,11 +274,12 @@
         const step = (timestamp) => {
           if (!startTimestamp) startTimestamp = timestamp;
           const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-          obj.innerHTML = Math.floor(progress * (end - start) + start);
+          const currentVal = Math.floor(progress * (end - start) + start);
+          obj.innerHTML = new Intl.NumberFormat('fa-IR').format(currentVal);
           if (progress < 1) {
             window.requestAnimationFrame(step);
           } else {
-            obj.innerHTML = end;
+            obj.innerHTML = new Intl.NumberFormat('fa-IR').format(end);
           }
         };
         window.requestAnimationFrame(step);
@@ -234,8 +296,10 @@
             if (entry.target.id === 'stats-box' && !counterStarted) {
               counterStarted = true;
               const counterEl = entry.target.querySelector('.counter-value');
-              const targetVal = parseInt(counterEl.getAttribute('data-target'));
-              animateValue(counterEl, 0, targetVal, 2000);
+              if (counterEl) {
+                const targetVal = parseInt(counterEl.getAttribute('data-target'));
+                animateValue(counterEl, 0, targetVal, 2000);
+              }
             }
 
             // Stop observing once animated
@@ -246,7 +310,27 @@
 
       // Observe all elements with animate-on-scroll class
       document.querySelectorAll('.animate-on-scroll').forEach(el => {
-        sectionObserver.observe(el);
+        // Check if the element is already partially visible in the viewport on initial page load.
+        // If it is, trigger the entry animation immediately to avoid large blank spaces on large screens.
+        const rect = el.getBoundingClientRect();
+        const isPartiallyInViewport = rect.top < window.innerHeight && rect.bottom > 0;
+
+        if (isPartiallyInViewport) {
+          el.classList.add('opacity-100', 'translate-y-0');
+          el.classList.remove('opacity-0', 'translate-y-12');
+          
+          // Trigger counter if stats box is immediately visible
+          if (el.id === 'stats-box' && !counterStarted) {
+            counterStarted = true;
+            const counterEl = el.querySelector('.counter-value');
+            if (counterEl) {
+              const targetVal = parseInt(counterEl.getAttribute('data-target'));
+              animateValue(counterEl, 0, targetVal, 2000);
+            }
+          }
+        } else {
+          sectionObserver.observe(el);
+        }
       });
     });
   </script>

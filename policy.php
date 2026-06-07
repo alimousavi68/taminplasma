@@ -151,6 +151,28 @@
                 </div>
             </section>
 
+            <section id="section-3" class="space-y-8 mt-12">
+                <div class="border-r-4 border-[var(--color-primary)] pr-4">
+                    <h2 class="font-black text-xl lg:text-2xl text-[var(--color-text-main)]">توسعه پایدار زیرساخت و نوآوری</h2>
+                </div>
+                <div class="text-neutral-700 text-base md:text-lg leading-[2] space-y-6 text-justify">
+                    <p>
+                        توسعه زیرساخت‌های نوین بیوتکنولوژی، تضمین‌کننده پایداری در ارائه خدمات و فرآورده‌های باکیفیت است. نوژین به طور مستمر در تکنولوژی‌های نوین سرمایه‌گذاری کرده و فرآیندهای انجماد سریع و انتقال سرد را تحت کنترل کامل هوشمند قرار داده است تا از زنجیره کیفیت بیولوژیک حفاظت نماید.
+                    </p>
+                </div>
+            </section>
+
+            <section id="section-4" class="space-y-8 mt-12">
+                <div class="border-r-4 border-[var(--color-primary)] pr-4">
+                    <h2 class="font-black text-xl lg:text-2xl text-[var(--color-text-main)]">بیانیه نهایی مدیریت و منشور اخلاقی</h2>
+                </div>
+                <div class="text-neutral-700 text-base md:text-lg leading-[2] space-y-6 text-justify">
+                    <p>
+                        مدیریت ارشد نوژین و تمامی اعضای دپارتمان کیفیت، خود را متعهد به رعایت کامل این خط مشی می‌دانند. هدف نهایی ما، نه تنها تامین فرآورده‌های پلاسمایی، بلکه ارتقای کل زنجیره بهداشت کشور و ایجاد امید در دل هزاران بیمار خاص است که به این فرآورده‌ها وابسته هستند.
+                    </p>
+                </div>
+            </section>
+
         </article>
 
         <!-- LEFT COLUMN: STICKY CAPSULE INDEX SIDEBAR -->

@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
 <section id="blog" class="w-full py-20 lg:py-24 bg-white" dir="rtl">
-  <div class="container mx-auto px-4 lg:px-12 relative">
+  <div class="container mx-auto px-4 lg:max-w-[1170px] relative">
     
     <!-- Section Header Layer -->
     <div class="flex flex-col sm:flex-row justify-between items-center mb-8 gap-4">
@@ -49,7 +49,7 @@
             <p class="text-neutral-900/60 text-xs lg:text-sm text-right leading-relaxed line-clamp-2">
               پلاسما حاوی پروتئین‌های حیاتی است که برای تولید داروهای بیماران خاص و نادر استفاده می‌شود.
             </p>
-            <a href="#" class="w-fit bg-primary hover:brightness-110 text-neutral-900 font-semibold px-4 py-2 rounded-full flex items-center gap-2 transition-all shadow-md hover:shadow-lg group">
+            <a href="single-post.php" class="w-fit bg-primary hover:brightness-110 text-neutral-900 font-semibold px-4 py-2 rounded-full flex items-center gap-2 transition-all shadow-md hover:shadow-lg group">
               <span>ادامه مطلب</span>
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="transform group-hover:-translate-x-0.5 group-hover:-translate-y-0.5 transition-transform">
                 <line x1="17" y1="17" x2="7" y2="7"></line>
@@ -69,7 +69,7 @@
             <p class="text-neutral-900/60 text-xs lg:text-sm text-right leading-relaxed line-clamp-2">
               با رعایت یک رژیم غذایی سالم و مصرف مایعات کافی، تجربه بهتری از اهدای پلاسما خواهید داشت.
             </p>
-            <a href="#" class="w-fit bg-primary hover:brightness-110 text-neutral-900 font-semibold px-4 py-2 rounded-full flex items-center gap-2 transition-all shadow-md hover:shadow-lg group">
+            <a href="single-post.php" class="w-fit bg-primary hover:brightness-110 text-neutral-900 font-semibold px-4 py-2 rounded-full flex items-center gap-2 transition-all shadow-md hover:shadow-lg group">
               <span>ادامه مطلب</span>
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="transform group-hover:-translate-x-0.5 group-hover:-translate-y-0.5 transition-transform">
                 <line x1="17" y1="17" x2="7" y2="7"></line>
@@ -89,7 +89,7 @@
             <p class="text-neutral-900/60 text-xs lg:text-sm text-right leading-relaxed line-clamp-2">
               بررسی علمی کاربردهای پلاسما در مقایسه با خون کامل و نقش آن در پزشکی مدرن.
             </p>
-            <a href="#" class="w-fit bg-primary hover:brightness-110 text-neutral-900 font-semibold px-4 py-2 rounded-full flex items-center gap-2 transition-all shadow-md hover:shadow-lg group">
+            <a href="single-post.php" class="w-fit bg-primary hover:brightness-110 text-neutral-900 font-semibold px-4 py-2 rounded-full flex items-center gap-2 transition-all shadow-md hover:shadow-lg group">
               <span>ادامه مطلب</span>
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="transform group-hover:-translate-x-0.5 group-hover:-translate-y-0.5 transition-transform">
                 <line x1="17" y1="17" x2="7" y2="7"></line>
@@ -109,7 +109,7 @@
             <p class="text-neutral-900/60 text-xs lg:text-sm text-right leading-relaxed line-clamp-2">
               راهنمای گام به گام برای کسانی که می‌خواهند به طور منظم در نجات جان بیماران سهیم باشند.
             </p>
-            <a href="#" class="w-fit bg-primary hover:brightness-110 text-neutral-900 font-semibold px-4 py-2 rounded-full flex items-center gap-2 transition-all shadow-md hover:shadow-lg group">
+            <a href="single-post.php" class="w-fit bg-primary hover:brightness-110 text-neutral-900 font-semibold px-4 py-2 rounded-full flex items-center gap-2 transition-all shadow-md hover:shadow-lg group">
               <span>ادامه مطلب</span>
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="transform group-hover:-translate-x-0.5 group-hover:-translate-y-0.5 transition-transform">
                 <line x1="17" y1="17" x2="7" y2="7"></line>
@@ -129,7 +129,7 @@
             <p class="text-neutral-900/60 text-xs lg:text-sm text-right leading-relaxed line-clamp-2">
               آشنایی با تجهیزات پیشرفته و پروتکل‌های بهداشتی سخت‌گیرانه در مراکز تامین پلاسما نوژین.
             </p>
-            <a href="#" class="w-fit bg-primary hover:brightness-110 text-neutral-900 font-semibold px-4 py-2 rounded-full flex items-center gap-2 transition-all shadow-md hover:shadow-lg group">
+            <a href="single-post.php" class="w-fit bg-primary hover:brightness-110 text-neutral-900 font-semibold px-4 py-2 rounded-full flex items-center gap-2 transition-all shadow-md hover:shadow-lg group">
               <span>ادامه مطلب</span>
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="transform group-hover:-translate-x-0.5 group-hover:-translate-y-0.5 transition-transform">
                 <line x1="17" y1="17" x2="7" y2="7"></line>
@@ -149,7 +149,7 @@
             <p class="text-neutral-900/60 text-xs lg:text-sm text-right leading-relaxed line-clamp-2">
               مطالعات نشان می‌دهد که اهدای منظم پلاسما می‌تواند به بهبود گردش خون و سلامت عمومی کمک کند.
             </p>
-            <a href="#" class="w-fit bg-primary hover:brightness-110 text-neutral-900 font-semibold px-4 py-2 rounded-full flex items-center gap-2 transition-all shadow-md hover:shadow-lg group">
+            <a href="single-post.php" class="w-fit bg-primary hover:brightness-110 text-neutral-900 font-semibold px-4 py-2 rounded-full flex items-center gap-2 transition-all shadow-md hover:shadow-lg group">
               <span>ادامه مطلب</span>
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="transform group-hover:-translate-x-0.5 group-hover:-translate-y-0.5 transition-transform">
                 <line x1="17" y1="17" x2="7" y2="7"></line>

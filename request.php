@@ -346,37 +346,7 @@
             </div>
 
             <!-- Left Column: Premium Information Sidebar (lg:col-span-4) -->
-            <div class="lg:col-span-4 space-y-6 hidden lg:block">
-                
-                <!-- Sidebar Widget 1: Steps Timeline -->
-                <div class="bg-[var(--color-bg-surface)] border border-[var(--color-border-subtle)] rounded-[2rem] p-6 shadow-[0_8px_32px_rgba(30,41,59,0.03)] space-y-5">
-                    <h3 class="font-extrabold text-base text-[var(--color-text-main)] flex items-center gap-2">
-                        <i class="fa-solid fa-route text-primary text-lg"></i>
-                        <span>مراحل اهدا در مرکز نوژین</span>
-                    </h3>
-                    <div class="relative pr-4 border-r border-dashed border-[var(--color-border-subtle)] space-y-6 text-xs text-[var(--color-text-muted)]">
-                        <div class="relative">
-                            <div class="absolute -right-[21px] top-0.5 w-2.5 h-2.5 rounded-full bg-primary ring-4 ring-primary/20"></div>
-                            <h4 class="font-extrabold text-[var(--color-text-main)] mb-1">۱. خوش‌آمدگویی و پذیرش</h4>
-                            <p class="leading-relaxed">ارائه کارت ملی و انجام ثبت‌نام اولیه در سیستم.</p>
-                        </div>
-                        <div class="relative">
-                            <div class="absolute -right-[21px] top-0.5 w-2.5 h-2.5 rounded-full bg-[var(--color-border-subtle)]"></div>
-                            <h4 class="font-extrabold text-[var(--color-text-main)] mb-1">۲. کنترل علائم حیاتی</h4>
-                            <p class="leading-relaxed">بررسی فشار خون، وزن و سطح هموگلوبین خون شما توسط پزشک.</p>
-                        </div>
-                        <div class="relative">
-                            <div class="absolute -right-[21px] top-0.5 w-2.5 h-2.5 rounded-full bg-[var(--color-border-subtle)]"></div>
-                            <h4 class="font-extrabold text-[var(--color-text-main)] mb-1">۳. اهدای پلاسما</h4>
-                            <p class="leading-relaxed">استفاده از کیت‌های یک‌بارمصرف و کاملاً استریل در حدود ۴۵ دقیقه.</p>
-                        </div>
-                        <div class="relative">
-                            <div class="absolute -right-[21px] top-0.5 w-2.5 h-2.5 rounded-full bg-[var(--color-border-subtle)]"></div>
-                            <h4 class="font-extrabold text-[var(--color-text-main)] mb-1">۴. پذیرایی و پرداخت هزینه</h4>
-                            <p class="leading-relaxed">پذیرایی مختصر و پرداخت هزینه ایاب و ذهاب جهت تقدیر از شما.</p>
-                        </div>
-                    </div>
-                </div>
+            <div class="lg:col-span-4 space-y-6 hidden lg:block sticky top-28">
 
                 <!-- Sidebar Widget 2: Preparation Tips -->
                 <div class="bg-[var(--color-bg-surface)] border border-[var(--color-border-subtle)] rounded-[2rem] p-6 shadow-[0_8px_32px_rgba(30,41,59,0.03)] space-y-4">

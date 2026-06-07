@@ -29,43 +29,22 @@
           </div>
 
           <!-- Main Title -->
-          <h1 id="hero-title" class="text-[var(--color-secondary)] font-black text-4xl lg:text-5xl xl:text-[3.5rem] leading-tight drop-shadow-sm">
-            تأمین پلاسما نوژین
+          <h1 id="hero-title" class="text-[var(--color-secondary)] font-black text-3xl lg:text-4xl xl:text-[2.75rem] leading-tight drop-shadow-sm">
+            اهدای پلاسما، امید به زندگی دوباره
           </h1>
 
           <!-- Slogan -->
           <p id="hero-slogan" class="text-neutral-900 font-semibold text-lg lg:text-xl">
-            بخشی که زندگی می‌شود..
+            هر اهدا، جرقه‌ای برای نجات یک انسان
           </p>
         </div>
 
-        <!-- Text & Buttons Container -->
-        <div class="max-w-[440px] space-y-6">
+        <!-- Text Container -->
+        <div class="max-w-[520px] space-y-6">
           <!-- Description -->
           <p id="hero-desc" class="text-neutral-700 text-sm lg:text-base leading-relaxed text-justify h-[72px]">
-            تأمین پلاسما نوژین با تکیه بر دانش تخصصی و تجهیزات مدرن، پلاسما را مطابق با استانداردهای بین‌المللی سلامت تأمین می‌کند.
+            بسیاری از بیماران مبتلا به نقص ایمنی و بیماری‌های خاص، برای بقا به داروهای حیاتی مشتق از پلاسما نیازمندند. حضور پرمهر شما، لبخند دوباره را به خانواده‌هایشان هدیه می‌دهد. همین امروز تصمیم بگیرید.
           </p>
-
-          <!-- CTA -->
-          <div class="flex items-center justify-end gap-3 lg:gap-4 pt-2">
-            <!-- Group 1: درباره ما -->
-            <a href="about.php"
-              class="group/play bg-primary text-neutral-900 rounded-full pl-6 pr-2 py-2 font-normal flex items-center gap-3 shadow-sm hover:shadow-lg hover:-translate-y-0.5 hover:bg-[var(--color-primary-dark)] transition-all duration-300">
-              <div
-                class="bg-black/10 rounded-full w-8 h-8 flex items-center justify-center group-hover/play:bg-neutral-900 group-hover/play:text-primary group-hover/play:scale-110 transition-all duration-300">
-                <i class="fa-solid fa-play text-xs ml-0.5"></i>
-              </div>
-              درباره ما
-            </a>
-
-            <!-- Group 2: فرایند اهدا + Arrow -->
-            <a href="plasma-info.php"
-              class="group/donate flex items-center gap-6 bg-[var(--color-bg-base)]/80 backdrop-blur-md border border-neutral-300 rounded-full pl-5 pr-6 py-2.5 font-normal text-neutral-800 shadow-sm hover:bg-white hover:border-neutral-400 hover:shadow-md hover:-translate-y-0.5 transition-all duration-300">
-              <span>فرایند اهدا</span>
-              <i
-                class="fa-solid fa-arrow-up -rotate-45 group-hover/donate:translate-x-[-3px] group-hover/donate:translate-y-[-3px] transition-transform duration-300"></i>
-            </a>
-          </div>
         </div>
 
       </div>
@@ -81,7 +60,7 @@
           class="hero-tab bg-primary text-neutral-900 font-medium rounded-full px-5 py-2.5 flex items-center gap-2.5 lg:gap-4 lg:w-48 shadow-lg transition-all duration-300 hover:scale-105">
           <div
             class="tab-icon bg-white text-neutral-900 shadow-sm w-8 h-8 lg:w-10 lg:h-10 rounded-full flex items-center justify-center shrink-0 transition-colors duration-300">
-            <i class="fa-solid fa-heart text-sm lg:text-base"></i>
+            <i class="fa-solid fa-heart-pulse text-sm lg:text-base"></i>
           </div>
           <span class="text-sm lg:text-[16px] font-normal whitespace-nowrap">زندگی دوباره</span>
         </button>
@@ -91,7 +70,7 @@
           class="hero-tab bg-surface-warm text-neutral-900 rounded-full pr-1.5 pl-5 lg:pl-10 py-1.5 lg:py-2 flex items-center gap-2.5 lg:gap-4 lg:w-48 hover:bg-primary hover:text-black transition-all duration-300">
           <div
             class="tab-icon bg-white w-8 h-8 lg:w-10 lg:h-10 rounded-full flex items-center justify-center shrink-0 shadow-sm transition-colors duration-300">
-            <i class="fa-solid fa-stethoscope text-neutral-800 text-sm lg:text-base"></i>
+            <i class="fa-solid fa-microscope text-neutral-800 text-sm lg:text-base"></i>
           </div>
           <span class="text-sm lg:text-[16px] font-normal whitespace-nowrap">علم درمان</span>
         </button>
@@ -101,7 +80,7 @@
           class="hero-tab bg-surface-warm text-neutral-900 rounded-full pr-1.5 pl-5 lg:pl-10 py-1.5 lg:py-2 flex items-center gap-2.5 lg:gap-4 lg:w-48 hover:bg-primary hover:text-black transition-all duration-300">
           <div
             class="tab-icon bg-white w-8 h-8 lg:w-10 lg:h-10 rounded-full flex items-center justify-center shrink-0 shadow-sm transition-colors duration-300">
-            <i class="fa-solid fa-wave-square text-neutral-800 text-sm lg:text-base"></i>
+            <i class="fa-solid fa-hand-holding-heart text-neutral-800 text-sm lg:text-base"></i>
           </div>
           <span class="text-sm lg:text-[16px] font-normal whitespace-nowrap">اهدای حیات</span>
         </button>
@@ -114,22 +93,22 @@
     document.addEventListener('DOMContentLoaded', () => {
       const slides = [
         {
-          title: 'تأمین پلاسما نوژین',
-          slogan: 'بخشی که زندگی می‌شود..',
-          desc: 'تأمین پلاسما نوژین با تکیه بر دانش تخصصی و تجهیزات مدرن، پلاسما را مطابق با استانداردهای بین‌المللی سلامت تأمین می‌کند.',
+          title: 'اهدای پلاسما، امید به زندگی دوباره',
+          slogan: 'هر اهدا، جرقه‌ای برای نجات یک انسان',
+          desc: 'بسیاری از بیماران مبتلا به نقص ایمنی و بیماری‌های خاص، برای بقا به داروهای حیاتی مشتق از پلاسما نیازمندند. حضور پرمهر شما، لبخند دوباره را به خانواده‌هایشان هدیه می‌دهد. همین امروز تصمیم بگیرید.',
           img: 'public/hero_slide.webp'
         },
         {
-          title: 'علم درمان و نوآوری',
-          slogan: 'پیشگام در ارتقای سلامت',
-          desc: 'ما با بهره‌گیری از جدیدترین دستاوردهای علمی در زمینه پلاسما، راهکارهای نوین درمانی را برای بیماران نیازمند فراهم می‌آوریم.',
-          img: 'public/hero_slide.webp' // Using the same image for now, can be changed later
+          title: 'دانش پیشرفته در خدمت سلامت بیماران',
+          slogan: 'ایمنی بالا و استانداردهای بین‌المللی در محیطی امن',
+          desc: 'مرکز نوژین با بهره‌گیری از تجهیزات مدرن، فرآیند جداسازی پلاسما (آفرزیس) را در استریل‌ترین شرایط انجام می‌دهد. سلامت شما اولویت ماست و تمامی مراحل تحت نظارت کامل پزشک انجام می‌شود.',
+          img: 'public/hero_slide.webp'
         },
         {
-          title: 'اهدای حیات به همنوع',
-          slogan: 'قطره‌ای برای نجات یک انسان',
-          desc: 'اهدای پلاسمای شما می‌تواند ناجی جان ده‌ها بیمار نیازمند به فرآورده‌های مشتق از پلاسما باشد. با ما همراه شوید.',
-          img: 'public/hero_slide.webp' // Using the same image for now
+          title: 'گامی ساده برای یک حماسه‌ی بزرگ',
+          slogan: 'اهدای پلاسما؛ تکرارپذیر، بدون عوارض و حیات‌بخش',
+          desc: 'پلاسما به سرعت در بدن جایگزین می‌شود. با اهدای پلاسما، علاوه بر کمک به تولید داروهای حیاتی برای کودکان و بیماران خاص، از معاینات دوره‌ای و چکاپ کامل سلامت خود به صورت رایگان بهره‌مند شوید.',
+          img: 'public/hero_slide.webp'
         }
       ];
 
