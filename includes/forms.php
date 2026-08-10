@@ -118,8 +118,8 @@ if (!class_exists('Tamin_Form_Handler')) {
             $age    = sanitize_text_field(wp_unslash($_POST['age'] ?? 'yes'));
             $weight = sanitize_text_field(wp_unslash($_POST['weight'] ?? 'yes'));
 
-            if (empty($name) || empty($phone)) {
-                wp_send_json_error(['message' => __('لطفاً نام و شماره تلفن همراه خود را وارد کنید.', 'tamin-theme')], 400);
+            if (empty($name) || empty($phone) || empty($center)) {
+                wp_send_json_error(['message' => __('لطفاً نام، شماره تلفن همراه و مرکز مورد نظر را وارد کنید.', 'tamin-theme')], 400);
             }
 
             // Save Entry to Options Log

@@ -22,3 +22,4 @@ require_once TAMIN_THEME_DIR . '/includes/sidebars.php';
 require_once TAMIN_THEME_DIR . '/includes/customizer.php';
 require_once TAMIN_THEME_DIR . '/includes/page-metaboxes.php';
 require_once TAMIN_THEME_DIR . '/includes/forms.php';
+require_once TAMIN_THEME_DIR . '/includes/admin-submissions.php';

@@ -59,18 +59,20 @@ get_header();
             <button role="tab" aria-selected="true" aria-controls="units-grid" data-filter="all" class="tab-item flex-1 text-center py-2.5 px-4 text-xs md:text-sm font-black bg-primary text-[var(--color-text-main)] shadow-sm cursor-pointer transition-all duration-300 rounded-full">
                 <?php esc_html_e('همه مراکز', 'tamin-theme'); ?>
             </button>
-            <button role="tab" aria-selected="false" aria-controls="units-grid" data-filter="tehran" class="tab-item flex-1 text-center py-2.5 px-4 text-xs md:text-sm font-bold text-[var(--color-text-muted)] cursor-pointer transition-all duration-300 rounded-full hover:text-[var(--color-text-main)]">
-                <?php esc_html_e('تهران', 'tamin-theme'); ?>
+            <?php
+            $centers = get_option('tamin_centers_data', []);
+            $cities = [];
+            foreach ($centers as $center) {
+                if (!empty($center['active']) && !isset($cities[$center['city_id']])) {
+                    $cities[$center['city_id']] = $center['city'];
+                }
+            }
+            foreach ($cities as $city_id => $city_name) :
+            ?>
+            <button role="tab" aria-selected="false" aria-controls="units-grid" data-filter="<?php echo esc_attr($city_id); ?>" class="tab-item flex-1 text-center py-2.5 px-4 text-xs md:text-sm font-bold text-[var(--color-text-muted)] cursor-pointer transition-all duration-300 rounded-full hover:text-[var(--color-text-main)]">
+                <?php echo esc_html($city_name); ?>
             </button>
-            <button role="tab" aria-selected="false" aria-controls="units-grid" data-filter="khorasan" class="tab-item flex-1 text-center py-2.5 px-4 text-xs md:text-sm font-bold text-[var(--color-text-muted)] cursor-pointer transition-all duration-300 rounded-full hover:text-[var(--color-text-main)]">
-                <?php esc_html_e('خراسان', 'tamin-theme'); ?>
-            </button>
-            <button role="tab" aria-selected="false" aria-controls="units-grid" data-filter="isfahan" class="tab-item flex-1 text-center py-2.5 px-4 text-xs md:text-sm font-bold text-[var(--color-text-muted)] cursor-pointer transition-all duration-300 rounded-full hover:text-[var(--color-text-main)]">
-                <?php esc_html_e('اصفهان', 'tamin-theme'); ?>
-            </button>
-            <button role="tab" aria-selected="false" aria-controls="units-grid" data-filter="fars" class="tab-item flex-1 text-center py-2.5 px-4 text-xs md:text-sm font-bold text-[var(--color-text-muted)] cursor-pointer transition-all duration-300 rounded-full hover:text-[var(--color-text-main)]">
-                <?php esc_html_e('فارس', 'tamin-theme'); ?>
-            </button>
+            <?php endforeach; ?>
         </div>
     </section>
 
@@ -78,110 +80,49 @@ get_header();
     <section class="max-w-screen-xl mx-auto px-6 lg:px-12 my-10">
         <div id="units-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 items-stretch" aria-live="polite">
             
-            <!-- Card 1: ونک (تهران) -->
-            <article class="unit-card flex flex-col justify-between bg-white border border-neutral-100 rounded-[2.5rem] p-5 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 group cursor-pointer relative" data-city="tehran">
-                <div>
-                    <div class="w-full aspect-[4/3] rounded-[1.75rem] overflow-hidden relative bg-neutral-100 mb-4">
-                        <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=800&q=80" alt="<?php esc_attr_e('شعبه مرکزی ونک', 'tamin-theme'); ?>" class="transition-transform duration-500 group-hover:scale-105 object-cover w-full h-full" />
-                        <span class="absolute top-3 right-3 bg-white/90 backdrop-blur-sm text-xs font-black px-3 py-1.5 rounded-full text-[var(--color-text-main)] border border-neutral-200/40">
-                            <?php esc_html_e('تهران', 'tamin-theme'); ?>
-                        </span>
+            <?php if (!empty($centers)) : ?>
+                <?php foreach ($centers as $center) : 
+                    if (empty($center['active'])) continue;
+                ?>
+                <article class="unit-card flex flex-col justify-between bg-white border border-neutral-100 rounded-[2.5rem] p-5 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 group cursor-pointer relative" data-city="<?php echo esc_attr($center['city_id']); ?>">
+                    <div>
+                        <div class="w-full aspect-[4/3] rounded-[1.75rem] overflow-hidden relative bg-neutral-100 mb-4">
+                            <img src="<?php echo esc_url($center['image_url']); ?>" alt="<?php echo esc_attr($center['name']); ?>" class="transition-transform duration-500 group-hover:scale-105 object-cover w-full h-full" />
+                            <span class="absolute top-3 right-3 bg-white/90 backdrop-blur-sm text-xs font-black px-3 py-1.5 rounded-full text-[var(--color-text-main)] border border-neutral-200/40">
+                                <?php echo esc_html($center['city']); ?>
+                            </span>
+                        </div>
+
+                        <h2 class="font-black text-lg text-[var(--color-text-main)] mt-2 mb-3">
+                            <?php echo esc_html($center['name']); ?>
+                        </h2>
+                        
+                        <div class="space-y-2.5">
+                            <div class="text-xs md:text-sm text-[var(--color-text-muted)] flex items-center gap-2">
+                                <svg class="w-4 h-4 text-[var(--color-text-muted)] group-hover:text-primary transition-colors shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                                <span><?php echo esc_html('ساعت کاری: ' . $center['hours']); ?></span>
+                            </div>
+                            <div class="text-xs md:text-sm text-[var(--color-text-muted)] flex items-center gap-2">
+                                <svg class="w-4 h-4 text-[var(--color-text-muted)] group-hover:text-primary transition-colors shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-2.824-1.502-5.124-3.802-6.625-6.626l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
+                                </svg>
+                                <span dir="ltr"><?php echo esc_html($center['phone']); ?></span>
+                            </div>
+                        </div>
                     </div>
 
-                    <h2 class="font-black text-lg text-[var(--color-text-main)] mt-2 mb-3">
-                        <?php esc_html_e('شعبه مرکزی ونک', 'tamin-theme'); ?>
-                    </h2>
-                    
-                    <div class="space-y-2.5">
-                        <div class="text-xs md:text-sm text-[var(--color-text-muted)] flex items-center gap-2">
-                            <svg class="w-4 h-4 text-[var(--color-text-muted)] group-hover:text-primary transition-colors shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
-                            </svg>
-                            <span><?php esc_html_e('ساعت کاری: ۸ صبح الی ۸ شب', 'tamin-theme'); ?></span>
-                        </div>
-                        <div class="text-xs md:text-sm text-[var(--color-text-muted)] flex items-center gap-2">
-                            <svg class="w-4 h-4 text-[var(--color-text-muted)] group-hover:text-primary transition-colors shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-2.824-1.502-5.124-3.802-6.625-6.626l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
-                            </svg>
-                            <span dir="ltr">۰۲۱-۴۹۳۶۱۳۱۸</span>
-                        </div>
-                    </div>
+                    <a href="<?php echo esc_url($center['map_link']); ?>" target="_blank" rel="noopener noreferrer" class="w-full bg-[var(--color-bg-surface)] group-hover:bg-primary text-[var(--color-text-main)] font-black text-center py-3.5 rounded-xl transition-all duration-300 mt-5 text-sm block">
+                        <?php esc_html_e('مشاهده روی نقشه و مسیریابی', 'tamin-theme'); ?>
+                    </a>
+                </article>
+                <?php endforeach; ?>
+            <?php else: ?>
+                <div class="col-span-full text-center text-[var(--color-text-muted)] py-10">
+                    <?php esc_html_e('در حال حاضر شعبه‌ای ثبت نشده است.', 'tamin-theme'); ?>
                 </div>
-
-                <a href="https://maps.google.com/?q=Vanak+Square+Tehran" target="_blank" rel="noopener noreferrer" class="w-full bg-[var(--color-bg-surface)] group-hover:bg-primary text-[var(--color-text-main)] font-black text-center py-3.5 rounded-xl transition-all duration-300 mt-5 text-sm block">
-                    <?php esc_html_e('مشاهده روی نقشه و مسیریابی', 'tamin-theme'); ?>
-                </a>
-            </article>
-
-            <!-- Card 2: تهرانپارس -->
-            <article class="unit-card flex flex-col justify-between bg-white border border-neutral-100 rounded-[2.5rem] p-5 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 group cursor-pointer relative" data-city="tehran">
-                <div>
-                    <div class="w-full aspect-[4/3] rounded-[1.75rem] overflow-hidden relative bg-neutral-100 mb-4">
-                        <img src="https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=800&q=80" alt="<?php esc_attr_e('شعبه تهرانپارس', 'tamin-theme'); ?>" class="transition-transform duration-500 group-hover:scale-105 object-cover w-full h-full" />
-                        <span class="absolute top-3 right-3 bg-white/90 backdrop-blur-sm text-xs font-black px-3 py-1.5 rounded-full text-[var(--color-text-main)] border border-neutral-200/40">
-                            <?php esc_html_e('تهران', 'tamin-theme'); ?>
-                        </span>
-                    </div>
-
-                    <h2 class="font-black text-lg text-[var(--color-text-main)] mt-2 mb-3">
-                        <?php esc_html_e('شعبه تهرانپارس', 'tamin-theme'); ?>
-                    </h2>
-                    
-                    <div class="space-y-2.5">
-                        <div class="text-xs md:text-sm text-[var(--color-text-muted)] flex items-center gap-2">
-                            <svg class="w-4 h-4 text-[var(--color-text-muted)] group-hover:text-primary transition-colors shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
-                            </svg>
-                            <span><?php esc_html_e('ساعت کاری: ۸ صبح الی ۶ عصر', 'tamin-theme'); ?></span>
-                        </div>
-                        <div class="text-xs md:text-sm text-[var(--color-text-muted)] flex items-center gap-2">
-                            <svg class="w-4 h-4 text-[var(--color-text-muted)] group-hover:text-primary transition-colors shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-2.824-1.502-5.124-3.802-6.625-6.626l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
-                            </svg>
-                            <span dir="ltr">۰۲۱-۷۷۸۸۹۹۰۰</span>
-                        </div>
-                    </div>
-                </div>
-
-                <a href="https://maps.google.com/?q=Tehranpars+Tehran" target="_blank" rel="noopener noreferrer" class="w-full bg-[var(--color-bg-surface)] group-hover:bg-primary text-[var(--color-text-main)] font-black text-center py-3.5 rounded-xl transition-all duration-300 mt-5 text-sm block">
-                    <?php esc_html_e('مشاهده روی نقشه و مسیریابی', 'tamin-theme'); ?>
-                </a>
-            </article>
-
-            <!-- Card 3: احمدآباد -->
-            <article class="unit-card flex flex-col justify-between bg-white border border-neutral-100 rounded-[2.5rem] p-5 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 group cursor-pointer relative" data-city="khorasan">
-                <div>
-                    <div class="w-full aspect-[4/3] rounded-[1.75rem] overflow-hidden relative bg-neutral-100 mb-4">
-                        <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=800&q=80" alt="<?php esc_attr_e('شعبه مشهد (احمدآباد)', 'tamin-theme'); ?>" class="transition-transform duration-500 group-hover:scale-105 object-cover w-full h-full" />
-                        <span class="absolute top-3 right-3 bg-white/90 backdrop-blur-sm text-xs font-black px-3 py-1.5 rounded-full text-[var(--color-text-main)] border border-neutral-200/40">
-                            <?php esc_html_e('خراسان', 'tamin-theme'); ?>
-                        </span>
-                    </div>
-
-                    <h2 class="font-black text-lg text-[var(--color-text-main)] mt-2 mb-3">
-                        <?php esc_html_e('شعبه مشهد (احمدآباد)', 'tamin-theme'); ?>
-                    </h2>
-                    
-                    <div class="space-y-2.5">
-                        <div class="text-xs md:text-sm text-[var(--color-text-muted)] flex items-center gap-2">
-                            <svg class="w-4 h-4 text-[var(--color-text-muted)] group-hover:text-primary transition-colors shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
-                            </svg>
-                            <span><?php esc_html_e('ساعت کاری: ۷:۳۰ صبح الی ۷:۳۰ شب', 'tamin-theme'); ?></span>
-                        </div>
-                        <div class="text-xs md:text-sm text-[var(--color-text-muted)] flex items-center gap-2">
-                            <svg class="w-4 h-4 text-[var(--color-text-muted)] group-hover:text-primary transition-colors shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-2.824-1.502-5.124-3.802-6.625-6.626l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
-                            </svg>
-                            <span dir="ltr">۰۵۱-۳۸۴۰۰۰۰۰</span>
-                        </div>
-                    </div>
-                </div>
-
-                <a href="https://maps.google.com/?q=Ahmadabad+Mashhad" target="_blank" rel="noopener noreferrer" class="w-full bg-[var(--color-bg-surface)] group-hover:bg-primary text-[var(--color-text-main)] font-black text-center py-3.5 rounded-xl transition-all duration-300 mt-5 text-sm block">
-                    <?php esc_html_e('مشاهده روی نقشه و مسیریابی', 'tamin-theme'); ?>
-                </a>
-            </article>
+            <?php endif; ?>
 
         </div>
     </section>

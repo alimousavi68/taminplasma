@@ -72,6 +72,16 @@ if (!function_exists('tamin_seed_theme_defaults')) {
                 set_theme_mod($key, $val);
             }
         }
+
+        // Seed default centers
+        if (false === get_option('tamin_centers_data')) {
+            $centers = [
+                'tehran_vanak' => ['id' => 'tehran_vanak', 'name' => 'شعبه مرکزی ونک', 'city' => 'تهران', 'city_id' => 'tehran', 'phone' => '۰۲۱-۴۹۳۶۱۳۱۸', 'hours' => '۸ صبح الی ۸ شب', 'map_link' => 'https://maps.google.com/?q=Vanak+Square+Tehran', 'image_url' => 'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=800&q=80', 'active' => true],
+                'tehranpars' => ['id' => 'tehranpars', 'name' => 'شعبه تهرانپارس', 'city' => 'تهران', 'city_id' => 'tehran', 'phone' => '۰۲۱-۷۷۸۸۹۹۰۰', 'hours' => '۸ صبح الی ۶ عصر', 'map_link' => 'https://maps.google.com/?q=Tehranpars+Tehran', 'image_url' => 'https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=800&q=80', 'active' => true],
+                'mashhad_ahmadabad' => ['id' => 'mashhad_ahmadabad', 'name' => 'شعبه مشهد (احمدآباد)', 'city' => 'مشهد', 'city_id' => 'khorasan', 'phone' => '۰۵۱-۳۸۴۰۰۰۰۰', 'hours' => '۷:۳۰ صبح الی ۷:۳۰ شب', 'map_link' => 'https://maps.google.com/?q=Ahmadabad+Mashhad', 'image_url' => 'https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=800&q=80', 'active' => true]
+            ];
+            update_option('tamin_centers_data', $centers);
+        }
     }
 }
 add_action('after_switch_theme', 'tamin_seed_theme_defaults');

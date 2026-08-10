@@ -164,10 +164,19 @@ get_header();
                     <div class="space-y-4">
                         <label class="block text-sm font-bold text-[var(--color-text-main)]"><?php esc_html_e('انتخاب مرکز اهدا', 'tamin-theme'); ?></label>
                         <select id="center-select" class="w-full p-4 rounded-xl border border-neutral-300 bg-white text-neutral-900 font-bold focus:outline-none focus:border-primary">
-                            <option value="vanak"><?php esc_html_e('تهران - شعبه مرکزی ونک', 'tamin-theme'); ?></option>
-                            <option value="tehranpars"><?php esc_html_e('تهران - شعبه تهرانپارس', 'tamin-theme'); ?></option>
-                            <option value="mashhad"><?php esc_html_e('مشهد - شعبه احمدآباد', 'tamin-theme'); ?></option>
-                            <option value="isfahan"><?php esc_html_e('اصفهان - شعبه دروازه شیراز', 'tamin-theme'); ?></option>
+                            <option value="" disabled selected><?php esc_html_e('شعبه مورد نظر را انتخاب کنید...', 'tamin-theme'); ?></option>
+                            <?php
+                            $centers = get_option('tamin_centers_data', []);
+                            if (!empty($centers)) {
+                                foreach ($centers as $center) {
+                                    if (!empty($center['active'])) {
+                                        echo '<option value="' . esc_attr($center['id']) . '">' . esc_html($center['city'] . ' - ' . $center['name']) . '</option>';
+                                    }
+                                }
+                            } else {
+                                echo '<option value="" disabled>' . esc_html__('مرکزی یافت نشد', 'tamin-theme') . '</option>';
+                            }
+                            ?>
                         </select>
                     </div>
 
@@ -267,10 +276,10 @@ function submitBookingForm() {
 
     if (!nameInput || !phoneInput) return;
 
-    if (!nameInput.value.trim() || !phoneInput.value.trim()) {
+    if (!nameInput.value.trim() || !phoneInput.value.trim() || (centerSelect && !centerSelect.value)) {
         if (errBox) {
             errBox.classList.remove('hidden');
-            errBox.textContent = 'لطفاً نام و شماره تلفن همراه خود را وارد کنید.';
+            errBox.textContent = 'لطفاً نام، شماره تلفن همراه و مرکز مورد نظر خود را وارد کنید.';
         }
         return;
     }
