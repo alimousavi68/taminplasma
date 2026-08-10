@@ -31,6 +31,26 @@ if (!function_exists('tamin_img_url')) {
     }
 }
 
+if (!function_exists('tamin_get_nav_url')) {
+    /**
+     * Get dynamic customizer section link or fallback page URL.
+     *
+     * @param string $mod_key Customizer setting key.
+     * @param string $default_path Fallback relative path.
+     * @return string Fully qualified escaped URL.
+     */
+    function tamin_get_nav_url(string $mod_key, string $default_path = '/'): string {
+        $val = get_theme_mod($mod_key, $default_path);
+        if (empty($val)) {
+            $val = $default_path;
+        }
+        if (str_starts_with($val, 'http://') || str_starts_with($val, 'https://') || str_starts_with($val, '#')) {
+            return esc_url($val);
+        }
+        return esc_url(home_url('/' . ltrim($val, '/')));
+    }
+}
+
 if (!function_exists('tamin_get_reading_time')) {
     /**
      * Calculate estimated reading time for a post in minutes.

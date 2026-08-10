@@ -94,7 +94,7 @@ defined('ABSPATH') || exit;
 
           <!-- CTA Button -->
           <div class="pt-6 flex justify-start w-full">
-            <a href="<?php echo esc_url(home_url('/about')); ?>"
+            <a href="<?php echo tamin_get_nav_url('tamin_about_url', '/about'); ?>"
               class="inline-flex items-center gap-3 bg-primary text-neutral-900 font-medium px-7 py-2.5 rounded-full hover:bg-[var(--color-primary-dark)] hover:shadow-md hover:-translate-y-0.5 transition-all duration-300">
               <?php esc_html_e('اطلاعات بیشتر', 'tamin-theme'); ?>
               <img src="<?php echo esc_url(tamin_img_url('about/btn-arrow-up-right.svg')); ?>" class="w-4 h-4" alt="arrow" />

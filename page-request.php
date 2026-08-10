@@ -176,15 +176,18 @@ get_header();
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <input type="text" id="user-name" placeholder="<?php esc_attr_e('نام و نام خانوادگی', 'tamin-theme'); ?>" class="w-full p-4 rounded-xl border border-neutral-300 bg-white text-neutral-900 font-bold focus:outline-none focus:border-primary">
                             <input type="tel" id="user-phone" placeholder="<?php esc_attr_e('شماره موبایل (مثلاً ۰۹۱۲۳۴۵۶۷۸۹)', 'tamin-theme'); ?>" class="w-full p-4 rounded-xl border border-neutral-300 bg-white text-neutral-900 font-bold focus:outline-none focus:border-primary">
+                            <input type="text" id="website_hp" style="display:none !important; opacity:0; position:absolute; left:-9999px;" tabindex="-1" autocomplete="off">
                         </div>
                     </div>
+
+                    <div id="request-form-error" class="hidden p-4 rounded-xl text-xs font-bold bg-rose-50 text-rose-800 border border-rose-200"></div>
 
                     <div class="flex gap-4 pt-4">
                         <button type="button" onclick="prevStep(1)" class="w-1/3 border border-neutral-300 text-neutral-700 font-bold py-4 rounded-xl text-base hover:bg-neutral-100 transition-all cursor-pointer">
                             <?php esc_html_e('مرحله قبل', 'tamin-theme'); ?>
                         </button>
-                        <button type="button" onclick="nextStep(3)" class="w-2/3 bg-primary hover:brightness-110 text-neutral-900 font-extrabold py-4 rounded-xl text-base shadow-md transition-all cursor-pointer">
-                            <?php esc_html_e('تأیید و ثبت نهایی', 'tamin-theme'); ?>
+                        <button type="button" id="request-submit-btn" onclick="submitBookingForm()" class="w-2/3 bg-primary hover:brightness-110 text-neutral-900 font-extrabold py-4 rounded-xl text-base shadow-md transition-all cursor-pointer">
+                            <span><?php esc_html_e('تأیید و ثبت نهایی', 'tamin-theme'); ?></span>
                         </button>
                     </div>
                 </div>
@@ -198,7 +201,11 @@ get_header();
                     </div>
                     <h2 class="font-extrabold text-2xl text-[var(--color-text-main)]"><?php esc_html_e('نوبت شما با موفقیت ثبت شد!', 'tamin-theme'); ?></h2>
                     <p class="text-sm text-neutral-600 leading-relaxed max-w-md mx-auto">
-                        <?php esc_html_e('کد پیگیری نوبت شما ارسال گردید. کارشناسان مرکز نوژین جهت هماهنگی نهایی با شما تماس خواهند گرفت.', 'tamin-theme'); ?>
+                        <?php esc_html_e('کد پیگیری نوبت شما:', 'tamin-theme'); ?>
+                        <strong id="tracking-code-display" class="block text-xl text-primary font-black dir-ltr mt-2">NOZHIN-100200</strong>
+                    </p>
+                    <p class="text-xs text-neutral-500">
+                        <?php esc_html_e('کارشناسان مرکز نوژین جهت هماهنگی نهایی به‌زودی با شما تماس خواهند گرفت.', 'tamin-theme'); ?>
                     </p>
                     <div class="pt-4">
                         <a href="<?php echo esc_url(home_url('/')); ?>" class="inline-block bg-primary text-neutral-900 font-bold px-8 py-3.5 rounded-full hover:brightness-110 transition-all shadow-sm">
@@ -249,6 +256,66 @@ function prevStep(step) {
     nextStep(step);
     const pb = document.getElementById('progress-bar');
     if (step === 1 && pb) pb.style.width = '0%';
+}
+
+function submitBookingForm() {
+    const nameInput = document.getElementById('user-name');
+    const phoneInput = document.getElementById('user-phone');
+    const centerSelect = document.getElementById('center-select');
+    const errBox = document.getElementById('request-form-error');
+    const btn = document.getElementById('request-submit-btn');
+
+    if (!nameInput || !phoneInput) return;
+
+    if (!nameInput.value.trim() || !phoneInput.value.trim()) {
+        if (errBox) {
+            errBox.classList.remove('hidden');
+            errBox.textContent = 'لطفاً نام و شماره تلفن همراه خود را وارد کنید.';
+        }
+        return;
+    }
+
+    if (errBox) errBox.classList.add('hidden');
+    if (btn) { btn.disabled = true; btn.classList.add('opacity-50'); }
+
+    const formData = new FormData();
+    formData.append('action', 'tamin_submit_request');
+    formData.append('nonce', typeof tamin_ajax !== 'undefined' ? tamin_ajax.nonce : '');
+    formData.append('name', nameInput.value.trim());
+    formData.append('phone', phoneInput.value.trim());
+    formData.append('center', centerSelect ? centerSelect.value : '');
+    const hpInput = document.getElementById('website_hp');
+    if (hpInput) formData.append('website_hp', hpInput.value);
+
+    const ajaxUrl = typeof tamin_ajax !== 'undefined' ? tamin_ajax.ajax_url : '/wp-admin/admin-ajax.php';
+
+    fetch(ajaxUrl, {
+        method: 'POST',
+        body: formData
+    })
+    .then(res => res.json())
+    .then(data => {
+        if (btn) { btn.disabled = false; btn.classList.remove('opacity-50'); }
+        if (data.success) {
+            const codeDisplay = document.getElementById('tracking-code-display');
+            if (codeDisplay && data.data.tracking_code) {
+                codeDisplay.textContent = data.data.tracking_code;
+            }
+            nextStep(3);
+        } else {
+            if (errBox) {
+                errBox.classList.remove('hidden');
+                errBox.textContent = data.data ? data.data.message : 'خطایی رخ داد.';
+            }
+        }
+    })
+    .catch(err => {
+        if (btn) { btn.disabled = false; btn.classList.remove('opacity-50'); }
+        if (errBox) {
+            errBox.classList.remove('hidden');
+            errBox.textContent = 'خطای ارتباط با سرور. لطفاً مجدداً تلاش کنید.';
+        }
+    });
 }
 </script>
 

@@ -34,22 +34,22 @@ defined('ABSPATH') || exit;
           <span><?php esc_html_e('مشاوره تخصصی و همراهی شما در فرآیند اهدای زندگی', 'tamin-theme'); ?></span>
         </div>
         
-        <p class="text-[var(--color-text-light)] text-xs lg:text-sm leading-relaxed max-w-md">
-          <?php esc_html_e('مرکز تامین پلاسما نوژین، با بهره‌گیری از تکنولوژی‌های روز دنیا و کادری متخصص، متعهد به تامین فرآورده‌های پلاسمایی با کیفیت برای نجات جان بیماران و ارتقای سلامت جامعه است.', 'tamin-theme'); ?>
+        <p id="footer-about-text" class="text-[var(--color-text-light)] text-xs lg:text-sm leading-relaxed max-w-md">
+          <?php echo esc_html(get_theme_mod('tamin_footer_about', __('مرکز تامین پلاسما نوژین، با بهره‌گیری از تکنولوژی‌های روز دنیا و کادری متخصص، متعهد به تامین فرآورده‌های پلاسمایی با کیفیت برای نجات جان بیماران و ارتقای سلامت جامعه است.', 'tamin-theme'))); ?>
         </p>
         
         <!-- Social Icons -->
         <div class="flex items-center gap-3 pt-2">
-          <a href="#" class="w-9 h-9 rounded-xl bg-white/5 border border-white/10 hover:bg-primary hover:text-[var(--color-text-main)] flex items-center justify-center text-white transition-all group" aria-label="LinkedIn">
+          <a href="<?php echo esc_url(get_theme_mod('tamin_social_linkedin', '#')); ?>" class="w-9 h-9 rounded-xl bg-white/5 border border-white/10 hover:bg-primary hover:text-[var(--color-text-main)] flex items-center justify-center text-white transition-all group" aria-label="LinkedIn">
             <i class="fa-brands fa-linkedin-in text-sm group-hover:scale-110 transition-transform"></i>
           </a>
-          <a href="#" class="w-9 h-9 rounded-xl bg-white/5 border border-white/10 hover:bg-primary hover:text-[var(--color-text-main)] flex items-center justify-center text-white transition-all group" aria-label="Twitter">
-            <i class="fa-brands fa-x-twitter text-sm group-hover:scale-110 transition-transform"></i>
+          <a href="<?php echo esc_url(get_theme_mod('tamin_social_instagram', '#')); ?>" class="w-9 h-9 rounded-xl bg-white/5 border border-white/10 hover:bg-primary hover:text-[var(--color-text-main)] flex items-center justify-center text-white transition-all group" aria-label="Instagram">
+            <i class="fa-brands fa-instagram text-sm group-hover:scale-110 transition-transform"></i>
           </a>
-          <a href="#" class="w-9 h-9 rounded-xl bg-white/5 border border-white/10 hover:bg-primary hover:text-[var(--color-text-main)] flex items-center justify-center text-white transition-all group" aria-label="Aparat">
+          <a href="<?php echo esc_url(get_theme_mod('tamin_social_aparat', '#')); ?>" class="w-9 h-9 rounded-xl bg-white/5 border border-white/10 hover:bg-primary hover:text-[var(--color-text-main)] flex items-center justify-center text-white transition-all group" aria-label="Aparat">
             <i class="fa-solid fa-video text-sm group-hover:scale-110 transition-transform"></i>
           </a>
-          <a href="#" class="w-9 h-9 rounded-xl bg-white/5 border border-white/10 hover:bg-primary hover:text-[var(--color-text-main)] flex items-center justify-center text-white transition-all group" aria-label="Telegram">
+          <a href="<?php echo esc_url(get_theme_mod('tamin_social_telegram', '#')); ?>" class="w-9 h-9 rounded-xl bg-white/5 border border-white/10 hover:bg-primary hover:text-[var(--color-text-main)] flex items-center justify-center text-white transition-all group" aria-label="Telegram">
             <i class="fa-brands fa-telegram text-sm group-hover:scale-110 transition-transform"></i>
           </a>
         </div>
@@ -74,13 +74,13 @@ defined('ABSPATH') || exit;
                 <li><a href="<?php echo esc_url(home_url('/')); ?>" class="text-[var(--color-text-light)] hover:text-primary text-sm transition-colors duration-200 flex items-center gap-2">
                   <span class="w-1 h-1 rounded-full bg-primary"></span> <?php esc_html_e('صفحه اصلی', 'tamin-theme'); ?>
                 </a></li>
-                <li><a href="<?php echo esc_url(home_url('/blog')); ?>" class="text-[var(--color-text-light)] hover:text-primary text-sm transition-colors duration-200 flex items-center gap-2">
+                <li><a href="<?php echo tamin_get_nav_url('tamin_blog_url', '/blog'); ?>" class="text-[var(--color-text-light)] hover:text-primary text-sm transition-colors duration-200 flex items-center gap-2">
                   <span class="w-1 h-1 rounded-full bg-primary"></span> <?php esc_html_e('اخبار و مقالات', 'tamin-theme'); ?>
                 </a></li>
-                <li><a href="<?php echo esc_url(home_url('/policy')); ?>" class="text-[var(--color-text-light)] hover:text-primary text-sm transition-colors duration-200 flex items-center gap-2">
+                <li><a href="<?php echo tamin_get_nav_url('tamin_policy_url', '/policy'); ?>" class="text-[var(--color-text-light)] hover:text-primary text-sm transition-colors duration-200 flex items-center gap-2">
                   <span class="w-1 h-1 rounded-full bg-primary"></span> <?php esc_html_e('خط مشی', 'tamin-theme'); ?>
                 </a></li>
-                <li><a href="<?php echo esc_url(home_url('/about')); ?>" class="text-[var(--color-text-light)] hover:text-primary text-sm transition-colors duration-200 flex items-center gap-2">
+                <li><a href="<?php echo tamin_get_nav_url('tamin_about_url', '/about'); ?>" class="text-[var(--color-text-light)] hover:text-primary text-sm transition-colors duration-200 flex items-center gap-2">
                   <span class="w-1 h-1 rounded-full bg-primary"></span> <?php esc_html_e('درباره ما', 'tamin-theme'); ?>
                 </a></li>
               </ul>
@@ -98,7 +98,7 @@ defined('ABSPATH') || exit;
                 <i class="fa-solid fa-location-dot text-sm"></i>
               </div>
               <p class="text-[var(--color-text-light)] text-xs leading-relaxed group-hover:text-[var(--color-white)] transition-colors">
-                <?php esc_html_e('تهران، خیابان ولیعصر، بالاتر از میدان ونک، پلاک ۱۹۳۶', 'tamin-theme'); ?>
+                <?php echo esc_html(get_theme_mod('tamin_footer_address', __('تهران، خیابان ولیعصر، بالاتر از میدان ونک، پلاک ۱۹۳۶', 'tamin-theme'))); ?>
               </p>
             </div>
             <div class="flex items-center gap-3 group">
@@ -106,7 +106,7 @@ defined('ABSPATH') || exit;
                 <i class="fa-solid fa-phone text-sm"></i>
               </div>
               <p class="text-[var(--color-text-light)] text-xs group-hover:text-[var(--color-white)] transition-colors" dir="ltr">
-                ۰۲۱ ۴۹۳۶۱۳۱۸
+                <?php echo esc_html(get_theme_mod('tamin_phone_number', '۰۲۱ ۴۹۳۶۱۳۱۸')); ?>
               </p>
             </div>
           </div>

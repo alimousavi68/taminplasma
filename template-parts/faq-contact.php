@@ -98,29 +98,32 @@
             <!-- Right Column: Contact Form Card -->
             <div class="lg:col-span-6 lg:order-last">
                 <div class="bg-white rounded-[2.5rem] p-8 lg:p-10 shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-neutral-100">
-                    <form class="space-y-5" onsubmit="event.preventDefault();">
+                    <form id="tamin-contact-form" class="space-y-5" onsubmit="handleContactAjaxSubmit(event)">
+                        <input type="text" name="website_hp" style="display:none !important; opacity:0; position:absolute; left:-9999px;" tabindex="-1" autocomplete="off">
+                        <div id="contact-form-response" class="hidden p-4 rounded-2xl text-xs font-bold transition-all"></div>
+                        
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-                            <input type="text" placeholder="نام و نام خانوادگی" class="w-full px-5 py-4 rounded-2xl bg-[var(--color-bg-section)] border border-transparent focus:border-[var(--color-secondary)] focus:bg-white focus:outline-none transition-all text-sm font-medium" required>
-                            <input type="tel" placeholder="شماره تماس" class="w-full px-5 py-4 rounded-2xl bg-[var(--color-bg-section)] border border-transparent focus:border-[var(--color-secondary)] focus:bg-white focus:outline-none transition-all text-sm font-medium text-right" dir="rtl" required>
+                            <input type="text" name="fullname" placeholder="<?php esc_attr_e('نام و نام خانوادگی', 'tamin-theme'); ?>" class="w-full px-5 py-4 rounded-2xl bg-[var(--color-bg-section)] border border-transparent focus:border-[var(--color-secondary)] focus:bg-white focus:outline-none transition-all text-sm font-medium" required>
+                            <input type="tel" name="phone" placeholder="<?php esc_attr_e('شماره تماس', 'tamin-theme'); ?>" class="w-full px-5 py-4 rounded-2xl bg-[var(--color-bg-section)] border border-transparent focus:border-[var(--color-secondary)] focus:bg-white focus:outline-none transition-all text-sm font-medium text-right" dir="rtl" required>
                         </div>
                         
-                        <input type="email" placeholder="ایمیل" class="w-full px-5 py-4 rounded-2xl bg-[var(--color-bg-section)] border border-transparent focus:border-[var(--color-secondary)] focus:bg-white focus:outline-none transition-all text-sm font-medium text-right" dir="rtl" required>
+                        <input type="email" name="email" placeholder="<?php esc_attr_e('ایمیل', 'tamin-theme'); ?>" class="w-full px-5 py-4 rounded-2xl bg-[var(--color-bg-section)] border border-transparent focus:border-[var(--color-secondary)] focus:bg-white focus:outline-none transition-all text-sm font-medium text-right" dir="rtl">
                         
                         <div class="relative">
-                            <select class="w-full px-5 py-4 rounded-2xl bg-[var(--color-bg-section)] border border-transparent focus:border-[var(--color-secondary)] focus:bg-white focus:outline-none transition-all text-sm font-medium appearance-none text-neutral-500 cursor-pointer" required>
-                                <option value="" disabled selected hidden>درخواست ثبت ایده</option>
-                                <option value="1">ثبت ایده دارویی</option>
-                                <option value="2">ثبت ایده زیست‌فناوری</option>
-                                <option value="3">شتاب‌دهی و سرمایه‌گذاری</option>
-                                <option value="4">سایر درخواست‌ها</option>
+                            <select name="subject" class="w-full px-5 py-4 rounded-2xl bg-[var(--color-bg-section)] border border-transparent focus:border-[var(--color-secondary)] focus:bg-white focus:outline-none transition-all text-sm font-medium appearance-none text-neutral-500 cursor-pointer">
+                                <option value="درخواست ثبت ایده" selected><?php esc_html_e('درخواست ثبت ایده', 'tamin-theme'); ?></option>
+                                <option value="ثبت ایده دارویی"><?php esc_html_e('ثبت ایده دارویی', 'tamin-theme'); ?></option>
+                                <option value="ثبت ایده زیست‌فناوری"><?php esc_html_e('ثبت ایده زیست‌فناوری', 'tamin-theme'); ?></option>
+                                <option value="شتاب‌دهی و سرمایه‌گذاری"><?php esc_html_e('شتاب‌دهی و سرمایه‌گذاری', 'tamin-theme'); ?></option>
+                                <option value="سایر درخواست‌ها"><?php esc_html_e('سایر درخواست‌ها', 'tamin-theme'); ?></option>
                             </select>
                             <i class="fa-solid fa-chevron-down absolute left-5 top-1/2 -translate-y-1/2 text-neutral-400 text-xs pointer-events-none"></i>
                         </div>
                         
-                        <textarea placeholder="پیام شما..." rows="4" class="w-full px-5 py-4 rounded-2xl bg-[var(--color-bg-section)] border border-transparent focus:border-[var(--color-secondary)] focus:bg-white focus:outline-none transition-all text-sm font-medium resize-none" required></textarea>
+                        <textarea name="message" placeholder="<?php esc_attr_e('پیام شما...', 'tamin-theme'); ?>" rows="4" class="w-full px-5 py-4 rounded-2xl bg-[var(--color-bg-section)] border border-transparent focus:border-[var(--color-secondary)] focus:bg-white focus:outline-none transition-all text-sm font-medium resize-none" required></textarea>
                         
-                        <button type="submit" class="w-full bg-primary hover:bg-[var(--color-primary-dark)] text-neutral-900 font-bold py-4 rounded-2xl transition-all duration-300 shadow-sm hover:shadow-md hover:-translate-y-0.5">
-                            ثبت اطلاعات
+                        <button type="submit" id="contact-submit-btn" class="w-full bg-primary hover:bg-[var(--color-primary-dark)] text-neutral-900 font-bold py-4 rounded-2xl transition-all duration-300 shadow-sm hover:shadow-md hover:-translate-y-0.5 cursor-pointer">
+                            <span><?php esc_html_e('ثبت اطلاعات', 'tamin-theme'); ?></span>
                         </button>
                     </form>
                 </div>
@@ -185,5 +188,50 @@ function toggleFaq(element) {
         icon.classList.add('rotate-180', 'text-[var(--color-secondary)]');
         icon.classList.remove('text-neutral-400');
     }
+}
+
+function handleContactAjaxSubmit(e) {
+    e.preventDefault();
+    const form = e.target;
+    const btn = document.getElementById('contact-submit-btn');
+    const respBox = document.getElementById('contact-form-response');
+    
+    if (!form || !btn || !respBox) return;
+
+    btn.disabled = true;
+    btn.classList.add('opacity-50');
+    respBox.classList.add('hidden');
+
+    const formData = new FormData(form);
+    formData.append('action', 'tamin_submit_contact');
+    formData.append('nonce', typeof tamin_ajax !== 'undefined' ? tamin_ajax.nonce : '');
+
+    const ajaxUrl = typeof tamin_ajax !== 'undefined' ? tamin_ajax.ajax_url : '/wp-admin/admin-ajax.php';
+
+    fetch(ajaxUrl, {
+        method: 'POST',
+        body: formData
+    })
+    .then(res => res.json())
+    .then(data => {
+        btn.disabled = false;
+        btn.classList.remove('opacity-50');
+        respBox.classList.remove('hidden');
+        if (data.success) {
+            respBox.className = 'p-4 rounded-2xl text-xs font-bold bg-emerald-50 text-emerald-800 border border-emerald-200 block';
+            respBox.textContent = data.data.message;
+            form.reset();
+        } else {
+            respBox.className = 'p-4 rounded-2xl text-xs font-bold bg-rose-50 text-rose-800 border border-rose-200 block';
+            respBox.textContent = data.data ? data.data.message : 'خطایی رخ داد.';
+        }
+    })
+    .catch(err => {
+        btn.disabled = false;
+        btn.classList.remove('opacity-50');
+        respBox.classList.remove('hidden');
+        respBox.className = 'p-4 rounded-2xl text-xs font-bold bg-rose-50 text-rose-800 border border-rose-200 block';
+        respBox.textContent = 'خطای ارتباط با سرور. لطفاً مجدداً تلاش کنید.';
+    });
 }
 </script>

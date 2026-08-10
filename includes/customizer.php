@@ -34,12 +34,30 @@ if (!function_exists('tamin_customize_register')) {
         $wp_customize->add_setting('tamin_topbar_notice', [
             'default'           => __('مرکز تامین پلاسما نوژین | اهداکنندگان، سرمایه‌های معنوی و حیات‌بخش کشور', 'tamin-theme'),
             'sanitize_callback' => 'sanitize_text_field',
+            'transport'         => 'postMessage',
         ]);
         $wp_customize->add_control('tamin_topbar_notice', [
             'label'    => __('متن اعلان نوار بالایی هدر', 'tamin-theme'),
             'section'  => 'tamin_header_section',
             'type'     => 'text',
         ]);
+
+        if (isset($wp_customize->selective_refresh)) {
+            $wp_customize->selective_refresh->add_partial('tamin_topbar_notice', [
+                'selector'            => '#topbar-notice-text',
+                'render_callback'     => function() {
+                    return esc_html(get_theme_mod('tamin_topbar_notice'));
+                },
+                'container_inclusive' => false,
+            ]);
+            $wp_customize->selective_refresh->add_partial('tamin_footer_about', [
+                'selector'            => '#footer-about-text',
+                'render_callback'     => function() {
+                    return esc_html(get_theme_mod('tamin_footer_about'));
+                },
+                'container_inclusive' => false,
+            ]);
+        }
 
         // Header Phone Number
         $wp_customize->add_setting('tamin_phone_number', [
@@ -152,6 +170,90 @@ if (!function_exists('tamin_customize_register')) {
             'label'    => __('لینک آپارات', 'tamin-theme'),
             'section'  => 'tamin_footer_section',
             'type'     => 'url',
+        ]);
+
+        // SECTION 4: Section Button & Page Links
+        $wp_customize->add_section('tamin_links_section', [
+            'title'    => __('تنظیمات لینک‌ها و دکمه‌های سکشن‌های صفحه اصلی', 'tamin-theme'),
+            'panel'    => 'tamin_theme_options',
+            'priority' => 25,
+        ]);
+
+        // About Section Button Link
+        $wp_customize->add_setting('tamin_about_url', [
+            'default'           => '/about',
+            'sanitize_callback' => 'esc_url_raw',
+        ]);
+        $wp_customize->add_control('tamin_about_url', [
+            'label'    => __('لینک دکمه «اطلاعات بیشتر» سکشن درباره ما', 'tamin-theme'),
+            'section'  => 'tamin_links_section',
+            'type'     => 'text',
+        ]);
+
+        // Plasma Info Button Link
+        $wp_customize->add_setting('tamin_plasma_info_url', [
+            'default'           => '/plasma-info',
+            'sanitize_callback' => 'esc_url_raw',
+        ]);
+        $wp_customize->add_control('tamin_plasma_info_url', [
+            'label'    => __('لینک دکمه «اهدای پلاسما» و نحوه اهدا', 'tamin-theme'),
+            'section'  => 'tamin_links_section',
+            'type'     => 'text',
+        ]);
+
+        // Units Page Link
+        $wp_customize->add_setting('tamin_units_url', [
+            'default'           => '/units',
+            'sanitize_callback' => 'esc_url_raw',
+        ]);
+        $wp_customize->add_control('tamin_units_url', [
+            'label'    => __('لینک صفحه مراکز اهدا (واحدها)', 'tamin-theme'),
+            'section'  => 'tamin_links_section',
+            'type'     => 'text',
+        ]);
+
+        // Booking Request CTA Link
+        $wp_customize->add_setting('tamin_request_url', [
+            'default'           => '/request',
+            'sanitize_callback' => 'esc_url_raw',
+        ]);
+        $wp_customize->add_control('tamin_request_url', [
+            'label'    => __('لینک دکمه درخواست نوبت اهدا (هدر و بنر CTA)', 'tamin-theme'),
+            'section'  => 'tamin_links_section',
+            'type'     => 'text',
+        ]);
+
+        // Blog Archive Link
+        $wp_customize->add_setting('tamin_blog_url', [
+            'default'           => '/blog',
+            'sanitize_callback' => 'esc_url_raw',
+        ]);
+        $wp_customize->add_control('tamin_blog_url', [
+            'label'    => __('لینک «مشاهده همه مقالات و اخبار»', 'tamin-theme'),
+            'section'  => 'tamin_links_section',
+            'type'     => 'text',
+        ]);
+
+        // Policy Page Link
+        $wp_customize->add_setting('tamin_policy_url', [
+            'default'           => '/policy',
+            'sanitize_callback' => 'esc_url_raw',
+        ]);
+        $wp_customize->add_control('tamin_policy_url', [
+            'label'    => __('لینک برگه «خط مشی نوژین»', 'tamin-theme'),
+            'section'  => 'tamin_links_section',
+            'type'     => 'text',
+        ]);
+
+        // Contact / FAQ Page Link
+        $wp_customize->add_setting('tamin_contact_url', [
+            'default'           => '/contact',
+            'sanitize_callback' => 'esc_url_raw',
+        ]);
+        $wp_customize->add_control('tamin_contact_url', [
+            'label'    => __('لینک برگه «تماس با ما / سوالات متداول»', 'tamin-theme'),
+            'section'  => 'tamin_links_section',
+            'type'     => 'text',
         ]);
 
         // SECTION 3: Branding Colors

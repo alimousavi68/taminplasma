@@ -22,7 +22,10 @@ defined('ABSPATH') || exit;
 
   <!-- Top Bar -->
   <div class="w-full bg-primary text-neutral-900 hidden md:block" dir="rtl">
-    <div class="container mx-auto px-4 lg:px-12 h-8 flex justify-between items-center text-[11px] font-light">
+    <div class="container mx-auto px-4 lg:px-12 h-8 flex justify-between items-center text-[11px] font-medium">
+      <span id="topbar-notice-text" class="truncate max-w-[60%]">
+        <?php echo esc_html(get_theme_mod('tamin_topbar_notice', __('مرکز تامین پلاسما نوژین | اهداکنندگان، سرمایه‌های معنوی و حیات‌بخش کشور', 'tamin-theme'))); ?>
+      </span>
 
       <!-- Social Icons (Right Side) -->
       <div class="flex items-center gap-5 text-[14px]">
@@ -92,35 +95,35 @@ defined('ABSPATH') || exit;
                 </a>
               </li>
               <li>
-                <a href="<?php echo esc_url(home_url('/plasma-info')); ?>"
+                <a href="<?php echo tamin_get_nav_url('tamin_plasma_info_url', '/plasma-info'); ?>"
                   class="flex items-center gap-1.5 px-3 py-2 transition-all duration-300 hover:bg-surface-warm rounded-xl text-[var(--color-text-main)] hover:text-neutral-900 group">
                   <img src="<?php echo esc_url(tamin_img_url('test-tube-alt.svg')); ?>" class="w-4 h-4 opacity-75 group-hover:opacity-100 transition-opacity" alt="" />
                   <span><?php esc_html_e('اهدای پلاسما', 'tamin-theme'); ?></span>
                 </a>
               </li>
               <li>
-                <a href="<?php echo esc_url(home_url('/units')); ?>"
+                <a href="<?php echo tamin_get_nav_url('tamin_units_url', '/units'); ?>"
                   class="flex items-center gap-1.5 px-3 py-2 transition-all duration-300 hover:bg-surface-warm rounded-xl text-[var(--color-text-main)] hover:text-neutral-900 group">
                   <img src="<?php echo esc_url(tamin_img_url('monitor-waveform.svg')); ?>" class="w-4 h-4 opacity-75 group-hover:opacity-100 transition-opacity" alt="" />
                   <span><?php esc_html_e('واحدها', 'tamin-theme'); ?></span>
                 </a>
               </li>
               <li>
-                <a href="<?php echo esc_url(home_url('/blog')); ?>"
+                <a href="<?php echo tamin_get_nav_url('tamin_blog_url', '/blog'); ?>"
                   class="flex items-center gap-1.5 px-3 py-2 transition-all duration-300 hover:bg-surface-warm rounded-xl text-[var(--color-text-main)] hover:text-neutral-900 group">
                   <img src="<?php echo esc_url(tamin_img_url('papers-text.svg')); ?>" class="w-4 h-4 opacity-75 group-hover:opacity-100 transition-opacity" alt="" />
                   <span><?php esc_html_e('اخبار و مقالات', 'tamin-theme'); ?></span>
                 </a>
               </li>
               <li>
-                <a href="<?php echo esc_url(home_url('/about')); ?>"
+                <a href="<?php echo tamin_get_nav_url('tamin_about_url', '/about'); ?>"
                   class="flex items-center gap-1.5 px-3 py-2 transition-all duration-300 hover:bg-surface-warm rounded-xl text-[var(--color-text-main)] hover:text-neutral-900 group">
                   <img src="<?php echo esc_url(tamin_img_url('about-icon.svg')); ?>" class="w-4 h-4 opacity-75 group-hover:opacity-100 transition-opacity" alt="" />
                   <span><?php esc_html_e('درباره ما', 'tamin-theme'); ?></span>
                 </a>
               </li>
               <li>
-                <a href="<?php echo esc_url(home_url('/policy')); ?>"
+                <a href="<?php echo tamin_get_nav_url('tamin_policy_url', '/policy'); ?>"
                   class="flex items-center gap-1.5 px-3 py-2 transition-all duration-300 hover:bg-surface-warm rounded-xl text-[var(--color-text-main)] hover:text-neutral-900 group">
                   <img src="<?php echo esc_url(tamin_img_url('quote (2).svg')); ?>" class="w-4 h-4 opacity-75 group-hover:opacity-100 transition-opacity" alt="" />
                   <span><?php esc_html_e('خط مشی', 'tamin-theme'); ?></span>
@@ -135,7 +138,7 @@ defined('ABSPATH') || exit;
       <!-- Left: Unique CTA Button & Mobile Menu Icon -->
       <div class="flex items-center gap-4 shrink-0">
         <!-- Interlocking Capsule CTA -->
-        <a href="<?php echo esc_url(home_url('/request')); ?>"
+        <a href="<?php echo tamin_get_nav_url('tamin_request_url', '/request'); ?>"
           class="flex items-center group cursor-pointer transition-transform duration-300 hover:-translate-y-0.5"
           aria-label="<?php esc_attr_e('درخواست اهدا', 'tamin-theme'); ?>">
           <!-- The Leading Badge (Right side in RTL) -->
@@ -147,7 +150,7 @@ defined('ABSPATH') || exit;
           <!-- The Main Body (Left side in RTL) -->
           <div
             class="bg-primary text-[var(--color-text-main)] font-normal px-5 py-2 text-sm rounded-l-full -mr-4 z-10 pr-6 shadow-sm transition-all duration-500 group-hover:bg-primary">
-            <?php esc_html_e('درخواست اهدا', 'tamin-theme'); ?>
+            <?php echo esc_html(get_theme_mod('tamin_cta_button_text', __('درخواست اهدا', 'tamin-theme'))); ?>
           </div>
         </a>
 
@@ -192,31 +195,31 @@ defined('ABSPATH') || exit;
               </a>
             </li>
             <li>
-              <a href="<?php echo esc_url(home_url('/plasma-info')); ?>" class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-surface-warm text-sm font-semibold text-[var(--color-text-main)] transition-colors">
+              <a href="<?php echo tamin_get_nav_url('tamin_plasma_info_url', '/plasma-info'); ?>" class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-surface-warm text-sm font-semibold text-[var(--color-text-main)] transition-colors">
                 <img src="<?php echo esc_url(tamin_img_url('test-tube-alt.svg')); ?>" class="w-4 h-4 opacity-75" alt="" />
                 <span><?php esc_html_e('اهدای پلاسما', 'tamin-theme'); ?></span>
               </a>
             </li>
             <li>
-              <a href="<?php echo esc_url(home_url('/units')); ?>" class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-surface-warm text-sm font-semibold text-[var(--color-text-main)] transition-colors">
+              <a href="<?php echo tamin_get_nav_url('tamin_units_url', '/units'); ?>" class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-surface-warm text-sm font-semibold text-[var(--color-text-main)] transition-colors">
                 <img src="<?php echo esc_url(tamin_img_url('monitor-waveform.svg')); ?>" class="w-4 h-4 opacity-75" alt="" />
                 <span><?php esc_html_e('واحدها', 'tamin-theme'); ?></span>
               </a>
             </li>
             <li>
-              <a href="<?php echo esc_url(home_url('/blog')); ?>" class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-surface-warm text-sm font-semibold text-[var(--color-text-main)] transition-colors">
+              <a href="<?php echo tamin_get_nav_url('tamin_blog_url', '/blog'); ?>" class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-surface-warm text-sm font-semibold text-[var(--color-text-main)] transition-colors">
                 <img src="<?php echo esc_url(tamin_img_url('papers-text.svg')); ?>" class="w-4 h-4 opacity-75" alt="" />
                 <span><?php esc_html_e('اخبار و مقالات', 'tamin-theme'); ?></span>
               </a>
             </li>
             <li>
-              <a href="<?php echo esc_url(home_url('/about')); ?>" class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-surface-warm text-sm font-semibold text-[var(--color-text-main)] transition-colors">
+              <a href="<?php echo tamin_get_nav_url('tamin_about_url', '/about'); ?>" class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-surface-warm text-sm font-semibold text-[var(--color-text-main)] transition-colors">
                 <img src="<?php echo esc_url(tamin_img_url('about-icon.svg')); ?>" class="w-4 h-4 opacity-75" alt="" />
                 <span><?php esc_html_e('درباره ما', 'tamin-theme'); ?></span>
               </a>
             </li>
             <li>
-              <a href="<?php echo esc_url(home_url('/policy')); ?>" class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-surface-warm text-sm font-semibold text-[var(--color-text-main)] transition-colors">
+              <a href="<?php echo tamin_get_nav_url('tamin_policy_url', '/policy'); ?>" class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-surface-warm text-sm font-semibold text-[var(--color-text-main)] transition-colors">
                 <img src="<?php echo esc_url(tamin_img_url('quote (2).svg')); ?>" class="w-4 h-4 opacity-75" alt="" />
                 <span><?php esc_html_e('خط مشی', 'tamin-theme'); ?></span>
               </a>
@@ -228,16 +231,16 @@ defined('ABSPATH') || exit;
       <!-- Bottom Part: CTA & Quick Contact -->
       <div class="space-y-6 pt-6 border-t border-[var(--color-border-subtle)]">
         <!-- CTA Request Button -->
-        <a href="<?php echo esc_url(home_url('/request')); ?>" class="w-full bg-primary hover:bg-primary/95 text-[var(--color-text-main)] font-bold py-3.5 rounded-xl shadow-md flex items-center justify-center gap-2 transition-transform hover:-translate-y-0.5 active:translate-y-0 text-sm">
+        <a href="<?php echo tamin_get_nav_url('tamin_request_url', '/request'); ?>" class="w-full bg-primary hover:bg-primary/95 text-[var(--color-text-main)] font-bold py-3.5 rounded-xl shadow-md flex items-center justify-center gap-2 transition-transform hover:-translate-y-0.5 active:translate-y-0 text-sm">
           <img src="<?php echo esc_url(tamin_img_url('test-tube.svg')); ?>" alt="" class="w-4 h-4 brightness-0" />
-          <span><?php esc_html_e('درخواست اهدا', 'tamin-theme'); ?></span>
+          <span><?php echo esc_html(get_theme_mod('tamin_cta_button_text', __('درخواست اهدا', 'tamin-theme'))); ?></span>
         </a>
         
         <!-- Social Icons Row -->
         <div class="flex items-center justify-center gap-4 text-sm text-[var(--color-text-muted)]">
-          <a href="#" class="hover:text-primary transition-colors" aria-label="واتساپ"><i class="fa-brands fa-whatsapp"></i></a>
-          <a href="#" class="hover:text-primary transition-colors" aria-label="اینستاگرام"><i class="fa-brands fa-instagram"></i></a>
-          <a href="#" class="hover:text-primary transition-colors" aria-label="تلگرام"><i class="fa-regular fa-paper-plane"></i></a>
+          <a href="<?php echo esc_url(get_theme_mod('tamin_social_instagram', '#')); ?>" class="hover:text-primary transition-colors" aria-label="اینستاگرام"><i class="fa-brands fa-instagram"></i></a>
+          <a href="<?php echo esc_url(get_theme_mod('tamin_social_telegram', '#')); ?>" class="hover:text-primary transition-colors" aria-label="تلگرام"><i class="fa-brands fa-telegram"></i></a>
+          <a href="<?php echo esc_url(get_theme_mod('tamin_social_linkedin', '#')); ?>" class="hover:text-primary transition-colors" aria-label="لینکدین"><i class="fa-brands fa-linkedin-in"></i></a>
         </div>
       </div>
     </div>

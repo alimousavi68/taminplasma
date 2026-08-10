@@ -191,7 +191,7 @@ defined('ABSPATH') || exit;
                 <?php esc_html_e('با یک اقدام ساده و رایگان، به بیماران مبتلا به هموفیلی، سوختگی‌های شدید و نقص ایمنی فرصت زندگی دوباره بدهید. مرکز نوژین با بالاترین استانداردهای بهداشتی همراه شماست.', 'tamin-theme'); ?>
             </p>
             <div class="pt-4 flex flex-col items-start justify-start text-right gap-3">
-                <a href="<?php echo esc_url(home_url('/request')); ?>"
+                <a href="<?php echo tamin_get_nav_url('tamin_request_url', '/request'); ?>"
                     class="inline-flex items-center gap-2 bg-[#1a0e00] text-[#FFD970] font-bold py-[14px] px-[28px] rounded-[8px] text-base hover:bg-[#2d1a00] transition-colors duration-300 shadow-md cursor-pointer">
                     <span><?php esc_html_e('همین حالا نوبت خود را رزرو کنید', 'tamin-theme'); ?></span>
                     <i class="fa-solid fa-arrow-left text-sm mr-1"></i>

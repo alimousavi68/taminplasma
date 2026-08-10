@@ -12,10 +12,14 @@ if (!function_exists('tamin_enqueue_scripts')) {
      * Enqueue scripts and styles for the frontend.
      */
     function tamin_enqueue_scripts(): void {
-        // Enqueue FontAwesome 6.5.1 CSS (Identical to tpnojine.com live site)
+        // Enqueue FontAwesome 6.5.1 CSS (Local asset if available, else CDN)
+        $fa_url = file_exists(TAMIN_THEME_DIR . '/assets/css/fontawesome.min.css') 
+            ? TAMIN_THEME_URI . '/assets/css/fontawesome.min.css' 
+            : 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css';
+
         wp_enqueue_style(
             'tamin-fontawesome',
-            'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css',
+            $fa_url,
             [],
             '6.5.1'
         );
@@ -30,13 +34,16 @@ if (!function_exists('tamin_enqueue_scripts')) {
             );
         }
 
-        // Enqueue Tailwind compiled CSS
-        if (file_exists(TAMIN_THEME_DIR . '/assets/css/tailwind.css')) {
+        // Enqueue Tailwind compiled CSS with Dynamic Cache Busting
+        $tailwind_file = TAMIN_THEME_DIR . '/assets/css/tailwind.css';
+        $tailwind_ver  = file_exists($tailwind_file) ? (string) filemtime($tailwind_file) : TAMIN_THEME_VERSION;
+
+        if (file_exists($tailwind_file)) {
             wp_enqueue_style(
                 'tamin-tailwind',
                 TAMIN_THEME_URI . '/assets/css/tailwind.css',
                 ['tamin-swiper', 'tamin-fontawesome'],
-                TAMIN_THEME_VERSION
+                $tailwind_ver
             );
         }
 
@@ -59,23 +66,29 @@ if (!function_exists('tamin_enqueue_scripts')) {
             );
         }
 
-        // Enqueue Frontend JS
-        if (file_exists(TAMIN_THEME_DIR . '/assets/js/main.js')) {
+        // Enqueue Frontend JS with Dynamic Cache Busting
+        $js_file = TAMIN_THEME_DIR . '/assets/js/main.js';
+        $js_ver  = file_exists($js_file) ? (string) filemtime($js_file) : TAMIN_THEME_VERSION;
+
+        if (file_exists($js_file)) {
             wp_enqueue_script(
                 'tamin-main',
                 TAMIN_THEME_URI . '/assets/js/main.js',
                 ['tamin-swiper-js'],
-                TAMIN_THEME_VERSION,
+                $js_ver,
                 true
             );
         }
 
-        // Pass localized data to script
-        wp_localize_script('tamin-main', 'taminData', [
-            'ajaxUrl' => admin_url('admin-ajax.php'),
-            'nonce'   => wp_create_nonce('tamin_nonce'),
-            'siteUrl' => home_url('/'),
-        ]);
+        // Pass localized data to script for both window.taminData and window.tamin_ajax
+        $localized_data = [
+            'ajaxUrl'  => admin_url('admin-ajax.php'),
+            'ajax_url' => admin_url('admin-ajax.php'),
+            'nonce'    => wp_create_nonce('tamin_nonce'),
+            'siteUrl'  => home_url('/'),
+        ];
+        wp_localize_script('tamin-main', 'taminData', $localized_data);
+        wp_localize_script('tamin-main', 'tamin_ajax', $localized_data);
     }
 }
 add_action('wp_enqueue_scripts', 'tamin_enqueue_scripts');

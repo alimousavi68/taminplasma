@@ -30,7 +30,7 @@ $blog_query = new WP_Query([
 
       <!-- Left Side: Navigation & View All link -->
       <div class="flex items-center gap-4 lg:gap-6">
-        <a href="<?php echo esc_url(home_url('/blog')); ?>" class="text-neutral-900 font-normal text-sm hover:brightness-110 transition-colors"><?php esc_html_e('مشاهده همه', 'tamin-theme'); ?></a>
+        <a href="<?php echo tamin_get_nav_url('tamin_blog_url', '/blog'); ?>" class="text-neutral-900 font-normal text-sm hover:brightness-110 transition-colors"><?php esc_html_e('مشاهده همه', 'tamin-theme'); ?></a>
         <div class="flex items-center gap-2">
           <button class="blog-prev w-[25px] h-[25px] bg-primary hover:opacity-80 text-white rounded-md flex items-center justify-center transition-all cursor-pointer" aria-label="<?php esc_attr_e('قبلی', 'tamin-theme'); ?>">
             <i class="fa-solid fa-caret-right text-xs"></i>
@@ -99,7 +99,7 @@ $blog_query = new WP_Query([
                     <p class="text-neutral-900/60 text-xs lg:text-sm text-right leading-relaxed line-clamp-2">
                       <?php echo esc_html($item['desc']); ?>
                     </p>
-                    <a href="<?php echo esc_url(home_url('/single-post')); ?>" class="w-fit bg-primary hover:brightness-110 text-neutral-900 font-semibold px-4 py-2 rounded-full flex items-center gap-2 transition-all shadow-md hover:shadow-lg group">
+                    <a href="<?php echo esc_url(home_url('/blog')); ?>" class="w-fit bg-primary hover:brightness-110 text-neutral-900 font-semibold px-4 py-2 rounded-full flex items-center gap-2 transition-all shadow-md hover:shadow-lg group">
                       <span><?php esc_html_e('ادامه مطلب', 'tamin-theme'); ?></span>
                       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="transform group-hover:-translate-x-0.5 group-hover:-translate-y-0.5 transition-transform">
                         <line x1="17" y1="17" x2="7" y2="7"></line>

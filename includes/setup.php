@@ -48,3 +48,30 @@ if (!function_exists('tamin_theme_setup')) {
     }
 }
 add_action('after_setup_theme', 'tamin_theme_setup');
+
+if (!function_exists('tamin_seed_theme_defaults')) {
+    /**
+     * Auto-seed default options on theme activation if empty.
+     */
+    function tamin_seed_theme_defaults(): void {
+        $defaults = [
+            'tamin_phone_number'   => '۰۲۱-۴۹۳۶۱۳۱۸',
+            'tamin_work_hours'     => 'شنبه تا پنج‌شنبه: ۸:۰۰ الی ۲۰:۰۰',
+            'tamin_topbar_notice'  => 'مرکز تامین پلاسما نوژین | اهداکنندگان، سرمایه‌های معنوی و حیات‌بخش کشور',
+            'tamin_about_url'      => '/about',
+            'tamin_plasma_info_url'=> '/plasma-info',
+            'tamin_units_url'      => '/units',
+            'tamin_request_url'    => '/request',
+            'tamin_blog_url'       => '/blog',
+            'tamin_policy_url'     => '/policy',
+            'tamin_contact_url'    => '/contact',
+        ];
+
+        foreach ($defaults as $key => $val) {
+            if (false === get_theme_mod($key)) {
+                set_theme_mod($key, $val);
+            }
+        }
+    }
+}
+add_action('after_switch_theme', 'tamin_seed_theme_defaults');
