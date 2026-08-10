@@ -232,7 +232,7 @@
 
         <!-- Left Column: Persuasive Image Canvas (6 Columns) -->
         <div class="lg:col-span-6 h-full w-full lg:w-1/2 absolute lg:absolute left-0 top-0 z-10 overflow-hidden">
-            <img src="public/cta_healthy_person_1780520206862.png" alt="پلاسمای شما جان یک بیمار را نجات می‌دهد" class="w-full h-full object-cover absolute inset-0">
+            <img src="public/cta_healthy.webp" alt="پلاسمای شما جان یک بیمار را نجات می‌دهد" class="w-full h-full object-cover absolute inset-0">
         </div>
 
     </div>

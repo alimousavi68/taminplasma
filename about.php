@@ -271,7 +271,7 @@ require_once 'template-parts/header.php';
 
             <!-- Left Column: Image Canvas -->
             <div class="lg:col-span-6 h-full w-full lg:w-1/2 absolute lg:absolute left-0 top-0 z-10 overflow-hidden">
-                <img src="public/cta.webp" alt="نجات جان انسان‌ها با تامین پلاسما" class="w-full h-full object-cover absolute inset-0">
+                <img src="public/cta_healthy.webp" alt="نجات جان انسان‌ها با تامین پلاسما" class="w-full h-full object-cover absolute inset-0">
             </div>
         </div>
     </section>

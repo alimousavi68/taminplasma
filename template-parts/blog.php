@@ -4,8 +4,7 @@
  * Implement a pixel-perfect, highly responsive blog section with Swiper Carousel.
  */
 ?>
-<!-- Swiper CSS -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+<!-- Blog Section -->
 
 <section id="blog" class="w-full py-20 lg:py-24 bg-white" dir="rtl">
   <div class="container mx-auto px-4 lg:max-w-[1170px] relative">
@@ -168,8 +167,7 @@
   </div>
 </section>
 
-<!-- Swiper JS -->
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
 
 <script>
   document.addEventListener('DOMContentLoaded', function() {

@@ -7,15 +7,26 @@ export default defineConfig({
     tailwindcss(),
   ],
   build: {
+    outDir: 'assets',
+    emptyOutDir: false,
     rollupOptions: {
       input: {
         main: 'src/main.js',
         style: 'src/style.css'
       },
       output: {
-        entryFileNames: 'assets/[name].js',
-        assetFileNames: 'assets/[name].[ext]'
+        entryFileNames: 'js/[name].js',
+        assetFileNames: (assetInfo) => {
+          if (assetInfo.name && assetInfo.name.endsWith('.css')) {
+            return 'css/tailwind.css';
+          }
+          if (assetInfo.name && (assetInfo.name.endsWith('.woff') || assetInfo.name.endsWith('.woff2') || assetInfo.name.endsWith('.ttf'))) {
+            return 'fonts/[name].[ext]';
+          }
+          return 'css/[name].[ext]';
+        }
       }
     }
   }
 })
+
