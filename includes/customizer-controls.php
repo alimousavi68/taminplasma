@@ -159,6 +159,22 @@ class Tamin_Group_Control extends WP_Customize_Control {
                                 data-customize-setting-link="<?php echo esc_attr($setting_key); ?>"
                             />
 
+                        <?php elseif ($type === 'dropdown-pages') : ?>
+                            <select
+                                id="tamin-field-<?php echo esc_attr($setting_key); ?>"
+                                class="tamin-group__input tamin-group__input--dropdown-pages"
+                                data-customize-setting-link="<?php echo esc_attr($setting_key); ?>"
+                            >
+                                <option value=""><?php esc_html_e('— انتخاب برگه —', 'tamin-theme'); ?></option>
+                                <?php
+                                $pages = get_pages();
+                                foreach ($pages as $page) {
+                                    $page_url = get_permalink($page->ID);
+                                    echo '<option value="' . esc_url($page_url) . '" ' . selected($current, $page_url, false) . '>' . esc_html($page->post_title) . '</option>';
+                                }
+                                ?>
+                            </select>
+
                         <?php endif; ?>
 
                         <?php if (!empty($desc)) : ?>
