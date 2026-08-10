@@ -8,6 +8,8 @@
 
 defined('ABSPATH') || exit;
 
+defined('ABSPATH') || exit;
+
 // Define Theme Constants
 define('TAMIN_THEME_VERSION', '1.0.0');
 define('TAMIN_THEME_DIR', get_template_directory());

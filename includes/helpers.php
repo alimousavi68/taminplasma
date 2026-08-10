@@ -104,3 +104,17 @@ if (!function_exists('tamin_get_primary_category')) {
         return __('اخبار و مقالات', 'tamin-theme');
     }
 }
+
+if (!function_exists('tamin_en_to_fa')) {
+    /**
+     * Convert English digits to Persian digits.
+     *
+     * @param string|int $string
+     * @return string
+     */
+    function tamin_en_to_fa($string): string {
+        $en = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+        $fa = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'];
+        return str_replace($en, $fa, (string) $string);
+    }
+}

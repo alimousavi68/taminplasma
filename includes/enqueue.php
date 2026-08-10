@@ -12,10 +12,8 @@ if (!function_exists('tamin_enqueue_scripts')) {
      * Enqueue scripts and styles for the frontend.
      */
     function tamin_enqueue_scripts(): void {
-        // Enqueue FontAwesome 6.5.1 CSS (Local asset if available, else CDN)
-        $fa_url = file_exists(TAMIN_THEME_DIR . '/assets/css/fontawesome.min.css') 
-            ? TAMIN_THEME_URI . '/assets/css/fontawesome.min.css' 
-            : 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css';
+        // Enqueue FontAwesome 6.5.1 CSS (Using official CDN to match reference site exactly)
+        $fa_url = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css';
 
         wp_enqueue_style(
             'tamin-fontawesome',

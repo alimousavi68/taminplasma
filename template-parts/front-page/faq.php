@@ -6,6 +6,35 @@
  */
 
 defined('ABSPATH') || exit;
+
+// Check if FAQ Section is enabled
+if (!get_theme_mod('tamin_faq_enabled', true)) {
+    return;
+}
+
+$faq_json = get_theme_mod('tamin_faq_list', '');
+$faqs = json_decode($faq_json, true);
+
+if (empty($faqs) || !is_array($faqs)) {
+    $faqs = [
+        [
+            'question' => 'اهدای پلاسما چیست و چه تفاوتی با اهدای خون دارد؟',
+            'answer'   => 'در اهدای پلاسما، تنها بخش مایع خون (پلاسما) جمع‌آوری می‌شود و سلول‌های خونی به بدن اهداکننده بازگردانده می‌شوند.'
+        ],
+        [
+            'question' => 'آیا اهدای پلاسما برای سلامتی ضرر دارد؟',
+            'answer'   => 'خیر، اهدای پلاسما یک فرآیند ایمن است که تحت نظارت پزشک انجام می‌شود.'
+        ],
+        [
+            'question' => 'هر چند وقت یک‌بار می‌توان پلاسما اهدا کرد؟',
+            'answer'   => 'شما می‌توانید تا دو بار در هفته با فاصله حداقل ۴۸ ساعت بین هر اهدا، پلاسما اهدا کنید.'
+        ],
+    ];
+}
+
+$subtitle = get_theme_mod('tamin_faq_subtitle', 'پاسخگوی سوالات شما هستیم');
+$title1 = get_theme_mod('tamin_faq_title1', 'سوالات متداول');
+$title2 = get_theme_mod('tamin_faq_title2', ' شما');
 ?>
 <!-- SECTION 1: FAQ + TESTIMONIALS (Dual Column) -->
 <section class="w-full py-20 lg:py-24 bg-white relative overflow-hidden" dir="rtl">
@@ -19,11 +48,11 @@ defined('ABSPATH') || exit;
         <div class="text-center mb-14 lg:mb-20">
             <div class="inline-flex items-center gap-2 bg-primary/10 border border-primary/20 text-neutral-900 font-black text-xs px-4 py-2 rounded-full mb-5">
                 <span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
-                <?php esc_html_e('پاسخگوی سوالات شما هستیم', 'tamin-theme'); ?>
+                <?php echo esc_html($subtitle); ?>
             </div>
             <h2 class="font-black text-3xl lg:text-5xl text-neutral-900 leading-tight">
-                <?php esc_html_e('سوالات متداول', 'tamin-theme'); ?>
-                <span class="text-[var(--color-primary-dark)]"><?php esc_html_e(' شما', 'tamin-theme'); ?></span>
+                <?php echo esc_html($title1); ?>
+                <span class="text-[var(--color-primary-dark)]"><?php echo esc_html($title2); ?></span>
             </h2>
             <div class="w-20 h-1 bg-gradient-to-l from-[var(--color-primary)] to-[var(--color-primary-dark)] mx-auto rounded-full mt-5"></div>
         </div>
@@ -34,85 +63,31 @@ defined('ABSPATH') || exit;
             <!-- Right Column: FAQ Accordion -->
             <div class="lg:col-span-8 space-y-3" id="faq-accordion">
 
-                <!-- FAQ Item 1 -->
-                <div class="faq-row active" data-index="0">
-                    <button class="faq-header w-full bg-[var(--color-bg-base)] rounded-[1.75rem] px-6 py-5 flex justify-between items-center border border-neutral-200/80 hover:border-primary/40 hover:shadow-[0_12px_40px_rgba(234,168,36,0.12)] transition-all duration-500 focus:outline-none cursor-pointer">
+                <?php foreach ($faqs as $index => $faq) : 
+                    $num = str_pad(tamin_en_to_fa($index + 1), 2, '۰', STR_PAD_LEFT);
+                    $is_active = ($index === 0);
+                ?>
+                <!-- FAQ Item <?php echo esc_attr($num); ?> -->
+                <div class="faq-row <?php echo $is_active ? 'active' : ''; ?>" data-index="<?php echo esc_attr($index); ?>">
+                    <button class="faq-header w-full <?php echo $is_active ? 'bg-[var(--color-bg-base)]' : 'bg-[var(--color-bg-base)] hover:bg-[var(--color-bg-warm)]/40'; ?> rounded-[1.75rem] px-6 py-5 flex justify-between items-center border border-neutral-200/80 hover:border-primary/40 hover:shadow-[0_12px_40px_rgba(234,168,36,0.08)] transition-all duration-500 focus:outline-none cursor-pointer">
                         <div class="flex items-center gap-4 text-right">
-                            <span class="text-[11px] font-black text-primary/50 shrink-0 leading-none font-mono">۰۱</span>
-                            <span class="faq-title font-extrabold text-neutral-900 text-sm md:text-base leading-snug"><?php esc_html_e('اهدای پلاسما چیست و چه تفاوتی با اهدای خون دارد؟', 'tamin-theme'); ?></span>
+                            <span class="text-[11px] font-black text-primary/<?php echo $is_active ? '50' : '30'; ?> shrink-0 leading-none font-mono"><?php echo esc_html($num); ?></span>
+                            <span class="faq-title <?php echo $is_active ? 'font-extrabold text-neutral-900' : 'font-semibold text-neutral-600'; ?> text-sm md:text-base leading-snug"><?php echo esc_html($faq['question']); ?></span>
                         </div>
-                        <div class="faq-icon-btn w-9 h-9 rounded-full bg-primary text-neutral-900 flex items-center justify-center shrink-0 transition-all duration-300 mr-2">
-                            <i class="fa-solid fa-minus text-xs"></i>
+                        <div class="faq-icon-btn w-9 h-9 rounded-full <?php echo $is_active ? 'bg-primary text-neutral-900' : 'bg-neutral-100 text-neutral-400'; ?> flex items-center justify-center shrink-0 transition-all duration-300 mr-2">
+                            <i class="fa-solid <?php echo $is_active ? 'fa-minus' : 'fa-plus'; ?> text-xs"></i>
                         </div>
                     </button>
-                    <div class="faq-content-wrapper grid grid-rows-[1fr] transition-all duration-500 ease-in-out overflow-hidden">
+                    <div class="faq-content-wrapper grid <?php echo $is_active ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'; ?> transition-all duration-500 ease-in-out overflow-hidden">
                         <div class="overflow-hidden">
                             <div class="faq-content px-6 pt-2 pb-6 text-neutral-500 text-sm leading-[2.2] border-r-2 border-primary/30 mr-10 mt-2">
-                                <?php esc_html_e('در اهدای پلاسما، تنها بخش مایع خون (پلاسما) جمع‌آوری می‌شود و سلول‌های خونی (گلبول‌های قرمز و سفید) به بدن اهداکننده بازگردانده می‌شوند. این فرآیند به بیماران دارای نقص ایمنی و هموفیلی کمک شایانی می‌کند.', 'tamin-theme'); ?>
+                                <?php echo nl2br(esc_html($faq['answer'])); ?>
                             </div>
                         </div>
                     </div>
                 </div>
+                <?php endforeach; ?>
 
-                <!-- FAQ Item 2 -->
-                <div class="faq-row" data-index="1">
-                    <button class="faq-header w-full bg-[var(--color-bg-base)] hover:bg-[var(--color-bg-warm)]/40 rounded-[1.75rem] px-6 py-5 flex justify-between items-center border border-neutral-200/80 hover:border-primary/40 hover:shadow-[0_12px_40px_rgba(234,168,36,0.08)] transition-all duration-500 focus:outline-none cursor-pointer">
-                        <div class="flex items-center gap-4 text-right">
-                            <span class="text-[11px] font-black text-primary/30 shrink-0 leading-none font-mono">۰۲</span>
-                            <span class="faq-title font-semibold text-neutral-600 text-sm md:text-base leading-snug"><?php esc_html_e('آیا اهدای پلاسما برای سلامتی ضرر دارد؟', 'tamin-theme'); ?></span>
-                        </div>
-                        <div class="faq-icon-btn w-9 h-9 rounded-full bg-neutral-100 text-neutral-400 flex items-center justify-center shrink-0 transition-all duration-300 mr-2">
-                            <i class="fa-solid fa-plus text-xs"></i>
-                        </div>
-                    </button>
-                    <div class="faq-content-wrapper grid grid-rows-[0fr] transition-all duration-500 ease-in-out overflow-hidden">
-                        <div class="overflow-hidden">
-                            <div class="faq-content px-6 pt-2 pb-6 text-neutral-500 text-sm leading-[2.2] border-r-2 border-primary/30 mr-10 mt-2">
-                                <?php esc_html_e('خیر، اهدای پلاسما یک فرآیند ایمن است که تحت نظارت پزشک انجام می‌شود. پلاسما سریع‌تر از خون در بدن جایگزین می‌شود و اهداکنندگان می‌توانند به طور مستمر در این امر خیر مشارکت کنند.', 'tamin-theme'); ?>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- FAQ Item 3 -->
-                <div class="faq-row" data-index="2">
-                    <button class="faq-header w-full bg-[var(--color-bg-base)] hover:bg-[var(--color-bg-warm)]/40 rounded-[1.75rem] px-6 py-5 flex justify-between items-center border border-neutral-200/80 hover:border-primary/40 hover:shadow-[0_12px_40px_rgba(234,168,36,0.08)] transition-all duration-500 focus:outline-none cursor-pointer">
-                        <div class="flex items-center gap-4 text-right">
-                            <span class="text-[11px] font-black text-primary/30 shrink-0 leading-none font-mono">۰۳</span>
-                            <span class="faq-title font-semibold text-neutral-600 text-sm md:text-base leading-snug"><?php esc_html_e('هر چند وقت یک‌بار می‌توان پلاسما اهدا کرد؟', 'tamin-theme'); ?></span>
-                        </div>
-                        <div class="faq-icon-btn w-9 h-9 rounded-full bg-neutral-100 text-neutral-400 flex items-center justify-center shrink-0 transition-all duration-300 mr-2">
-                            <i class="fa-solid fa-plus text-xs"></i>
-                        </div>
-                    </button>
-                    <div class="faq-content-wrapper grid grid-rows-[0fr] transition-all duration-500 ease-in-out overflow-hidden">
-                        <div class="overflow-hidden">
-                            <div class="faq-content px-6 pt-2 pb-6 text-neutral-500 text-sm leading-[2.2] border-r-2 border-primary/30 mr-10 mt-2">
-                                <?php esc_html_e('طبق استانداردهای بهداشتی، شما می‌توانید تا دو بار در هفته با فاصله حداقل ۴۸ ساعت بین هر اهدا، پلاسما اهدا کنید. این تکرارپذیری به دلیل بازگشت سریع پلاسما به بدن است.', 'tamin-theme'); ?>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- FAQ Item 4 -->
-                <div class="faq-row" data-index="3">
-                    <button class="faq-header w-full bg-[var(--color-bg-base)] hover:bg-[var(--color-bg-warm)]/40 rounded-[1.75rem] px-6 py-5 flex justify-between items-center border border-neutral-200/80 hover:border-primary/40 hover:shadow-[0_12px_40px_rgba(234,168,36,0.08)] transition-all duration-500 focus:outline-none cursor-pointer">
-                        <div class="flex items-center gap-4 text-right">
-                            <span class="text-[11px] font-black text-primary/30 shrink-0 leading-none font-mono">۰۴</span>
-                            <span class="faq-title font-semibold text-neutral-600 text-sm md:text-base leading-snug"><?php esc_html_e('شرایط اصلی برای اهداکننده شدن چیست؟', 'tamin-theme'); ?></span>
-                        </div>
-                        <div class="faq-icon-btn w-9 h-9 rounded-full bg-neutral-100 text-neutral-400 flex items-center justify-center shrink-0 transition-all duration-300 mr-2">
-                            <i class="fa-solid fa-plus text-xs"></i>
-                        </div>
-                    </button>
-                    <div class="faq-content-wrapper grid grid-rows-[0fr] transition-all duration-500 ease-in-out overflow-hidden">
-                        <div class="overflow-hidden">
-                            <div class="faq-content px-6 pt-2 pb-6 text-neutral-500 text-sm leading-[2.2] border-r-2 border-primary/30 mr-10 mt-2">
-                                <?php esc_html_e('داشتن سن بین ۱۸ تا ۶۰ سال، وزن حداقل ۵۰ کیلوگرم، همراه داشتن کارت ملی و برخورداری از سلامت عمومی از شرایط اصلی است. قبل از هر اهدا، یک معاینه پزشکی رایگان انجام می‌شود.', 'tamin-theme'); ?>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
 
             <!-- Left Column: Testimonials -->

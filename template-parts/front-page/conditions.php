@@ -6,6 +6,49 @@
  */
 
 defined('ABSPATH') || exit;
+
+// Check if Conditions Section is enabled
+if (!get_theme_mod('tamin_conditions_enabled', true)) {
+    return;
+}
+
+$conditions_json = get_theme_mod('tamin_conditions_list', '');
+$conditions_list = json_decode($conditions_json, true);
+
+if (empty($conditions_list) || !is_array($conditions_list)) {
+    $conditions_list = [
+        [
+            'icon_type' => 'image',
+            'icon_image' => tamin_img_url('sharayet/user-viewfinder.svg'),
+            'short_title' => 'دارای شرایط سنی ۱۸ تا ۶۰ سال',
+            'detail_title' => 'دارای شرایط سنی ۱۸ تا ۶۰ سال',
+            'detail_desc' => 'حداقل سن برای اهدای پلاسما ۱۸ سال تمام و حداکثر سن ۶۰ سال است.',
+        ],
+        [
+            'icon_type' => 'image',
+            'icon_image' => tamin_img_url('sharayet/weight-scale.svg'),
+            'short_title' => 'دارای وزن حداقل ۵۰ کیلوگرم',
+            'detail_title' => 'دارای وزن حداقل ۵۰ کیلوگرم',
+            'detail_desc' => 'برای اهدای خون و پلاسما، وزن اهداکننده باید حداقل ۵۰ کیلوگرم باشد.',
+        ],
+        [
+            'icon_type' => 'image',
+            'icon_image' => tamin_img_url('sharayet/monitor-waveform (1).svg'),
+            'short_title' => 'سلامت عمومی مناسب',
+            'detail_title' => 'سلامت عمومی مناسب',
+            'detail_desc' => 'اهداکننده باید از سلامت جسمانی برخوردار بوده و به بیماری‌های عفونی مبتلا نباشد.',
+        ],
+        [
+            'icon_type' => 'image',
+            'icon_image' => tamin_img_url('sharayet/pills.svg'),
+            'short_title' => 'عدم مصرف داروی خاص',
+            'detail_title' => 'عدم مصرف داروی خاص',
+            'detail_desc' => 'مصرف برخی داروها مانند آنتی‌بیوتیک‌ها ممکن است مانع از اهدای پلاسما شود.',
+        ],
+    ];
+}
+
+$first_condition = $conditions_list[0] ?? [];
 ?>
 <!-- Donation Conditions Section -->
 <section id="conditions" class="relative w-full py-20 lg:py-24 bg-white overflow-hidden">
@@ -20,34 +63,33 @@ defined('ABSPATH') || exit;
           <div class="w-8 h-8 rounded-full bg-black flex items-center justify-center shrink-0">
             <img src="<?php echo esc_url(tamin_img_url('sharayet/megaphone.png')); ?>" class="w-4 h-4" alt="megaphone" />
           </div>
-          <h3 class="text-neutral-900 font-black text-xl lg:text-[22px]"><?php esc_html_e('شرایط اهداکننده:', 'tamin-theme'); ?></h3>
+          <h3 class="text-neutral-900 font-black text-xl lg:text-[22px]"><?php echo esc_html(get_theme_mod('tamin_conditions_title', 'شرایط اهداکننده:')); ?></h3>
         </div>
 
         <!-- Cards Grid -->
         <div id="conditions-grid" class="flex flex-row flex-wrap lg:flex-nowrap gap-3 lg:gap-[15px] w-full lg:w-[950px] max-w-none relative z-20">
-          <!-- Card 1 -->
-          <div data-index="0" class="condition-card bg-primary text-neutral-900 rounded-[1.25rem] px-3 py-4 lg:px-4 flex flex-row items-start justify-between shadow-md gap-3 min-h-[94px] w-[calc(50%-6px)] lg:w-[217px] shrink-0 cursor-pointer transition-all duration-300">
-            <img src="<?php echo esc_url(tamin_img_url('sharayet/user-viewfinder.svg')); ?>" class="w-[39px] h-[39px] shrink-0 transition-transform duration-300" alt="age" />
-            <span class="font-semibold text-[18px] leading-[1.3] w-full text-right mt-1"><?php esc_html_e('دارای شرایط سنی ۱۸ تا ۶۰ سال', 'tamin-theme'); ?></span>
+          
+          <?php foreach ($conditions_list as $index => $cond) : 
+            $is_active = ($index === 0);
+            $card_class = $is_active 
+                ? 'condition-card bg-primary text-neutral-900 rounded-[1.25rem] px-3 py-4 lg:px-4 flex flex-row items-start justify-between shadow-md gap-3 min-h-[94px] w-[calc(50%-6px)] lg:w-[217px] shrink-0 cursor-pointer transition-all duration-300'
+                : 'condition-card bg-surface-warm text-neutral-900 rounded-[1.25rem] px-3 py-4 lg:px-4 flex flex-row items-start justify-between shadow-none gap-3 min-h-[94px] w-[calc(50%-6px)] lg:w-[217px] shrink-0 cursor-pointer transition-all duration-300 group hover:bg-primary/40 hover:-translate-y-1 hover:shadow-sm';
+            $icon_type = $cond['icon_type'] ?? 'image';
+          ?>
+          <div data-index="<?php echo esc_attr($index); ?>" class="<?php echo esc_attr($card_class); ?>">
+            <?php if ($icon_type === 'image' && !empty($cond['icon_image'])) : ?>
+              <img src="<?php echo esc_url($cond['icon_image']); ?>" class="w-[39px] h-[39px] shrink-0 transition-transform duration-300 <?php echo !$is_active ? 'group-hover:scale-110 group-hover:rotate-6' : ''; ?>" alt="icon" />
+            <?php elseif ($icon_type === 'class') : ?>
+              <i class="<?php echo esc_attr($cond['icon_class'] ?? ''); ?> text-[39px] shrink-0 transition-transform duration-300 <?php echo !$is_active ? 'group-hover:scale-110 group-hover:rotate-6' : ''; ?>"></i>
+            <?php elseif ($icon_type === 'svg' && !empty($cond['icon_svg'])) : ?>
+              <div class="w-[39px] h-[39px] shrink-0 transition-transform duration-300 <?php echo !$is_active ? 'group-hover:scale-110 group-hover:rotate-6' : ''; ?> flex items-center justify-center">
+                <?php echo $cond['icon_svg']; ?>
+              </div>
+            <?php endif; ?>
+            <span class="font-semibold text-[18px] leading-[1.3] w-full text-right mt-1 <?php echo !$is_active ? 'transition-colors' : ''; ?>"><?php echo esc_html($cond['short_title'] ?? ''); ?></span>
           </div>
+          <?php endforeach; ?>
 
-          <!-- Card 2 -->
-          <div data-index="1" class="condition-card bg-surface-warm text-neutral-900 rounded-[1.25rem] px-3 py-4 lg:px-4 flex flex-row items-start justify-between shadow-none gap-3 min-h-[94px] w-[calc(50%-6px)] lg:w-[217px] shrink-0 cursor-pointer transition-all duration-300 group hover:bg-primary/40 hover:-translate-y-1 hover:shadow-sm">
-            <img src="<?php echo esc_url(tamin_img_url('sharayet/weight-scale.svg')); ?>" class="w-[39px] h-[39px] shrink-0 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6" alt="weight" />
-            <span class="font-semibold text-[18px] leading-[1.3] w-full text-right mt-1 transition-colors"><?php esc_html_e('دارای وزن حداقل ۵۰ کیلوگرم', 'tamin-theme'); ?></span>
-          </div>
-
-          <!-- Card 3 -->
-          <div data-index="2" class="condition-card bg-surface-warm text-neutral-900 rounded-[1.25rem] px-3 py-4 lg:px-4 flex flex-row items-start justify-between shadow-none gap-3 min-h-[94px] w-[calc(50%-6px)] lg:w-[217px] shrink-0 cursor-pointer transition-all duration-300 group hover:bg-primary/40 hover:-translate-y-1 hover:shadow-sm">
-            <img src="<?php echo esc_url(tamin_img_url('sharayet/monitor-waveform (1).svg')); ?>" class="w-[39px] h-[39px] shrink-0 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6" alt="health" />
-            <span class="font-semibold text-[18px] leading-[1.3] w-full text-right mt-1 transition-colors"><?php esc_html_e('سلامت عمومی مناسب', 'tamin-theme'); ?></span>
-          </div>
-
-          <!-- Card 4 -->
-          <div data-index="3" class="condition-card bg-surface-warm text-neutral-900 rounded-[1.25rem] px-3 py-4 lg:px-4 flex flex-row items-start justify-between shadow-none gap-3 min-h-[94px] w-[calc(50%-6px)] lg:w-[217px] shrink-0 cursor-pointer transition-all duration-300 group hover:bg-primary/40 hover:-translate-y-1 hover:shadow-sm">
-            <img src="<?php echo esc_url(tamin_img_url('sharayet/pills.svg')); ?>" class="w-[39px] h-[39px] shrink-0 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6" alt="pills" />
-            <span class="font-bold text-[18px] leading-[1.3] w-full text-right mt-1 transition-colors"><?php esc_html_e('عدم مصرف داروی خاص', 'tamin-theme'); ?></span>
-          </div>
         </div>
       </div>
 
@@ -56,11 +98,11 @@ defined('ABSPATH') || exit;
         <div class="flex items-center gap-2">
           <span class="w-2.5 h-2.5 rounded-full bg-primary animate-pulse" id="condition-progress-dot"></span>
           <h4 id="condition-detail-title" class="text-neutral-900 font-black text-[22px] lg:text-[26px] transition-all duration-300 ease-out">
-            <?php esc_html_e('دارای شرایط سنی ۱۸ تا ۶۰ سال', 'tamin-theme'); ?>
+            <?php echo esc_html($first_condition['detail_title'] ?? ''); ?>
           </h4>
         </div>
         <p id="condition-detail-desc" class="text-neutral-700 text-[15px] lg:text-[18px] leading-8 lg:leading-[2.2] font-normal text-right lg:max-w-[548px] min-h-[190px] sm:min-h-[150px] lg:min-h-[175px] xl:min-h-[145px] transition-all duration-300 ease-out">
-          <?php esc_html_e('بازه سنی قانونی برای اهدای پلاسما به منظور حفظ سلامت اهداکننده و کیفیت بیولوژیک پلاسما تعیین شده است. اولین مراجعه‌کنندگان می‌توانند تا سن ۶۰ سال اقدام کنند و اهداکنندگان مستمر با تایید پزشک امکان اهدای پلاسما تا سنین بالاتر را نیز دارند.', 'tamin-theme'); ?>
+          <?php echo esc_html($first_condition['detail_desc'] ?? ''); ?>
         </p>
       </div>
 
@@ -85,24 +127,12 @@ defined('ABSPATH') || exit;
 <!-- Interactive Carousel Logic -->
 <script>
   document.addEventListener('DOMContentLoaded', () => {
-    const conditionsDb = [
-      {
-        title: "دارای شرایط سنی ۱۸ تا ۶۰ سال",
-        desc: "بازه سنی قانونی برای اهدای پلاسما به منظور حفظ سلامت اهداکننده و کیفیت بیولوژیک پلاسما تعیین شده است. اولین مراجعه‌کنندگان می‌توانند تا سن ۶۰ سال اقدام کنند و اهداکنندگان مستمر با تایید پزشک امکان اهدای پلاسما تا سنین بالاتر را نیز دارند."
-      },
-      {
-        title: "دارای وزن حداقل ۵۰ کیلوگرم",
-        desc: "وزن اهداکننده رابطه مستقیمی با حجم کل خون بدن دارد. به منظور پیشگیری از هرگونه ضعف یا افت فشار، حداقل وزن مجاز ۵۰ کیلوگرم تعیین شده است. حجم پلاسمای اهدایی نیز متناسب با وزن شما به طور کاملاً علمی محاسبه و دریافت می‌شود."
-      },
-      {
-        title: "سلامت عمومی مناسب",
-        desc: "قبل از هر بار اهدا، وضعیت هموگلوبین (جهت بررسی عدم کم‌خونی)، فشار خون، ضربان قلب و دمای بدن شما توسط پزشک بررسی می‌شود. برخورداری از سلامت عمومی و شادابی فیزیکی، ضامن یک اهدای ایمن و بدون عوارض است."
-      },
-      {
-        title: "عدم مصرف داروی خاص",
-        desc: "مصرف برخی داروها (مانند آنتی‌بیوتیک‌ها، داروهای هورمونی خاص یا رقیق‌کننده‌های خون) ممکن است بر کیفیت پلاسما یا فرآیند اهدا اثرگذار باشد. پزشک مرکز پیش از شروع، لیست داروهای مصرفی شما را پایش کرده و راهنمایی‌های لازم را ارائه می‌دهد."
-      }
-    ];
+    const conditionsDb = <?php echo wp_json_encode(array_map(function($cond) {
+        return [
+            'title' => $cond['detail_title'] ?? '',
+            'desc'  => $cond['detail_desc'] ?? '',
+        ];
+    }, $conditions_list)); ?>;
 
     const cards = document.querySelectorAll('.condition-card');
     const detailTitle = document.getElementById('condition-detail-title');

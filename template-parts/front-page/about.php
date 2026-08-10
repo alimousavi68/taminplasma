@@ -6,6 +6,11 @@
  */
 
 defined('ABSPATH') || exit;
+
+// Check if About Section is enabled
+if (!get_theme_mod('tamin_about_enabled', true)) {
+    return;
+}
 ?>
 <!-- About Section -->
 <section id="about" class="relative w-full py-20 lg:py-24 bg-bg-warm overflow-hidden">
@@ -43,20 +48,38 @@ defined('ABSPATH') || exit;
 
     <!-- Left Column: Content Block -->
     <div class="lg:col-span-7 space-y-6 lg:space-y-8 pl-0 lg:pl-4 animate-on-scroll opacity-0 translate-y-12 transition-all duration-1000 delay-200 ease-out text-right">
-      <!-- Section Title -->
-      <div class="flex items-center justify-start gap-3">
-        <div class="w-8 h-8 rounded-full bg-black flex items-center justify-center text-primary shrink-0">
-          <i class="fa-solid fa-question font-extrabold text-base"></i>
+
+<?php
+        $about_list_json = get_theme_mod('tamin_about_list', '');
+        $about_list = json_decode($about_list_json, true);
+        if (empty($about_list) || !is_array($about_list)) {
+            $about_list = [
+                ['text' => 'بیماران مبتلا به سوختگی شدید'],
+                ['text' => 'مبتلایان به اختلالات خونی مانند هموفیلی'],
+                ['text' => 'بیماران نیازمند ایمونوگلوبولین (برای تقویت سیستم ایمنی)'],
+                ['text' => 'بیماران کرونایی یا مبتلایان به برخی بیماری‌های عفونی در شرایط خاص'],
+            ];
+        }
+        $btn_url = get_theme_mod('tamin_about_btn_url', '');
+        if (empty($btn_url)) {
+            $btn_url = tamin_get_nav_url('tamin_about_url', '/about');
+        }
+        ?>
+
+        <!-- Section Title -->
+        <div class="flex items-center justify-start gap-3">
+          <div class="w-8 h-8 rounded-full bg-black flex items-center justify-center text-primary shrink-0">
+            <i class="fa-solid fa-question font-extrabold text-base"></i>
+          </div>
+          <h2 class="text-neutral-900 font-black text-[22px] lg:text-[28px] leading-tight tracking-tight">
+            <?php echo esc_html(get_theme_mod('tamin_about_title', 'درباره اهدای پلاسما بیشتر بدانیم..')); ?>
+          </h2>
         </div>
-        <h2 class="text-neutral-900 font-black text-[22px] lg:text-[28px] leading-tight tracking-tight">
-          <?php esc_html_e('درباره اهدای پلاسما بیشتر بدانیم..', 'tamin-theme'); ?>
-        </h2>
-      </div>
 
       <!-- Paragraphs -->
       <div class="text-neutral-700 text-[14px] lg:text-[15.5px] leading-loose space-y-4 font-normal text-right">
-        <p><?php esc_html_e('پلاسما بخش مایع خون است که حدود ۵۵٪ حجم کل خون را تشکیل می‌دهد. این بخش زرد رنگ حاوی آب، پروتئین‌ها، نمک‌ها، و مواد مغذی است که نقش مهمی در حمل مواد مغذی، هورمون‌ها و پروتئین‌های حیاتی ایفا می‌کند.', 'tamin-theme'); ?></p>
-        <p><?php esc_html_e('با اهدای پلاسما، نه تنها به دیگران کمک می‌کنید، بلکه حس همدلی و مسئولیت اجتماعی را تجربه می‌کنید. با یک اقدام ساده، می‌توانید تفاوت بزرگی در زندگی یک نفر بسازید.', 'tamin-theme'); ?></p>
+        <p><?php echo esc_html(get_theme_mod('tamin_about_p1', 'پلاسما بخش مایع خون است که حدود ۵۵٪ حجم کل خون را تشکیل می‌دهد. این بخش زرد رنگ حاوی آب، پروتئین‌ها، نمک‌ها، و مواد مغذی است که نقش مهمی در حمل مواد مغذی، هورمون‌ها و پروتئین‌های حیاتی ایفا می‌کند.')); ?></p>
+        <p><?php echo esc_html(get_theme_mod('tamin_about_p2', 'با اهدای پلاسما، نه تنها به دیگران کمک می‌کنید، بلکه حس همدلی و مسئولیت اجتماعی را تجربه می‌کنید. با یک اقدام ساده، می‌توانید تفاوت بزرگی در زندگی یک نفر بسازید.')); ?></p>
       </div>
 
       <!-- Benefits & Stats Row -->
@@ -64,39 +87,23 @@ defined('ABSPATH') || exit;
 
         <!-- Benefits List -->
         <div class="flex-1 space-y-5 w-full">
-          <h3 class="font-bold text-neutral-900 text-[20px] text-right"><?php esc_html_e('پلاسما در درمان بسیاری از بیماری‌ها کاربرد دارد، از جمله:', 'tamin-theme'); ?></h3>
+          <h3 class="font-bold text-neutral-900 text-[20px] text-right"><?php echo esc_html(get_theme_mod('tamin_about_list_title', 'پلاسما در درمان بسیاری از بیماری‌ها کاربرد دارد، از جمله:')); ?></h3>
           <ul class="space-y-3.5">
+            <?php foreach ($about_list as $item) : if (empty($item['text'])) continue; ?>
             <li class="flex items-center justify-start gap-3 text-[14px] font-normal text-neutral-700">
               <div class="w-[18px] h-[18px] rounded-full bg-[var(--color-accent-brown)] flex items-center justify-center shrink-0">
                 <img src="<?php echo esc_url(tamin_img_url('about/tike.svg')); ?>" class="w-2.5 h-2.5 brightness-0 invert" alt="tike" />
               </div>
-              <?php esc_html_e('بیماران مبتلا به سوختگی شدید', 'tamin-theme'); ?>
+              <?php echo esc_html($item['text']); ?>
             </li>
-            <li class="flex items-center justify-start gap-3 text-[14px] font-normal text-neutral-700">
-              <div class="w-[18px] h-[18px] rounded-full bg-[var(--color-accent-brown)] flex items-center justify-center shrink-0">
-                <img src="<?php echo esc_url(tamin_img_url('about/tike.svg')); ?>" class="w-2.5 h-2.5 brightness-0 invert" alt="tike" />
-              </div>
-              <?php esc_html_e('مبتلایان به اختلالات خونی مانند هموفیلی', 'tamin-theme'); ?>
-            </li>
-            <li class="flex items-center justify-start gap-3 text-[14px] font-normal text-neutral-700">
-              <div class="w-[18px] h-[18px] rounded-full bg-[var(--color-accent-brown)] flex items-center justify-center shrink-0">
-                <img src="<?php echo esc_url(tamin_img_url('about/tike.svg')); ?>" class="w-2.5 h-2.5 brightness-0 invert" alt="tike" />
-              </div>
-              <?php esc_html_e('بیماران نیازمند ایمونوگلوبولین (برای تقویت سیستم ایمنی)', 'tamin-theme'); ?>
-            </li>
-            <li class="flex items-center justify-start gap-3 text-[14px] font-normal text-neutral-700">
-              <div class="w-[18px] h-[18px] rounded-full bg-[var(--color-accent-brown)] flex items-center justify-center shrink-0">
-                <img src="<?php echo esc_url(tamin_img_url('about/tike.svg')); ?>" class="w-2.5 h-2.5 brightness-0 invert" alt="tike" />
-              </div>
-              <?php esc_html_e('بیماران کرونایی یا مبتلایان به برخی بیماری‌های عفونی در شرایط خاص', 'tamin-theme'); ?>
-            </li>
+            <?php endforeach; ?>
           </ul>
 
           <!-- CTA Button -->
           <div class="pt-6 flex justify-start w-full">
-            <a href="<?php echo tamin_get_nav_url('tamin_about_url', '/about'); ?>"
+            <a href="<?php echo esc_url($btn_url); ?>"
               class="inline-flex items-center gap-3 bg-primary text-neutral-900 font-medium px-7 py-2.5 rounded-full hover:bg-[var(--color-primary-dark)] hover:shadow-md hover:-translate-y-0.5 transition-all duration-300">
-              <?php esc_html_e('اطلاعات بیشتر', 'tamin-theme'); ?>
+              <?php echo esc_html(get_theme_mod('tamin_about_btn_text', 'اطلاعات بیشتر')); ?>
               <img src="<?php echo esc_url(tamin_img_url('about/btn-arrow-up-right.svg')); ?>" class="w-4 h-4" alt="arrow" />
             </a>
           </div>
@@ -108,11 +115,11 @@ defined('ABSPATH') || exit;
           
           <div class="relative z-10">
             <div class="font-black text-3xl lg:text-[42px] text-[#333333] leading-none flex items-baseline justify-center gap-1" dir="rtl">
-              <span class="counter-value" data-target="10">۰</span>
+              <span class="counter-value" data-target="<?php echo esc_attr(get_theme_mod('tamin_stats_number', '10')); ?>">۰</span>
               <span class="text-xl lg:text-2xl text-[#333333]/60 font-black">+</span>
             </div>
-            <div class="text-[#333333] font-bold text-xl lg:text-[22px] mt-1"><?php esc_html_e('سال', 'tamin-theme'); ?></div>
-            <div class="text-[12px] lg:text-[13px] font-normal text-[#444444] mt-4 uppercase tracking-[0.05em] leading-tight"><?php esc_html_e('تجربه و سابقه موفق', 'tamin-theme'); ?></div>
+            <div class="text-[#333333] font-bold text-xl lg:text-[22px] mt-1"><?php echo esc_html(get_theme_mod('tamin_stats_label', 'سال')); ?></div>
+            <div class="text-[12px] lg:text-[13px] font-normal text-[#444444] mt-4 uppercase tracking-[0.05em] leading-tight"><?php echo esc_html(get_theme_mod('tamin_stats_desc', 'تجربه و سابقه موفق')); ?></div>
           </div>
           
           <div class="absolute inset-2 border border-black/5 rounded-[2.1rem] pointer-events-none group-hover:border-black/10 transition-colors duration-500"></div>

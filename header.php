@@ -23,9 +23,7 @@ defined('ABSPATH') || exit;
   <!-- Top Bar -->
   <div class="w-full bg-primary text-neutral-900 hidden md:block" dir="rtl">
     <div class="container mx-auto px-4 lg:px-12 h-8 flex justify-between items-center text-[11px] font-medium">
-      <span id="topbar-notice-text" class="truncate max-w-[60%]">
-        <?php echo esc_html(get_theme_mod('tamin_topbar_notice', __('مرکز تامین پلاسما نوژین | اهداکنندگان، سرمایه‌های معنوی و حیات‌بخش کشور', 'tamin-theme'))); ?>
-      </span>
+
 
       <!-- Social Icons (Right Side) -->
       <div class="flex items-center gap-5 text-[14px]">

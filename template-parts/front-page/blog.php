@@ -7,10 +7,18 @@
 
 defined('ABSPATH') || exit;
 
+// Check if Blog Section is enabled
+if (!get_theme_mod('tamin_blog_enabled', true)) {
+    return;
+}
+
+$blog_title = get_theme_mod('tamin_blog_title', 'اخبار و مقالات');
+$posts_count = get_theme_mod('tamin_blog_posts_count', 6);
+
 // Query dynamic WordPress blog posts
 $blog_query = new WP_Query([
     'post_type'      => 'post',
-    'posts_per_page' => 6,
+    'posts_per_page' => $posts_count,
     'post_status'    => 'publish',
 ]);
 ?>
@@ -25,7 +33,7 @@ $blog_query = new WP_Query([
         <div class="w-10 h-10 lg:w-12 lg:h-12 rounded-xl bg-primary flex items-center justify-center shadow-sm shrink-0">
           <img src="<?php echo esc_url(tamin_img_url('papers-text.svg')); ?>" class="w-6 h-6 lg:w-7 lg:h-7" alt="News Icon" />
         </div>
-        <h2 class="text-neutral-900 font-black text-2xl lg:text-3xl"><?php esc_html_e('اخبار و مقالات', 'tamin-theme'); ?></h2>
+        <h2 class="text-neutral-900 font-black text-2xl lg:text-3xl"><?php echo esc_html($blog_title); ?></h2>
       </div>
 
       <!-- Left Side: Navigation & View All link -->
