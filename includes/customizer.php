@@ -395,6 +395,20 @@ if (!function_exists('tamin_customize_register')) {
             ]
         ]));
 
+        // Testimonial titles
+        $wp_customize->add_setting('tamin_testimonials_title', ['default' => 'نظرات مراجعین ما', 'sanitize_callback' => 'sanitize_text_field']);
+        $wp_customize->add_setting('tamin_testimonials_rating', ['default' => 'امتیاز ۴.۹/۵ از نگاه مراجعین نوژین', 'sanitize_callback' => 'sanitize_text_field']);
+
+        $wp_customize->add_control(new Tamin_Group_Control($wp_customize, 'tamin_testimonials_meta_group', [
+            'label'      => __('تنظیمات بخش نظرات مراجعین', 'tamin-theme'),
+            'section'    => 'tamin_faq_section',
+            'group_icon' => '💬',
+            'fields'     => [
+                ['setting' => 'tamin_testimonials_title', 'label' => 'عنوان بالای نظرات', 'type' => 'text'],
+                ['setting' => 'tamin_testimonials_rating', 'label' => 'متن امتیاز زیر نظرات', 'type' => 'text'],
+            ]
+        ]));
+
         $default_testimonials = [
             [
                 'text' => 'برخورد پرسنل مرکز تامین پلاسما نوژین فوق‌العاده حرفه‌ای و صمیمی است. محیط کاملاً بهداشتی و آرامش‌بخش است و حس خوبی از کمک به بیماران دارم.',
@@ -431,6 +445,74 @@ if (!function_exists('tamin_customize_register')) {
                 ['id' => 'role', 'label' => 'نقش / تخصص', 'type' => 'text'],
                 ['id' => 'avatar', 'label' => 'عکس (URL)', 'type' => 'image'],
             ]
+        ]));
+
+        // SECTION: CTA Banner (رزرو نوبت)
+        $wp_customize->add_section('tamin_cta_section', [
+            'title'    => __('بنر رزرو نوبت (CTA)', 'tamin-theme'),
+            'panel'    => 'tamin_frontpage_panel',
+            'priority' => 55,
+        ]);
+
+        $wp_customize->add_setting('tamin_faq_cta_enabled', [
+            'default'           => true,
+            'sanitize_callback' => 'tamin_sanitize_checkbox',
+        ]);
+        $wp_customize->add_control('tamin_faq_cta_enabled', [
+            'label'    => __('نمایش بنر رزرو نوبت', 'tamin-theme'),
+            'section'  => 'tamin_cta_section',
+            'type'     => 'checkbox',
+        ]);
+
+        // 1. 3 Top text fields (Badge, Title, Description)
+        $wp_customize->add_setting('tamin_faq_cta_badge', ['default' => 'همین امروز اقدام کنید', 'sanitize_callback' => 'sanitize_text_field']);
+        $wp_customize->add_setting('tamin_faq_cta_title1', ['default' => 'پلاسمای شما، جان یک بیمار را نجات میدهد', 'sanitize_callback' => 'sanitize_text_field']);
+        $wp_customize->add_setting('tamin_faq_cta_desc', ['default' => 'با یک اقدام ساده و رایگان، به بیماران مبتلا به هموفیلی، سوختگی‌های شدید و نقص ایمنی فرصت زندگی دوباره بدهید. مرکز نوژین با بالاترین استانداردهای بهداشتی همراه شماست.', 'sanitize_callback' => 'sanitize_textarea_field']);
+
+        $wp_customize->add_control(new Tamin_Group_Control($wp_customize, 'tamin_cta_texts_group', [
+            'label'      => __('متون بنر (بج، عنوان، توضیحات)', 'tamin-theme'),
+            'section'    => 'tamin_cta_section',
+            'group_icon' => '📝',
+            'fields'     => [
+                ['setting' => 'tamin_faq_cta_badge', 'label' => 'بج کوچک بالای عنوان', 'type' => 'text'],
+                ['setting' => 'tamin_faq_cta_title1', 'label' => 'عنوان اصلی بنر', 'type' => 'text'],
+                ['setting' => 'tamin_faq_cta_desc', 'label' => 'توضیحات بنر', 'type' => 'textarea'],
+            ]
+        ]));
+
+        // 2. Button (Text & Link)
+        $wp_customize->add_setting('tamin_faq_cta_btn_text', ['default' => 'همین حالا نوبت خود را رزرو کنید', 'sanitize_callback' => 'sanitize_text_field']);
+        $wp_customize->add_setting('tamin_faq_cta_btn_url', ['default' => '/request', 'sanitize_callback' => 'esc_url_raw']);
+
+        $wp_customize->add_control(new Tamin_Group_Control($wp_customize, 'tamin_cta_btn_group', [
+            'label'      => __('دکمه اقدام (متن و لینک)', 'tamin-theme'),
+            'section'    => 'tamin_cta_section',
+            'group_icon' => '🔗',
+            'fields'     => [
+                ['setting' => 'tamin_faq_cta_btn_text', 'label' => 'متن دکمه', 'type' => 'text'],
+                ['setting' => 'tamin_faq_cta_btn_url', 'label' => 'لینک دکمه', 'type' => 'text'],
+            ]
+        ]));
+
+        // 3. 2 Footer tags
+        $wp_customize->add_setting('tamin_faq_cta_tag1', ['default' => 'اطلاعات شما کاملاً محفوظ است', 'sanitize_callback' => 'sanitize_text_field']);
+        $wp_customize->add_setting('tamin_faq_cta_tag2', ['default' => 'مراجعه رایگان', 'sanitize_callback' => 'sanitize_text_field']);
+
+        $wp_customize->add_control(new Tamin_Group_Control($wp_customize, 'tamin_cta_tags_group', [
+            'label'      => __('متون زیر دکمه (۲ تگ)', 'tamin-theme'),
+            'section'    => 'tamin_cta_section',
+            'group_icon' => '🛡️',
+            'fields'     => [
+                ['setting' => 'tamin_faq_cta_tag1', 'label' => 'تگ اول (آیکون سپر)', 'type' => 'text'],
+                ['setting' => 'tamin_faq_cta_tag2', 'label' => 'تگ دوم (آیکون ساعت)', 'type' => 'text'],
+            ]
+        ]));
+
+        // 4. Left Image
+        $wp_customize->add_setting('tamin_faq_cta_image', ['default' => tamin_img_url('cta_healthy.webp'), 'sanitize_callback' => 'esc_url_raw']);
+        $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'tamin_faq_cta_image', [
+            'label'    => __('تصویر سمت چپ بنر', 'tamin-theme'),
+            'section'  => 'tamin_cta_section',
         ]));
 
         // SECTION: Blog

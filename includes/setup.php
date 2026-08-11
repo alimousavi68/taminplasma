@@ -55,16 +55,33 @@ if (!function_exists('tamin_seed_theme_defaults')) {
      */
     function tamin_seed_theme_defaults(): void {
         $defaults = [
-            'tamin_phone_number'   => '۰۲۱-۴۹۳۶۱۳۱۸',
-            'tamin_work_hours'     => 'شنبه تا پنج‌شنبه: ۸:۰۰ الی ۲۰:۰۰',
-            'tamin_topbar_notice'  => 'مرکز تامین پلاسما نوژین | اهداکنندگان، سرمایه‌های معنوی و حیات‌بخش کشور',
-            'tamin_about_url'      => '/about',
-            'tamin_plasma_info_url'=> '/plasma-info',
-            'tamin_units_url'      => '/units',
-            'tamin_request_url'    => '/request',
-            'tamin_blog_url'       => '/blog',
-            'tamin_policy_url'     => '/policy',
-            'tamin_contact_url'    => '/contact',
+            'tamin_phone_number'      => '۰۲۱-۴۹۳۶۱۳۱۸',
+            'tamin_work_hours'        => 'شنبه تا پنج‌شنبه: ۸:۰۰ الی ۲۰:۰۰',
+            'tamin_topbar_notice'     => 'مرکز تامین پلاسما نوژین | اهداکنندگان، سرمایه‌های معنوی و حیات‌بخش کشور',
+            'tamin_about_url'         => '/about',
+            'tamin_plasma_info_url'   => '/plasma-info',
+            'tamin_units_url'         => '/units',
+            'tamin_request_url'       => '/request',
+            'tamin_blog_url'          => '/blog',
+            'tamin_policy_url'        => '/policy',
+            'tamin_contact_url'       => '/contact',
+            // FAQ & Testimonials Defaults
+            'tamin_faq_subtitle'       => 'پاسخگوی سوالات شما هستیم',
+            'tamin_faq_title1'         => 'سوالات متداول',
+            'tamin_faq_title2'         => ' شما',
+            'tamin_testimonials_title' => 'نظرات مراجعین ما',
+            'tamin_testimonials_rating'=> 'امتیاز ۴.۹/۵ از نگاه مراجعین نوژین',
+            // CTA Banner Defaults
+            'tamin_faq_cta_enabled'    => true,
+            'tamin_faq_cta_badge'      => 'همین امروز اقدام کنید',
+            'tamin_faq_cta_title1'     => 'پلاسمای شما،',
+            'tamin_faq_cta_title2'     => 'جان یک بیمار را نجات میدهد',
+            'tamin_faq_cta_desc'       => 'با یک اقدام ساده و رایگان، به بیماران مبتلا به هموفیلی، سوختگی‌های شدید و نقص ایمنی فرصت زندگی دوباره بدهید. مرکز نوژین با بالاترین استانداردهای بهداشتی همراه شماست.',
+            'tamin_faq_cta_btn_text'   => 'همین حالا نوبت خود را رزرو کنید',
+            'tamin_faq_cta_btn_url'    => '/request',
+            'tamin_faq_cta_image'      => tamin_img_url('cta_healthy.webp'),
+            'tamin_faq_cta_tag1'       => 'اطلاعات شما کاملاً محفوظ است',
+            'tamin_faq_cta_tag2'       => 'مراجعه رایگان',
         ];
 
         foreach ($defaults as $key => $val) {
@@ -85,3 +102,4 @@ if (!function_exists('tamin_seed_theme_defaults')) {
     }
 }
 add_action('after_switch_theme', 'tamin_seed_theme_defaults');
+add_action('init', 'tamin_seed_theme_defaults');

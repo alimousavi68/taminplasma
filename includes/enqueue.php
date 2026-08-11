@@ -12,15 +12,13 @@ if (!function_exists('tamin_enqueue_scripts')) {
      * Enqueue scripts and styles for the frontend.
      */
     function tamin_enqueue_scripts(): void {
-        // Enqueue FontAwesome local CSS
-        if (file_exists(TAMIN_THEME_DIR . '/assets/css/fontawesome.min.css')) {
-            wp_enqueue_style(
-                'tamin-fontawesome',
-                TAMIN_THEME_URI . '/assets/css/fontawesome.min.css',
-                [],
-                '6.5.1'
-            );
-        }
+        // Enqueue FontAwesome 6.5.1 CSS (Official CDN for full icon library support)
+        wp_enqueue_style(
+            'tamin-fontawesome',
+            'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css',
+            [],
+            '6.5.1'
+        );
 
         // Enqueue Swiper local CSS
         if (file_exists(TAMIN_THEME_DIR . '/assets/css/swiper-bundle.min.css')) {
