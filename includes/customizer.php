@@ -395,6 +395,44 @@ if (!function_exists('tamin_customize_register')) {
             ]
         ]));
 
+        $default_testimonials = [
+            [
+                'text' => 'برخورد پرسنل مرکز تامین پلاسما نوژین فوق‌العاده حرفه‌ای و صمیمی است. محیط کاملاً بهداشتی و آرامش‌بخش است و حس خوبی از کمک به بیماران دارم.',
+                'user' => 'سارا راد',
+                'role' => 'اهداکننده مستمر',
+                'avatar' => 'https://i.pravatar.cc/150?u=sara'
+            ],
+            [
+                'text' => 'پلاسمای تولید شده در این مرکز با بالاترین استانداردهای بین‌المللی مطابق دارد. این محصولات حیاتی، جان بسیاری از بیماران خاص را نجات می‌دهند.',
+                'user' => 'دکتر محمدی',
+                'role' => 'متخصص ایمونولوژی',
+                'avatar' => 'https://i.pravatar.cc/150?u=mohammadi'
+            ],
+            [
+                'text' => 'اولین تجربه‌ام از اهدای پلاسما بسیار عالی بود. فرآیند آن خیلی راحت‌تر از چیزی بود که فکر می‌کردم و خوشحالم که در این کار خیر سهیم شدم.',
+                'user' => 'امیرحسین',
+                'role' => 'اهداکننده',
+                'avatar' => 'https://i.pravatar.cc/150?u=amir'
+            ]
+        ];
+
+        $wp_customize->add_setting('tamin_testimonials_list', [
+            'default'           => wp_json_encode($default_testimonials),
+            'sanitize_callback' => 'tamin_sanitize_json',
+        ]);
+
+        $wp_customize->add_control(new Tamin_Repeater_Control($wp_customize, 'tamin_testimonials_list', [
+            'label'       => __('لیست نظرات مراجعین', 'tamin-theme'),
+            'section'     => 'tamin_faq_section',
+            'item_label'  => 'نظر',
+            'fields'      => [
+                ['id' => 'text', 'label' => 'متن نظر', 'type' => 'textarea'],
+                ['id' => 'user', 'label' => 'نام شخص', 'type' => 'text'],
+                ['id' => 'role', 'label' => 'نقش / تخصص', 'type' => 'text'],
+                ['id' => 'avatar', 'label' => 'عکس (URL)', 'type' => 'image'],
+            ]
+        ]));
+
         // SECTION: Blog
         $wp_customize->add_section('tamin_blog_section', [
             'title'    => __('اخبار و مقالات', 'tamin-theme'),
@@ -498,9 +536,9 @@ if (!function_exists('tamin_customize_register')) {
             'sanitize_callback' => 'esc_url_raw',
         ]);
         $wp_customize->add_control('tamin_cta_button_url', [
-            'label'    => __('لینک دکمه درخواست اهدا', 'tamin-theme'),
+            'label'    => __('لینک دکمه درخواست اهدا (انتخاب برگه)', 'tamin-theme'),
             'section'  => 'tamin_header_section',
-            'type'     => 'url',
+            'type'     => 'dropdown-pages',
         ]);
 
         // SECTION 2: Footer & Contact Settings
@@ -588,7 +626,7 @@ if (!function_exists('tamin_customize_register')) {
         $wp_customize->add_control('tamin_about_url', [
             'label'    => __('لینک دکمه «اطلاعات بیشتر» سکشن درباره ما', 'tamin-theme'),
             'section'  => 'tamin_links_section',
-            'type'     => 'text',
+            'type'     => 'dropdown-pages',
         ]);
 
         // Plasma Info Button Link
@@ -599,7 +637,7 @@ if (!function_exists('tamin_customize_register')) {
         $wp_customize->add_control('tamin_plasma_info_url', [
             'label'    => __('لینک دکمه «اهدای پلاسما» و نحوه اهدا', 'tamin-theme'),
             'section'  => 'tamin_links_section',
-            'type'     => 'text',
+            'type'     => 'dropdown-pages',
         ]);
 
         // Units Page Link
@@ -610,7 +648,7 @@ if (!function_exists('tamin_customize_register')) {
         $wp_customize->add_control('tamin_units_url', [
             'label'    => __('لینک صفحه مراکز اهدا (واحدها)', 'tamin-theme'),
             'section'  => 'tamin_links_section',
-            'type'     => 'text',
+            'type'     => 'dropdown-pages',
         ]);
 
         // Booking Request CTA Link
@@ -621,7 +659,7 @@ if (!function_exists('tamin_customize_register')) {
         $wp_customize->add_control('tamin_request_url', [
             'label'    => __('لینک دکمه درخواست نوبت اهدا (هدر و بنر CTA)', 'tamin-theme'),
             'section'  => 'tamin_links_section',
-            'type'     => 'text',
+            'type'     => 'dropdown-pages',
         ]);
 
         // Blog Archive Link
@@ -632,7 +670,7 @@ if (!function_exists('tamin_customize_register')) {
         $wp_customize->add_control('tamin_blog_url', [
             'label'    => __('لینک «مشاهده همه مقالات و اخبار»', 'tamin-theme'),
             'section'  => 'tamin_links_section',
-            'type'     => 'text',
+            'type'     => 'dropdown-pages',
         ]);
 
         // Policy Page Link
@@ -641,9 +679,9 @@ if (!function_exists('tamin_customize_register')) {
             'sanitize_callback' => 'esc_url_raw',
         ]);
         $wp_customize->add_control('tamin_policy_url', [
-            'label'    => __('لینک برگه «خط مشی نوژین»', 'tamin-theme'),
+            'label'    => __('لینک صفحه خط مشی (فوتر)', 'tamin-theme'),
             'section'  => 'tamin_links_section',
-            'type'     => 'text',
+            'type'     => 'dropdown-pages',
         ]);
 
         // Contact / FAQ Page Link

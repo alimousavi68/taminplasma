@@ -36,22 +36,40 @@ get_header();
 }
 </style>
 
+<?php
+$units_post_id = get_the_ID();
+$units_badge   = get_post_meta($units_post_id, '_tamin_units_badge', true);
+$units_title   = get_post_meta($units_post_id, '_tamin_units_title', true);
+$units_desc    = get_post_meta($units_post_id, '_tamin_units_desc', true);
+
+// Fallbacks if not set in DB
+if (empty($units_badge)) $units_badge = __('شعب سراسر کشور', 'tamin-theme');
+if (empty($units_title)) $units_title = __('مراکز و واحدهای تأمین پلاسما نوژین', 'tamin-theme');
+if (empty($units_desc))  $units_desc  = __('دسترسی سریع به مدرن‌ترین مراکز استاندارد اهدا در سراسر کشور با کادری مجرب و تجهیزات پیشرفته', 'tamin-theme');
+?>
+
 <main class="min-h-screen bg-[var(--color-bg-base)] overflow-x-hidden pb-16" dir="rtl" aria-label="<?php esc_attr_e('مراکز و واحدهای تأمین پلاسما', 'tamin-theme'); ?>">
     
     <!-- 1. PAGE HEADER -->
+    <?php if (!empty($units_title)) : ?>
     <header class="w-full bg-[var(--color-bg-base)] pt-12 pb-6 relative">
         <div class="max-w-screen-xl mx-auto px-6 lg:px-12 text-center space-y-3">
+            <?php if (!empty($units_badge)) : ?>
             <span class="inline-block px-4 py-1.5 rounded-full bg-[var(--color-bg-surface)] text-[var(--color-text-main)] text-xs font-bold tracking-wide shadow-sm border border-[var(--color-bg-surface)]/20 mb-2">
-                <?php esc_html_e('شعب سراسر کشور', 'tamin-theme'); ?>
+                <?php echo esc_html($units_badge); ?>
             </span>
+            <?php endif; ?>
             <h1 class="font-black text-2xl md:text-3xl lg:text-4xl text-[var(--color-text-main)]">
-                <?php esc_html_e('مراکز و واحدهای تأمین پلاسما نوژین', 'tamin-theme'); ?>
+                <?php echo esc_html($units_title); ?>
             </h1>
+            <?php if (!empty($units_desc)) : ?>
             <p class="text-sm md:text-base text-[var(--color-text-muted)] max-w-xl mx-auto leading-relaxed">
-                <?php esc_html_e('دسترسی سریع به مدرن‌ترین مراکز استاندارد اهدا در سراسر کشور با کادری مجرب و تجهیزات پیشرفته', 'tamin-theme'); ?>
+                <?php echo esc_html($units_desc); ?>
             </p>
+            <?php endif; ?>
         </div>
     </header>
+    <?php endif; ?>
 
     <!-- 2. DYNAMIC TABS FILTER -->
     <section class="max-w-md mx-auto my-8 px-4" aria-label="<?php esc_attr_e('فیلتر شهرها', 'tamin-theme'); ?>">

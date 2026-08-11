@@ -1,0 +1,118 @@
+/* Admin Metabox Styles for Tamin Theme */
+.tamin-metabox-wrapper {
+    background: #fff;
+    margin: -6px -12px -12px;
+}
+.tamin-metabox-tabs {
+    display: flex;
+    border-bottom: 1px solid #ccd0d4;
+    background: #f1f1f1;
+    margin: 0;
+    padding: 0 10px;
+}
+.tamin-metabox-tab {
+    padding: 12px 18px;
+    cursor: pointer;
+    font-weight: 600;
+    border-bottom: 3px solid transparent;
+    color: #50575e;
+    transition: all 0.2s;
+    user-select: none;
+}
+.tamin-metabox-tab:hover {
+    color: #1d2327;
+}
+.tamin-metabox-tab.active {
+    border-bottom-color: #eaa824; /* Theme Primary */
+    color: #1d2327;
+    background: #fff;
+}
+.tamin-tab-content {
+    display: none;
+    padding: 20px;
+}
+.tamin-tab-content.active {
+    display: block;
+}
+.tamin-field-row {
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #f0f0f1;
+}
+.tamin-field-row:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+.tamin-field-row label.tamin-label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #1d2327;
+}
+.tamin-field-row input[type="text"], 
+.tamin-field-row input[type="number"], 
+.tamin-field-row textarea {
+    width: 100%;
+    max-width: 800px;
+    padding: 8px 12px;
+    border: 1px solid #8c8f94;
+    border-radius: 4px;
+    box-shadow: 0 1px 2px rgba(0,0,0,.07) inset;
+}
+.tamin-field-row input:focus, .tamin-field-row textarea:focus {
+    border-color: #eaa824;
+    box-shadow: 0 0 0 1px #eaa824;
+    outline: none;
+}
+.tamin-image-preview {
+    margin-bottom: 10px;
+    background: #f0f0f1;
+    display: inline-block;
+    border-radius: 4px;
+    overflow: hidden;
+    border: 1px solid #c3c4c7;
+}
+
+/* Repeater Styles */
+.tamin-repeater-list {
+    margin-bottom: 15px;
+}
+.tamin-repeater-item {
+    background: #f8f9f9;
+    border: 1px solid #c3c4c7;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    position: relative;
+}
+.tamin-repeater-item-remove {
+    position: absolute;
+    top: 15px;
+    left: 15px; /* RTL */
+    color: #d63638;
+    cursor: pointer;
+    font-weight: bold;
+    text-decoration: none;
+}
+.tamin-repeater-item-remove:hover {
+    color: #b32d2e;
+}
+.tamin-repeater-field {
+    margin-bottom: 10px;
+}
+.tamin-repeater-field:last-child {
+    margin-bottom: 0;
+}
+.tamin-repeater-field label {
+    display: block;
+    font-size: 13px;
+    margin-bottom: 4px;
+    color: #50575e;
+}
+.tamin-repeater-field input, .tamin-repeater-field textarea {
+    width: 100%;
+    border: 1px solid #c3c4c7;
+    padding: 6px 10px;
+    border-radius: 3px;
+}

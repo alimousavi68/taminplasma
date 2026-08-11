@@ -103,18 +103,35 @@ $title2 = get_theme_mod('tamin_faq_title2', ' شما');
                         <path d="M12.8 36C10.1333 36 7.8 35.1333 5.8 33.4C3.8 31.6667 2.33333 29.3333 1.4 26.4C0.466667 23.4667 0 20.2 0 16.6C0 12.0667 1.06667 8.26667 3.2 5.2C5.33333 2.13333 8.33333 0.4 12.2 0L14.2 4.4C11.8 4.93333 10.0667 6.13333 9 8C7.93333 9.86667 7.4 12.2667 7.4 15.2H14.8V36H12.8ZM33.8 36C31.1333 36 28.8 35.1333 26.8 33.4C24.8 31.6667 23.3333 29.3333 22.4 26.4C21.4667 23.4667 21 20.2 21 16.6C21 12.0667 22.0667 8.26667 24.2 5.2C26.3333 2.13333 29.3333 0.4 33.2 0L35.2 4.4C32.8 4.93333 31.0667 6.13333 30 8C28.9333 9.86667 28.4 12.2667 28.4 15.2H35.8V36H33.8Z" />
                     </svg>
 
+                    <?php
+                    $default_testimonials = [
+                        [
+                            'text' => 'برخورد پرسنل مرکز تامین پلاسما نوژین فوق‌العاده حرفه‌ای و صمیمی است. محیط کاملاً بهداشتی و آرامش‌بخش است و حس خوبی از کمک به بیماران دارم.',
+                            'user' => 'سارا راد',
+                            'role' => 'اهداکننده مستمر',
+                            'avatar' => 'https://i.pravatar.cc/150?u=sara'
+                        ]
+                    ];
+                    $testimonials_json = get_theme_mod('tamin_testimonials_list', wp_json_encode($default_testimonials));
+                    $testimonials = json_decode($testimonials_json, true);
+                    if (!is_array($testimonials) || empty($testimonials)) {
+                        $testimonials = $default_testimonials;
+                    }
+                    $first_testimonial = $testimonials[0];
+                    ?>
+
                     <p id="testimonial-text" class="text-neutral-800 text-sm leading-[2.2] font-medium transition-opacity duration-300 min-h-[90px]">
-                        <?php esc_html_e('برخورد پرسنل مرکز تامین پلاسما نوژین فوق‌العاده حرفه‌ای و صمیمی است. محیط کاملاً بهداشتی و آرامش‌بخش است و حس خوبی از کمک به بیماران دارم.', 'tamin-theme'); ?>
+                        <?php echo esc_html($first_testimonial['text']); ?>
                     </p>
 
                     <div class="flex items-end justify-between mt-4">
                         <div class="flex items-center gap-3">
                             <div class="w-12 h-12 rounded-full overflow-hidden ring-2 ring-[var(--color-primary-dark)]/40 shrink-0">
-                                <img id="testimonial-avatar" src="https://i.pravatar.cc/150?u=sara" alt="" class="w-full h-full object-cover">
+                                <img id="testimonial-avatar" src="<?php echo esc_url($first_testimonial['avatar']); ?>" alt="" class="w-full h-full object-cover">
                             </div>
                             <div>
-                                <span id="testimonial-name" class="text-neutral-900 font-bold text-sm block"><?php esc_html_e('سارا راد', 'tamin-theme'); ?></span>
-                                <span id="testimonial-role" class="text-neutral-700/80 text-xs"><?php esc_html_e('اهداکننده مستمر', 'tamin-theme'); ?></span>
+                                <span id="testimonial-name" class="text-neutral-900 font-bold text-sm block"><?php echo esc_html($first_testimonial['user']); ?></span>
+                                <span id="testimonial-role" class="text-neutral-700/80 text-xs"><?php echo esc_html($first_testimonial['role']); ?></span>
                             </div>
                         </div>
 
@@ -129,9 +146,9 @@ $title2 = get_theme_mod('tamin_faq_title2', ' شما');
                     </div>
 
                     <div class="flex items-center gap-1.5 mt-2" id="testimonial-dots">
-                        <div class="h-1.5 rounded-full bg-[var(--color-primary-dark)] transition-all duration-500 w-6" data-dot="0"></div>
-                        <div class="h-1.5 rounded-full bg-neutral-300 transition-all duration-500 w-1.5" data-dot="1"></div>
-                        <div class="h-1.5 rounded-full bg-neutral-300 transition-all duration-500 w-1.5" data-dot="2"></div>
+                        <?php foreach ($testimonials as $index => $testimonial) : ?>
+                            <div class="h-1.5 rounded-full transition-all duration-500 <?php echo $index === 0 ? 'bg-[var(--color-primary-dark)] w-6' : 'bg-neutral-300 w-1.5'; ?>" data-dot="<?php echo esc_attr($index); ?>"></div>
+                        <?php endforeach; ?>
                     </div>
                 </div>
 
@@ -190,26 +207,7 @@ $title2 = get_theme_mod('tamin_faq_title2', ' شما');
 </section>
 
 <script>
-const testimonials = [
-    {
-        text: "برخورد پرسنل مرکز تامین پلاسما نوژین فوق‌العاده حرفه‌ای و صمیمی است. محیط کاملاً بهداشتی و آرامش‌بخش است و حس خوبی از کمک به بیماران دارم.",
-        user: "سارا راد",
-        role: "اهداکننده مستمر",
-        avatar: "https://i.pravatar.cc/150?u=sara"
-    },
-    {
-        text: "پلاسمای تولید شده در این مرکز با بالاترین استانداردهای بین‌المللی مطابق دارد. این محصولات حیاتی، جان بسیاری از بیماران خاص را نجات می‌دهند.",
-        user: "دکتر محمدی",
-        role: "متخصص ایمونولوژی",
-        avatar: "https://i.pravatar.cc/150?u=mohammadi"
-    },
-    {
-        text: "اولین تجربه‌ام از اهدای پلاسما بسیار عالی بود. فرآیند آن خیلی راحت‌تر از چیزی بود که فکر می‌کردم و خوشحالم که در این کار خیر سهیم شدم.",
-        user: "امیرحسین",
-        role: "اهداکننده",
-        avatar: "https://i.pravatar.cc/150?u=amir"
-    }
-];
+const testimonials = <?php echo wp_json_encode($testimonials); ?>;
 
 let currentIdx = 0;
 

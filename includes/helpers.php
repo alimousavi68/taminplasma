@@ -44,6 +44,9 @@ if (!function_exists('tamin_get_nav_url')) {
         if (empty($val)) {
             $val = $default_path;
         }
+        if (is_numeric($val)) {
+            return esc_url(get_permalink((int)$val));
+        }
         if (str_starts_with($val, 'http://') || str_starts_with($val, 'https://') || str_starts_with($val, '#')) {
             return esc_url($val);
         }
